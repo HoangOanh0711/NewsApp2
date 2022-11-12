@@ -68,7 +68,6 @@
                 android:id="@+id/txtl_ttnd_hovaten"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:text="TextView"
                 android:textSize="20sp"
                 android:textStyle="bold" />
         </LinearLayout>

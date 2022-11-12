@@ -45,7 +45,7 @@ public class dangky extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dangky);
 
-        //FacebookSdk.sdkInitialize(getApplicationContext());
+        FacebookSdk.sdkInitialize(getApplicationContext());
 
         khaibao();
         countryCodePicker.registerCarrierNumberEditText(sdt);

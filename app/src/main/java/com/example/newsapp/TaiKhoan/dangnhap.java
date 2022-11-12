@@ -1,6 +1,8 @@
 package com.example.newsapp.TaiKhoan;
+import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -58,7 +60,7 @@ public class dangnhap extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dangnhap);
-        //FacebookSdk.sdkInitialize(getApplicationContext());
+        FacebookSdk.sdkInitialize(getApplicationContext());
 
         auth = FirebaseAuth.getInstance();
 
@@ -155,7 +157,6 @@ public class dangnhap extends AppCompatActivity {
                 Intent intent = new Intent(dangnhap.this, Facebook.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
-
             }
         });
 
