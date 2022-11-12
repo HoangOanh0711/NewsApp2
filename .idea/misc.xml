@@ -27,6 +27,8 @@
         <entry key="..\:/APP/NewsApp/app/src/main/res/layout/activity_dangnhap.xml" value="0.22" />
         <entry key="..\:/APP/NewsApp/app/src/main/res/layout/activity_docbao.xml" value="0.22" />
         <entry key="..\:/APP/NewsApp/app/src/main/res/layout/activity_doimatkhau.xml" value="0.22" />
+        <entry key="..\:/APP/NewsApp/app/src/main/res/layout/activity_giavang.xml" value="0.2050034746351633" />
+        <entry key="..\:/APP/NewsApp/app/src/main/res/layout/activity_lichvannien.xml" value="0.22" />
         <entry key="..\:/APP/NewsApp/app/src/main/res/layout/activity_quanlydiaphuong.xml" value="0.22" />
         <entry key="..\:/APP/NewsApp/app/src/main/res/layout/activity_quenmatkhau1.xml" value="0.22" />
         <entry key="..\:/APP/NewsApp/app/src/main/res/layout/activity_quenmatkhau2.xml" value="0.22" />
@@ -37,6 +39,8 @@
         <entry key="..\:/APP/NewsApp/app/src/main/res/layout/activity_thongtinnguoidung.xml" value="0.16666666666666666" />
         <entry key="..\:/APP/NewsApp/app/src/main/res/layout/activity_trangchu.xml" value="0.3333333333333333" />
         <entry key="..\:/APP/NewsApp/app/src/main/res/layout/activity_xoso.xml" value="0.1796875" />
+        <entry key="..\:/APP/NewsApp/app/src/main/res/layout/card_giavang_loai.xml" value="0.22" />
+        <entry key="..\:/APP/NewsApp/app/src/main/res/layout/card_thoitiet_doc.xml" value="0.1796875" />
         <entry key="..\:/APP/NewsApp/app/src/main/res/layout/card_thoitiet_ngang.xml" value="0.1796875" />
         <entry key="..\:/APP/NewsApp/app/src/main/res/layout/card_thoitiet_thanhpho.xml" value="0.3333333333333333" />
         <entry key="..\:/APP/NewsApp/app/src/main/res/layout/card_trangchu.xml" value="0.1" />
@@ -56,6 +60,8 @@
         <entry key="..\:/APP/NewsApp/app/src/main/res/layout/fragment_xoso.xml" value="0.1796875" />
         <entry key="..\:/APP/NewsApp/app/src/main/res/layout/fragment_xuhuong.xml" value="0.1" />
         <entry key="..\:/APP/NewsApp/app/src/main/res/menu/bottom_navigation.xml" value="0.17864583333333334" />
+        <entry key="..\:/APP/NewsApp2/app/src/main/res/layout/activity_docbao.xml" value="0.22" />
+        <entry key="..\:/APP/NewsApp2/app/src/main/res/layout/activity_giavang.xml" value="0.22" />
       </map>
     </option>
   </component>
@@ -64,7 +70,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.1" />
+        <option name="scale" value="0.14666666666666667" />
       </ProjectState>
     </option>
   </component>

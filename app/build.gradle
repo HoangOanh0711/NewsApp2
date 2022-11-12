@@ -6,11 +6,9 @@ plugins {
 android {
     compileSdk 32
 
-    namespace 'com.example.newsapp'
-
     defaultConfig {
         applicationId "com.example.newsapp"
-        minSdk 23
+        minSdkVersion 26
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -24,14 +22,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
-    packagingOptions{
-        exclude 'META-ÌN/services/javax.annotation.processing.Processor'
-    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    namespace 'com.example.newsapp'
 }
 
 dependencies {
@@ -54,14 +49,17 @@ dependencies {
     //thư viện mã số đt
     implementation 'com.hbb20:ccp:2.6.1'
 
+    //lấy dữ liệu web báo
+    implementation 'org.jsoup:jsoup:1.15.3'
 
-    implementation platform('com.google.firebase:firebase-bom:31.0.1')
+    //hỗ trợ ảnh và gif
+    implementation 'com.github.bumptech.glide:glide:4.14.2'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
 
-    //implementation 'com.google.ads.mediation:facebook:6.11.0.1'
-
-    implementation 'com.google.android.gms:play-services-auth:20.3.0'
-
-    implementation platform('com.google.firebase:firebase-bom:31.0.2')
+    implementation platform('com.google.firebase:firebase-bom:30.5.0')
 
     implementation 'com.facebook.android:facebook-android-sdk:15.0.2'
+    implementation 'com.google.android.gms:play-services-auth:20.3.0'
+
+
 }

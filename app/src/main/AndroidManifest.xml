@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.newsapp">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:allowBackup="true"
@@ -16,35 +18,62 @@
         android:theme="@style/Theme.NewsApp"
         tools:targetApi="31">
         <activity
-            android:name=".Facebook"
+            android:name=".Thoitiet.chonthanhpho"
+            android:exported="false" />
+        <activity
+        android:name=".DocBao.docbaovideo"
+        android:exported="false"/>
+        <activity
+            android:name=".LichVanNien.lichvannien"
+            android:exported="false"/>
+        <activity
+            android:name=".Thoitiet.quanlydiaphuong"
+            android:exported="false" />
+        <activity
+            android:name=".splash"
+            android:exported="false" />
+        <activity
+            android:name=".TaiKhoan.doimatkhau"
+            android:exported="false"/>
+        <activity
+            android:name=".TaiKhoan.thongtinnguoidung"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".quenmatkhau2"
+            android:name=".DocBao.docbao"
+            android:exported="false"/>
+        <activity
+            android:name=".XoSo.xoso"
+            android:exported="false"/>
+        <activity
+            android:name=".GiaVang.giavang"
+            android:exported="false"/>
+        <activity
+            android:name=".TaiKhoan.quenmatkhau2"
             android:exported="false" />
         <activity
-            android:name=".dangky"
+            android:name=".TaiKhoan.dangky"
             android:exported="false" />
         <activity
-            android:name=".dangnhap"
+            android:name=".TrangChu.trangchu"
             android:exported="false" />
         <activity
-            android:name=".quenmatkhau3"
+            android:name=".TaiKhoan.quenmatkhau3"
             android:exported="false" />
         <activity
-            android:name=".quenmatkhau1"
+            android:name=".TaiKhoan.quenmatkhau1"
             android:exported="false" />
         <activity
-            android:name=".quenmatkhau4"
+            android:name=".TaiKhoan.quenmatkhau4"
             android:exported="false" />
         <activity
-            android:name=".trangchu"
+            android:name=".Thoitiet.thoitiet"
             android:exported="false" />
         <activity
-            android:name=".splash"
+            android:name=".TaiKhoan.dangnhap"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -52,30 +81,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-        <activity android:name="com.facebook.FacebookActivity"
-            android:configChanges=
-                "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:label="@string/app_name" />
-        <activity
-            android:name="com.facebook.CustomTabActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="@string/fb_login_protocol_scheme" />
-            </intent-filter>
-        </activity>
-
-
-        <meta-data
-            android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id" />
-        <meta-data
-            android:name="com.facebook.sdk.ClientToken"
-            android:value="@string/facebook_client_token" />
     </application>
 
 </manifest>
