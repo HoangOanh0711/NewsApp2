@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
@@ -35,6 +36,8 @@ public class taikhoan extends Fragment {
     LinearLayout thongtinngdung,doimk,thoitiet,xoso,giavang,lichviet,dangxuat;
     private SaveState saveState;
     private Context context;
+    Button logoutbutton;
+    AlertDialog.Builder builder;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,7 +51,7 @@ public class taikhoan extends Fragment {
         xoso =view.findViewById(R.id.layout_caidat_xoso);
         giavang =view.findViewById(R.id.layout_caidat_giavang);
         lichviet =view.findViewById(R.id.layout_caidat_lichviet);
-        dangxuat = view.findViewById(R.id.layout_caidat_dangxuat);
+
 
         // chuyển màn hình giá vàng
         giavang.setOnClickListener(new View.OnClickListener() {
@@ -90,6 +93,7 @@ public class taikhoan extends Fragment {
                 startActivity(intentdmk);
             }
         });
+
         //chuyển qua màn hình đổi mật khẩu
         thoitiet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,15 +105,12 @@ public class taikhoan extends Fragment {
         return view;
     }
 
+
+
     public static taikhoan newInstance() {
         taikhoan fragment = new taikhoan();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 }
