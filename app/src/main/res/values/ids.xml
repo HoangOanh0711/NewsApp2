@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="layout_caidat_ttnd" type="id" />
+    <item name="layout_caidat_dmk" type="id" />
+    <item name="layout_caidat_thoitiet" type="id" />
+    <item name="layout_caidat_xoso" type="id" />
+    <item name="layout_caidat_giavang" type="id" />
+    <item name="layout_caidat_lichviet" type="id" />
+    <item name="layout_caidat_dangxuat" type="id" />
+</resources>
