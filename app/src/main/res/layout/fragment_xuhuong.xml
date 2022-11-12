@@ -3,14 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".TrangChu.xuhuong"
-    android:background="@color/trang">
+    tools:context=".TrangChu.tintuc">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_fg_xuhuong"
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+        android:text="Xu hướng"
+        android:gravity="center"
+        android:background="@color/xanh2"/>
 
 </FrameLayout>

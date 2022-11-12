@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TaiKhoan.dangnhap"
+    tools:context=".dangnhap"
     android:background="@drawable/bg_gradient_color2">
 
     <TextView
@@ -83,15 +83,16 @@
                     android:id="@+id/ed_sdt_dnhap"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_regular"
-                    android:hint="Nhập số điện thoại của bạn"
+                    android:layout_centerVertical="true"
                     android:layout_toStartOf="@id/img_check_dnhap"
                     android:layout_toEndOf="@id/ccp_dnhap"
+                    android:fontFamily="@font/roboto_regular"
+                    android:hint="Nhập số điện thoại của bạn"
                     android:inputType="number"
                     android:maxLength="11"
                     android:textColor="@color/den"
                     android:textSize="18sp"
-                    android:layout_centerVertical="true"/>
+                    tools:ignore="TouchTargetSizeCheck" />
 
                 <ImageView
                     android:id="@+id/img_check_dnhap"
@@ -132,6 +133,7 @@
                 android:hint="Nhập mật khẩu của bạn"
                 android:inputType="textPassword"
                 android:maxLength="20"
+                android:minHeight="48dp"
                 android:textColor="@color/den"
                 android:textSize="18sp" />
         </LinearLayout>

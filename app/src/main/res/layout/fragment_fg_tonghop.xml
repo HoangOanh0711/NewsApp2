@@ -9,8 +9,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Mới"
-        android:background="@color/xanh2"
+        android:text="Tổng hợp"
+        android:background="@color/xanh5"
         android:gravity="center"/>
 
 </FrameLayout>

@@ -11,11 +11,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_gradient_color1"
-        android:padding="3dp"
-        android:paddingBottom="2dp"
         app:tabIndicatorColor="@color/trang"
-        app:tabMode="scrollable"
-        app:tabTextColor="@color/trang">
+        app:tabTextColor="@color/trang"
+        android:paddingBottom="2dp"
+        android:padding="3dp"
+        app:tabMode="scrollable">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Theo dõi" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nóng" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="match_parent"
@@ -25,27 +35,12 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Thời sự" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Thế giới" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Pháp luật" />
+            android:text="Tổng hợp" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Bóng đá VN" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Nhịp sống trẻ" />
 
     </com.google.android.material.tabs.TabLayout>
 
