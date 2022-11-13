@@ -53,10 +53,11 @@ public class doimatkhau extends AppCompatActivity {
                             if (pass_ht.isEmpty()) {
                                 Toast.makeText(doimatkhau.this,"Vui lòng nhập mật khẩu hiện tại",Toast.LENGTH_SHORT).show();
                             }
-                            if (getmk != pass_ht) {
+                            if (!getmk.equals(pass_ht)) {
+                                Log.i("mkht",pass_ht);
                                 Toast.makeText(doimatkhau.this,"Mật khẩu hiện tại không đúng",Toast.LENGTH_SHORT).show();
                             } else {
-                                if (pass_moi != pass_nhaplai) {
+                                if (!pass_moi.equals(pass_nhaplai)) {
                                     Toast.makeText(doimatkhau.this,"Vui lòng nhập mật khẩu mới thêm một lần",Toast.LENGTH_SHORT).show();
                                 } else {
                                     databaseReference.child("Users").child(Phone).child("Mật khẩu").setValue(pass_nhaplai);
