@@ -99,7 +99,30 @@ public class dangnhap extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 gangiatri();
-                FirebaseDatabase.getInstance().getReference("Users");
+                //FirebaseDatabase.getInstance().getReference("Users");
+
+                databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.hasChild(st_sdt)) {
+                            final String getMatkhau = snapshot.child(st_sdt).child("Mật khẩu").getValue(String.class);
+                            Log.e("hi",getMatkhau);
+                            if (getMatkhau.equals(st_matkhau)) {
+                                Intent intent = new Intent(dangnhap.this, trangchu.class);
+                                startActivity(intent);
+                            }
+                            else {
+                                Toast.makeText(dangnhap.this, "Sai mật khẩu", Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Toast.makeText(dangnhap.this, "Số điện thoại không tồn tại", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(dangnhap.this, "Lỗi", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
     }
