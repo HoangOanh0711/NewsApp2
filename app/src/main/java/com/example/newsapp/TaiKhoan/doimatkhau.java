@@ -38,10 +38,6 @@ public class doimatkhau extends AppCompatActivity {
                             }
                         });
 
-
-
-
-
                 AlertDialog alert = builder.create();
                 alert.setTitle("");
                 alert.show();
