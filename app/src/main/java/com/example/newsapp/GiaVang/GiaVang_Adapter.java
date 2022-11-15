@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.newsapp.R;
 import com.example.newsapp.Thoitiet.Thoitiet1;
 import com.example.newsapp.Thoitiet.Thoitiet1_Adapter;
@@ -19,10 +20,9 @@ import java.util.List;
 public class GiaVang_Adapter extends RecyclerView.Adapter<GiaVang_Adapter.GiaVangViewHolder>{
 
     private List<GiaVangModel> giaVangModels;
-    private Context context;
 
-    public GiaVang_Adapter(Context context) {
-        this.context = context;
+    public GiaVang_Adapter(List<GiaVangModel> giaVangModels) {
+        this.giaVangModels = giaVangModels;
     }
 
     public void setMgiavang(List<GiaVangModel> mgiavang) {
@@ -44,12 +44,12 @@ public class GiaVang_Adapter extends RecyclerView.Adapter<GiaVang_Adapter.GiaVan
             return;
         }
 
+        Glide.with(holder.imgtenhang).load(giaVangModel.getHang()).into(holder.imgtenhang);
+        holder.txttenhang.setText(giaVangModel.getTenhang());
         holder.txtgiatienmua.setText(giaVangModel.getGiatienmua());
         holder.txttangmua.setText(giaVangModel.getTangmua());
-        holder.txtphantrammua.setText(giaVangModel.getPhantrammua());
         holder.txtgiatienban.setText(giaVangModel.getGiatienban());
         holder.txttangban.setText(giaVangModel.getTangban());
-        holder.txtphantramban.setText(giaVangModel.getPhantramban());
     }
 
     @Override
@@ -62,18 +62,20 @@ public class GiaVang_Adapter extends RecyclerView.Adapter<GiaVang_Adapter.GiaVan
 
     public class GiaVangViewHolder extends RecyclerView.ViewHolder{
 
-        private TextView txtgiatienmua,txttangmua,txtphantrammua,txtgiatienban,txttangban,txtphantramban;
+        private TextView txttenhang,txtgiatienmua,txttangmua,txtgiatienban,txttangban;
+        private ImageView imgtenhang;
 
         public GiaVangViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            imgtenhang = itemView.findViewById(R.id.txt_hang_cardgiavang);
+            txttenhang = itemView.findViewById(R.id.txt_ten_cardgiavang);
+
             txtgiatienmua = itemView.findViewById(R.id.txt_giatienmua_cardgiavang);
             txttangmua = itemView.findViewById(R.id.txt_tangmua_cardgiavang);
-            txtphantrammua = itemView.findViewById(R.id.txt_phantrammua_cardgiavang);
 
             txtgiatienban = itemView.findViewById(R.id.txt_giatienban_cardgiavang);
             txttangban = itemView.findViewById(R.id.txt_tangban_cardgiavang);
-            txtphantramban = itemView.findViewById(R.id.txt_phantramban_cardgiavang);
         }
     }
 }

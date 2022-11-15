@@ -50,7 +50,7 @@
             android:name=".XoSo.xoso"
             android:exported="false"/>
         <activity
-            android:name=".GiaVang.giavang"
+            android:name=".TaiKhoan.dangnhap"
             android:exported="false"/>
         <activity
             android:name=".TaiKhoan.quenmatkhau2"
@@ -74,7 +74,7 @@
             android:name=".Thoitiet.thoitiet"
             android:exported="false" />
         <activity
-            android:name=".TaiKhoan.dangnhap"
+            android:name=".GiaVang.giavang"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
