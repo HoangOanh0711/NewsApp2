@@ -122,17 +122,13 @@
                 android:src="@drawable/img_cloudy_day"
                 android:layout_marginTop="10dp"/>
 
-            <TextView
-                android:id="@+id/txt_noidung_docbao"
-                android:layout_width="wrap_content"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcv_noidung_docbao"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:fontFamily="@font/roboto_regular"
-                android:text="Hôm nay dự báo sẽ có gió mạnh, sóng lớn trên khu vực Bắc Biển Đông, vịnh Bắc Bộ và vùng biển từ Quảng Trị đến Ninh Thuận. Nguyên nhân do ảnh hưởng của gió mùa đông bắc kết hợp hoàn lưu bão số 7. Cơ quan khí tượng cảnh báo các tàu thuyền hoạt động trên biển cần chú ý các bản tin để có nơi trú tránh an toàn.Hôm nay dự báo sẽ có gió mạnh, sóng lớn trên khu vực Bắc Biển Đông, vịnh Bắc Bộ và vùng biển từ Quảng Trị đến Ninh Thuận. Nguyên nhân do ảnh hưởng của gió mùa đông bắc kết hợp hoàn lưu bão số 7. Cơ quan khí tượng cảnh báo các tàu thuyền hoạt động trên biển cần chú ý các bản tin để có nơi trú tránh an toàn.Hôm nay dự báo sẽ có gió mạnh, sóng lớn trên khu vực Bắc Biển Đông, vịnh Bắc Bộ và vùng biển từ Quảng Trị đến Ninh Thuận. Nguyên nhân do ảnh hưởng của gió mùa đông bắc kết hợp hoàn lưu bão số 7. Cơ quan khí tượng cảnh báo các tàu thuyền hoạt động trên biển cần chú ý các bản tin để có nơi trú tránh an toàn.Hôm nay dự báo sẽ có gió mạnh, sóng lớn trên khu vực Bắc Biển Đông, vịnh Bắc Bộ và vùng biển từ Quảng Trị đến Ninh Thuận. Nguyên nhân do ảnh hưởng của gió mùa đông bắc kết hợp hoàn lưu bão số 7. Cơ quan khí tượng cảnh báo các tàu thuyền hoạt động trên biển cần chú ý các bản tin để có nơi trú tránh an toàn.Hôm nay dự báo sẽ có gió mạnh, sóng lớn trên khu vực Bắc Biển Đông, vịnh Bắc Bộ và vùng biển từ Quảng Trị đến Ninh Thuận. Nguyên nhân do ảnh hưởng của gió mùa đông bắc kết hợp hoàn lưu bão số 7. Cơ quan khí tượng cảnh báo các tàu thuyền hoạt động trên biển cần chú ý các bản tin để có nơi trú tránh an toàn.Hôm nay dự báo sẽ có gió mạnh, sóng lớn trên khu vực Bắc Biển Đông, vịnh Bắc Bộ và vùng biển từ Quảng Trị đến Ninh Thuận. Nguyên nhân do ảnh hưởng của gió mùa đông bắc kết hợp hoàn lưu bão số 7. Cơ quan khí tượng cảnh báo các tàu thuyền hoạt động trên biển cần chú ý các bản tin để có nơi trú tránh an toàn.Hôm nay dự báo sẽ có gió mạnh, sóng lớn trên khu vực Bắc Biển Đông, vịnh Bắc Bộ và vùng biển từ Quảng Trị đến Ninh Thuận. Nguyên nhân do ảnh hưởng của gió mùa đông bắc kết hợp hoàn lưu bão số 7. Cơ quan khí tượng cảnh báo các tàu thuyền hoạt động trên biển cần chú ý các bản tin để có nơi trú tránh an toàn."
-                android:textColor="@color/den"
-                android:textSize="18sp" />
+                android:layout_marginEnd="10dp" />
 
             <TextView
                 android:id="@+id/txt_tacgia_docbao"
@@ -161,8 +157,7 @@
                 android:id="@+id/rcv_tinlienquan_docbao"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp" />
+                android:layout_marginTop="10dp" />
         </LinearLayout>
 
     </ScrollView>
