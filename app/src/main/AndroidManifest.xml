@@ -59,7 +59,7 @@
             android:name=".TaiKhoan.dangky"
             android:exported="false" />
         <activity
-            android:name=".TrangChu.trangchu"
+            android:name=".GiaVang.giavang"
             android:exported="false" />
         <activity
             android:name=".TaiKhoan.quenmatkhau3"
@@ -74,7 +74,7 @@
             android:name=".Thoitiet.thoitiet"
             android:exported="false" />
         <activity
-            android:name=".GiaVang.giavang"
+            android:name=".TrangChu.trangchu"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
