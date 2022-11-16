@@ -23,6 +23,9 @@ public class quanlydiaphuong extends AppCompatActivity {
     RecyclerView rcvThoitiet3;
     Thoitiet3_Adapter thoitiet3_adapter;
 
+    List<Thoitiet3> list = new ArrayList<>();
+    String value;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,20 +33,19 @@ public class quanlydiaphuong extends AppCompatActivity {
 
         khaibao();
 
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            String value = extras.getString("Địa phương đã chọn");
-            Log.e("Địa phương đã chọn",value);
-        }
-
         rcvThoitiet3 = findViewById(R.id.recyclerView_quanlydiaphuong);
         thoitiet3_adapter = new Thoitiet3_Adapter(this);
+        rcvThoitiet3.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL,false));
 
-        LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(this, RecyclerView.VERTICAL,false);
-        rcvThoitiet3.setLayoutManager(linearLayoutManager1);
-
-        thoitiet3_adapter.setMthoitiet3(getList_thoitiet1());
         rcvThoitiet3.setAdapter(thoitiet3_adapter);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            value = extras.getString("Địa phương đã chọn");
+            Log.e("Địa phương đã chọn",value);
+            list.add(new Thoitiet3(value));
+        }
+
 
         btn_themdiaphuong.setOnClickListener(new View.OnClickListener() {
             @Override
