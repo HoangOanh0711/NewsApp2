@@ -11,6 +11,10 @@ public class Thoitiet3 {
         this.thoitiet3 = thoitiet3;
     }
 
+    public Thoitiet3(String thanhpho) {
+        this.thanhpho = thanhpho;
+    }
+
     public String getThanhpho() {
         return thanhpho;
     }

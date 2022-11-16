@@ -83,6 +83,7 @@ public class giavang extends AppCompatActivity {
             try {
                 String url = "https://dantri.com.vn/gia-vang.htm";
                 document = Jsoup.connect(url).get();
+                //dữ liệu giá vàng - chưa
                 /*data = document.select("table.table-hover.table-gold-provider>tbody>tr");
                 int size = data.size();
                 for (int i=0; i<size;i++) {

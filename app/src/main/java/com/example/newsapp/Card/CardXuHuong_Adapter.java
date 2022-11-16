@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.newsapp.R;
+import com.example.newsapp.TruyenDuLieu;
 
 import java.util.ArrayList;
 
@@ -43,6 +44,7 @@ public class CardXuHuong_Adapter extends RecyclerView.Adapter<CardXuHuong_Adapte
             @Override
             public void onClick(View view) {
                 clickItem.onClickItem(xuHuongModel);
+                TruyenDuLieu.Truyen_Linkbao = xuHuongModel.getLinkbao();
             }
         });
     }
