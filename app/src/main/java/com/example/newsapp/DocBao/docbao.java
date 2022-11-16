@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class docbao extends AppCompatActivity {
-    String linkbao,chude,tieude1,tgian,tieude2,anhbao,ndung,tacgia;
+    String linkbao,chude,tieude1,tgian,tieude2,anhbao,tenanh,ndung,tacgia;
 
     TextView txt_chude,txt_tieude1,txt_tgian,txt_tieude2,txt_tacgia;
     RecyclerView rcv_ndung,rcv_lienquan;
@@ -111,19 +111,49 @@ public class docbao extends AppCompatActivity {
                 tieude1 = data.select("div.content-detail>div.w980>h1.article-title").text();
                 tgian = data.select("div.content-detail>div.w980>div.date-time").text();
                 tieude2 = data.select("div.column-first-second>div.main-content-body>h2.sapo").text();
-                anhbao = data.select("div.column-first-second>div.main-content-body>div.content").select("div.VCSortableInPreviewMode[type='photo']").select("img").attr("src");
-                ndung = data.select("div.column-first-second>div.main-content-body>div.content>p").text();
                 tacgia = data.select("div.column-first-second>div.main-content-body>div.author").text();
 
+                Elements find = data.select("div.column-first-second>div.main-content-body>div#main-detail-body");
+                int size1 = find.select("p").size();
+                Log.e("size", String.valueOf(size1));
+                for (int i=0; i<size1;i++) {
+                    Log.e("eq", String.valueOf(i));
+
+                    if ( find.select("div.VCSortableInPreviewMode[type='photo']").eq(i).select("img").attr("src") != ""){
+                        anhbao = find.select("div.VCSortableInPreviewMode[type='photo']").eq(i).select("img").attr("src");
+                        tenanh = find.select("div.VCSortableInPreviewMode[type='photo']").eq(i).select("img").attr("title");
+                        Log.e("anhbao",anhbao);
+                        Log.e("tenanh",tenanh);
+                    }
+
+                    if (i<(size1-1))
+                    {
+                        if ( find.select("p").select("p").eq(i).text() != "" ){
+                            ndung = find.select("p").eq(i).text();
+                            Log.e("ndung",ndung);
+                        }
+                    }
+
+
+
+
+
+
+                }
+
+
+
+
                 //đổ dữ liệu cho rcv liên quan - chưa
-                data1 = document.select("ul.list-news-content").select("li.news-item");
+                data1 = document.select("ul.list-news-content>li.news-item");
                 int size = data1.size();
                 for (int i=0; i<size;i++) {
-                    String tieude = data1.select("h3.title-news").eq(i).text();
-                    String thoigian = data1.select("p.sapo").eq(i).text();
-                    String anhbao = data1.select("a.img212x132.pos-rlt").eq(i).select("img").attr("src");
-                    linkbao = "https://tuoitre.vn" + data.select("a.img212x132.pos-rlt").eq(i).attr("href");
-                    noiDungModelList.add(new NoiDungModel(tieude,thoigian,anhbao,linkbao));
+                    String tieude = data1.select("div.name-news>h3.title-news").eq(i).text();
+                    String thoigian = data1.select("div.name-news>p.sapo").eq(i).text();
+                    String anhbao = data1.select("a.img212x132").eq(i).select("img.212x132").attr("src");
+                    String linkbao2 = "https://tuoitre.vn" + data.select("a.img212x132.pos-rlt").eq(i).attr("href");
+                    Log.e("linkphu", linkbao2);
+                    noiDungModelList.add(new NoiDungModel(tieude,thoigian,anhbao,linkbao2));
                 }
 
             } catch (Exception e) {
