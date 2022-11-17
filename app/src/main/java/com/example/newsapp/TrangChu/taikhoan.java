@@ -35,6 +35,7 @@ import com.example.newsapp.R;
 import com.example.newsapp.TaiKhoan.doimatkhau;
 import com.example.newsapp.TaiKhoan.thongtinnguoidung;
 import com.example.newsapp.Thoitiet.thoitiet;
+import com.example.newsapp.TruyenDuLieu;
 import com.example.newsapp.XoSo.xoso;
 
 import com.google.firebase.database.DataSnapshot;
@@ -61,7 +62,7 @@ public class taikhoan extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_taikhoan, container, false);
         Phone = "0397370612";
-
+        String myphone = TruyenDuLieu.Tr_sdt;
         //Ánh xạ
         thongtinngdung =view.findViewById(R.id.layout_caidat_ttnd);
         doimk =view.findViewById(R.id.layout_caidat_dmk);
@@ -75,8 +76,8 @@ public class taikhoan extends Fragment {
         databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.hasChild(Phone)) {
-                    final String username = snapshot.child(Phone).child("Tên người dùng").getValue(String.class);
+                if (snapshot.hasChild(myphone)) {
+                    final String username = snapshot.child(myphone).child("Tên người dùng").getValue(String.class);
                     TXT_caidat_tecmmguoidung.setText(username);
                 }
             }

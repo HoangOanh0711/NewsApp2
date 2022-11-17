@@ -1,5 +1,7 @@
 package com.example.newsapp.TaiKhoan;
 
+import com.example.newsapp.TruyenDuLieu;
+import com.example.newsapp.TaiKhoan.dangnhap;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -36,10 +38,14 @@ public class doimatkhau extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doimatkhau);
         IMG_dmk_back = findViewById(R.id.img_dmk_back);
+
         khaibao();
         String Phone = "0397370612";
+        String myphone = TruyenDuLieu.Tr_sdt;
+        Log.e("sdt",myphone);
 
-        //Nút cập nhật
+
+        //Nút cập nhật mật khẩu
         btn_change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,8 +53,8 @@ public class doimatkhau extends AppCompatActivity {
                 databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.hasChild(Phone)) {
-                            final String getmk = snapshot.child(Phone).child("Mật khẩu").getValue(String.class);
+                        if (snapshot.hasChild(myphone)) {
+                            final String getmk = snapshot.child(myphone).child("Mật khẩu").getValue(String.class);
                             Log.e("getmk:",getmk);
                             if (pass_ht.isEmpty()) {
                                 Toast.makeText(doimatkhau.this,"Vui lòng nhập mật khẩu hiện tại",Toast.LENGTH_SHORT).show();
@@ -57,12 +63,20 @@ public class doimatkhau extends AppCompatActivity {
                                 Log.i("mkht",pass_ht);
                                 Toast.makeText(doimatkhau.this,"Mật khẩu hiện tại không đúng",Toast.LENGTH_SHORT).show();
                             } else {
-                                if (!pass_moi.equals(pass_nhaplai)) {
-                                    Toast.makeText(doimatkhau.this,"Vui lòng nhập mật khẩu mới thêm một lần",Toast.LENGTH_SHORT).show();
+                                if (pass_moi.length() < 6) {
+                                    Toast.makeText(doimatkhau.this,"Vui lòng nhập mật khẩu mới từ 6 kí tự trở lên",Toast.LENGTH_SHORT).show();
                                 } else {
-                                    databaseReference.child("Users").child(Phone).child("Mật khẩu").setValue(pass_nhaplai);
-                                    Toast.makeText(doimatkhau.this,"Mật khẩu đã được cập nhật",Toast.LENGTH_SHORT).show();
+                                    if (!pass_moi.equals(pass_nhaplai)) {
+                                        Toast.makeText(doimatkhau.this,"Vui lòng nhập mật khẩu mới thêm một lần",Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        databaseReference.child("Users").child(myphone).child("Mật khẩu").setValue(pass_nhaplai);
+                                        Toast.makeText(doimatkhau.this,"Mật khẩu đã được cập nhật",Toast.LENGTH_SHORT).show();
+                                        mk_ht.setText("");
+                                        mk_moi.setText("");
+                                        mk_nhaplai.setText("");
+                                    }
                                 }
+
                             }
                         }
                     }
