@@ -79,14 +79,14 @@ public class xuhuong extends Fragment {
                 String url = "https://tv.tuoitre.vn/";
                 document = Jsoup.connect(url).get();
                 //dữ liệu báo vid - rồi (chưa lấy link)
-                data = document.select("div.box-highlight").select("ul").select("li.autonext-item");
+                data = document.select("div.box-highlight>ul>li.autonext-item");
                 int size = data.size();
                 for (int i=0; i<size;i++) {
                     String tieude = data.select("a.name-video-list").eq(i).text();
                     String tgiandangbai = data.select("b.time-ago").eq(i).text();
                     String anhbao = data.select("a.item").eq(i).select("img").attr("src");
                     String tgianvid = data.select("span.duration-video").eq(i).text();
-                    String linkbao = data.select("a.img212x132.pos-rlt").eq(i).text();
+                    String linkbao = "https://tv.tuoitre.vn/" + data.select("a.item").eq(i).attr("href");
                     Log.e("link bao",linkbao);
                     xuHuongModelList.add(new XuHuongModel(tieude,tgiandangbai,anhbao,tgianvid,linkbao));
                 }

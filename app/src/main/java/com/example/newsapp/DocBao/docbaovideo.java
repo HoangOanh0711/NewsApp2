@@ -108,12 +108,20 @@ public class docbaovideo extends AppCompatActivity {
                 document = Jsoup.connect(url).get();
 
                 //đổ dữ liệu cho phần báo - chưa
-                data = document.select("div.content");
+                data = document.select("div#autonextNoiBat");
+
                 video = data.select("div.column-first-second>div.main-content-body>div.content").select("div.VCSortableInPreviewMode[type='photo']").select("img").attr("src");
-                tieude = data.select("div.content-detail>div.w980>h1.article-title").text();
-                tgian = data.select("div.content-detail>div.w980>div.date-time").text();
-                ndung = data.select("div.column-first-second>div.main-content-body>div.content>p").text();
-                tacgia = data.select("div.column-first-second>div.main-content-body>div.author").text();
+                tieude = data.select("div.description-video>h2>a.name-video").text();
+                tgian = data.select("div.description-video>span.list-category>a.time-ago").text();
+                ndung = data.select("div.description-video>p.sapo-video").text();
+                tacgia = data.select("p.authorvideo").text();
+
+                Log.e("tieude",tieude);
+                Log.e("tgian",tgian);
+                Log.e("ndung",ndung);
+                Log.e("tacgia",tacgia);
+
+
 
                 //đổ dữ liệu cho rcv liên quan - chưa
                 data1 = document.select("ul.list-news-content").select("li.news-item");

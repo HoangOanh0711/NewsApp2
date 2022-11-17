@@ -134,15 +134,7 @@ public class docbao extends AppCompatActivity {
                         }
                     }
 
-
-
-
-
-
                 }
-
-
-
 
                 //đổ dữ liệu cho rcv liên quan - chưa
                 data1 = document.select("ul.list-news-content>li.news-item");

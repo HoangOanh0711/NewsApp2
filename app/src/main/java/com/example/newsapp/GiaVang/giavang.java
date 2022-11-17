@@ -81,25 +81,34 @@ public class giavang extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
             try {
-                String url = "https://dantri.com.vn/gia-vang.htm";
+                String url = "https://www.pnj.com.vn/blog/gia-vang/";
                 document = Jsoup.connect(url).get();
                 //dữ liệu giá vàng - chưa
-                /*data = document.select("table.table-hover.table-gold-provider>tbody>tr");
+                data = document.select("div.bang-gia-vang-outer>div.content>table>tbody#content-price>tr");
                 int size = data.size();
                 for (int i=0; i<size;i++) {
                     String anhhang = data.select("a.img212x132.pos-rlt").eq(i).select("img").attr("src");
-                    String tenhang = data.select("h3.title-news").eq(i).text();
+                    String tenhang = data.select("td").eq(0).text();
+                    Log.e("tenhang",tenhang);
 
-                    String tienmua = data.select("p.sapo").eq(i).text();
                     String tangmua = data.select("p.sapo").eq(i).text();
+                    String tienmua = data.select("td").eq(1).text();
+                    Log.e("tienmua",tienmua);
 
-                    String tienban = data.select("p.sapo").eq(i).text();
                     String tangban = data.select("p.sapo").eq(i).text();
+                    String tienban = data.select("td").eq(2).text();
+                    Log.e("tienban",tienban);
                     giaVangModelList.add(new GiaVangModel(anhhang,tenhang,tienmua,tangmua,tienban,tangban));
                 }
-                data1 = document.select("table.table-hover.table-gold-provider>tbody>tr");
-                giocapnhat = data.select("h3.title-news").text();
-                */
+
+
+
+
+//                data1 = document.select("table.table-hover.table-gold-provider>tbody>tr");
+//                giocapnhat = data.select("h3.title-news").text();
+//
+
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
