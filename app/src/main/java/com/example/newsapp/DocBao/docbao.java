@@ -31,9 +31,10 @@ import java.util.List;
 public class docbao extends AppCompatActivity {
     String linkbao,chude,tieude1,tgian,tieude2,anhbao,ndung,tacgia;
 
-    TextView txt_chude,txt_tieude1,txt_tgian,txt_tieude2,txt_ndung,txt_tacgia;
-    RecyclerView rcv_lienquan;
+    TextView txt_chude,txt_tieude1,txt_tgian,txt_tieude2,txt_tacgia;
+    RecyclerView rcv_ndung,rcv_lienquan;
     ImageView img_quaylai, img_anhbao;
+
     CardTrangChu_Adapter cardTrangChu_adapter;
     List<NoiDungModel> noiDungModelList = new ArrayList<>();
 
@@ -60,37 +61,13 @@ public class docbao extends AppCompatActivity {
         txt_tieude1 = findViewById(R.id.txt_tieude1_docbao);
         txt_tgian = findViewById(R.id.txt_tgian_docbao);
         txt_tieude2 = findViewById(R.id.txt_tieude2_docbao);
-        txt_ndung = findViewById(R.id.txt_noidung_docbao);
+        rcv_ndung = findViewById(R.id.rcv_noidung_docbao);
         txt_tacgia = findViewById(R.id.txt_tacgia_docbao);
 
         rcv_lienquan = findViewById(R.id.rcv_tinlienquan_docbao);
 
         img_quaylai = findViewById(R.id.img_quaylai_docbao);
         img_anhbao = findViewById(R.id.img_anhbao_docbao);
-
-        cardTrangChu_adapter = new CardTrangChu_Adapter((ArrayList<NoiDungModel>) noiDungModelList, new ClickItem() {
-            @Override
-            public void onClickItem(NoiDungModel noiDungModel) {
-                Intent intent = new Intent(docbao.this, docbao.class);
-                startActivity(intent);
-            }
-        });
-        rcv_lienquan.setAdapter(cardTrangChu_adapter);
-        cardTrangChu_adapter.notifyDataSetChanged();
-
-        LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(this, RecyclerView.VERTICAL,false);
-        rcv_lienquan.setLayoutManager(linearLayoutManager2);
-
-        cardTrangChu_adapter.setCardTrangChu(getList_lienquan());
-        rcv_lienquan.setAdapter(cardTrangChu_adapter);
-    }
-
-    private ArrayList<NoiDungModel> getList_lienquan() {
-        ArrayList<NoiDungModel> noiDungModels = new ArrayList<>();
-        noiDungModels.add(new NoiDungModel("Một số cây xăng tại Đà Nẵng hết xăng để bán","1 giờ trước","https://cdn.tuoitre.vn/thumb_w/586/2022/11/12/logo…thieu-hut-xang-dau-02-16682326665542088494253.jpg","https://tuoitre.vn/mot-so-cay-xang-tai-da-nang-het-xang-de-ban-20221112130302427.htm"));
-        noiDungModels.add(new NoiDungModel("Điều hành giá xăng dầu nhìn từ hiện tượng 'cây xăng cục gạch'","1 giờ trước","https://cdn.tuoitre.vn/thumb_w/586/2022/11/12/logo…6681047203162114213926-1668223325566330952414.jpg","https://tuoitre.vn/dieu-hanh-gia-xang-dau-nhin-tu-hien-tuong-cay-xang-cuc-gach-20221112103543742.htm"));
-        noiDungModels.add(new NoiDungModel("Một số cây xăng tại Đà Nẵng hết xăng để bán","1 giờ trước","https://cdn.tuoitre.vn/thumb_w/586/2022/11/12/logo…thieu-hut-xang-dau-02-16682326665542088494253.jpg","https://tuoitre.vn/mot-so-cay-xang-tai-da-nang-het-xang-de-ban-20221112130302427.htm"));
-        return noiDungModels;
     }
 
     private class Content extends AsyncTask<Void,Void,Void> {
@@ -107,10 +84,18 @@ public class docbao extends AppCompatActivity {
             txt_tieude1.setText(tieude1);
             txt_tgian.setText(tgian);
             txt_tieude2.setText(tieude2);
-            txt_ndung.setText(ndung);
             txt_tacgia.setText(tacgia);
             Glide.with(img_anhbao).load(anhbao).into(img_anhbao);
 
+            cardTrangChu_adapter = new CardTrangChu_Adapter((ArrayList<NoiDungModel>) noiDungModelList, new ClickItem() {
+                @Override
+                public void onClickItem(NoiDungModel noiDungModel) {
+                    Intent intent = new Intent(docbao.this, docbao.class);
+                    startActivity(intent);
+                }
+            });
+            rcv_lienquan.setAdapter(cardTrangChu_adapter);
+            cardTrangChu_adapter.notifyDataSetChanged();
         }
 
         @Override
@@ -119,6 +104,8 @@ public class docbao extends AppCompatActivity {
                 String url = linkbao;
                 Log.e("url", url);
                 document = Jsoup.connect(url).get();
+
+                //đổ dữ liệu cho phần báo - xong
                 data = document.select("div.content");
                 chude = data.select("div.content-left>div.bread-crumbs>ul>li.fl").eq(0).select("a").text();
                 tieude1 = data.select("div.content-detail>div.w980>h1.article-title").text();
@@ -128,6 +115,16 @@ public class docbao extends AppCompatActivity {
                 ndung = data.select("div.column-first-second>div.main-content-body>div.content>p").text();
                 tacgia = data.select("div.column-first-second>div.main-content-body>div.author").text();
 
+                //đổ dữ liệu cho rcv liên quan - chưa
+                data1 = document.select("ul.list-news-content").select("li.news-item");
+                int size = data1.size();
+                for (int i=0; i<size;i++) {
+                    String tieude = data1.select("h3.title-news").eq(i).text();
+                    String thoigian = data1.select("p.sapo").eq(i).text();
+                    String anhbao = data1.select("a.img212x132.pos-rlt").eq(i).select("img").attr("src");
+                    linkbao = "https://tuoitre.vn" + data.select("a.img212x132.pos-rlt").eq(i).attr("href");
+                    noiDungModelList.add(new NoiDungModel(tieude,thoigian,anhbao,linkbao));
+                }
 
             } catch (Exception e) {
                 e.printStackTrace();

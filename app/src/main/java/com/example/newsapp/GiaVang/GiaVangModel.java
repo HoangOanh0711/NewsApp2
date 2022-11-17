@@ -1,15 +1,31 @@
 package com.example.newsapp.GiaVang;
 
 public class GiaVangModel {
-    String giatienmua,tangmua,phantrammua,giatienban,tangban,phantramban;
+    String hang,tenhang,giatienmua,tangmua,giatienban,tangban;
 
-    public GiaVangModel(String giatienmua, String tangmua, String phantrammua, String giatienban, String tangban, String phantramban) {
+    public GiaVangModel(String hang, String tenhang, String giatienmua, String tangmua, String giatienban, String tangban) {
+        this.hang = hang;
+        this.tenhang = tenhang;
         this.giatienmua = giatienmua;
         this.tangmua = tangmua;
-        this.phantrammua = phantrammua;
         this.giatienban = giatienban;
         this.tangban = tangban;
-        this.phantramban = phantramban;
+    }
+
+    public String getHang() {
+        return hang;
+    }
+
+    public void setHang(String hang) {
+        this.hang = hang;
+    }
+
+    public String getTenhang() {
+        return tenhang;
+    }
+
+    public void setTenhang(String tenhang) {
+        this.tenhang = tenhang;
     }
 
     public String getGiatienmua() {
@@ -28,14 +44,6 @@ public class GiaVangModel {
         this.tangmua = tangmua;
     }
 
-    public String getPhantrammua() {
-        return phantrammua;
-    }
-
-    public void setPhantrammua(String phantrammua) {
-        this.phantrammua = phantrammua;
-    }
-
     public String getGiatienban() {
         return giatienban;
     }
@@ -50,13 +58,5 @@ public class GiaVangModel {
 
     public void setTangban(String tangban) {
         this.tangban = tangban;
-    }
-
-    public String getPhantramban() {
-        return phantramban;
-    }
-
-    public void setPhantramban(String phantramban) {
-        this.phantramban = phantramban;
     }
 }
