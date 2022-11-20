@@ -1,6 +1,7 @@
 package com.example.newsapp.TaiKhoan;
 import static android.content.ContentValues.TAG;
 
+import com.example.newsapp.TruyenDuLieu;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -45,7 +46,8 @@ public class dangnhap extends AppCompatActivity {
     TextView btn_quenmk,btn_taiday;
     Button btn_dangnhap;
     EditText sdt,matkhau;
-    String st_sdt, st_matkhau;
+    String st_sdt;
+    String st_matkhau;
     CountryCodePicker countryCodePicker;
     ImageView img_check, imageView5, imageView4;
 
@@ -63,6 +65,8 @@ public class dangnhap extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
 
         khaibao();
+
+
 
         //kiểm tra định dạng số điện thoại ở từng quốc gia
         countryCodePicker.registerCarrierNumberEditText(sdt);
@@ -120,12 +124,12 @@ public class dangnhap extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 gangiatri();
+                TruyenDuLieu.FLAG = 1;
                 databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.hasChild(st_sdt)) {
                             final String getMatkhau = snapshot.child(st_sdt).child("Mật khẩu").getValue(String.class);
-                            Log.e("hi",getMatkhau);
                             if (getMatkhau.equals(st_matkhau)) {
                                 Intent intent = new Intent(dangnhap.this, trangchu.class);
                                 startActivity(intent);
@@ -219,5 +223,6 @@ public class dangnhap extends AppCompatActivity {
     private void gangiatri() {
         st_sdt = "+" + countryCodePicker.getFullNumber();
         st_matkhau = matkhau.getText().toString().trim();
+        TruyenDuLieu.Tr_sdt = st_sdt;
     }
 }

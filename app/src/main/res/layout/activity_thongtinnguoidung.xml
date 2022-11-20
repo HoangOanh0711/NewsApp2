@@ -64,12 +64,14 @@
                 android:textColor="@color/den"
                 android:textSize="18sp" />
 
-            <TextView
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtl_ttnd_hovaten"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:inputType="text"
+                android:textColorHint="@color/den"
+                android:textSize="16sp" />
         </LinearLayout>
         <!--        kết thúc layout ho ten-->
         <!--        layout giới tính-->

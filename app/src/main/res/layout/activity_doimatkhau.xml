@@ -79,6 +79,7 @@
                 android:layout_marginTop="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_et_mk_ht"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/roboto_regular"
@@ -128,6 +129,7 @@
                 app:startIconTint="@color/den">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_et_mk_moi"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:inputType="textPassword"
@@ -150,6 +152,7 @@
                 app:startIconTint="@color/den">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_et_mk_nhaplai"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/roboto_regular"
