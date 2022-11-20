@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.newsapp.R;
+import com.example.newsapp.TruyenDuLieu;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -45,7 +47,8 @@ public class quenmatkhau2 extends AppCompatActivity {
         khaibao();
         setupOTPInput();
 
-        txt_sdt.setText("Hãy điền OTP gồm 6 số vừa được gửi đến số điện thoại "+getIntent().getStringExtra("sdt"));
+        Log.e("qua đc",TruyenDuLieu.Truyen_sdt_quenmk);
+        txt_sdt.setText("Hãy điền OTP gồm 6 số vừa được gửi đến số điện thoại "+ TruyenDuLieu.Truyen_sdt_quenmk);
         mVerificationId = getIntent().getStringExtra("otp");
 
         btn_xacnhan.setOnClickListener(new View.OnClickListener() {

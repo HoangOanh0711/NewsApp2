@@ -47,9 +47,7 @@ public class dangnhap extends AppCompatActivity {
     EditText sdt,matkhau;
     String st_sdt, st_matkhau;
     CountryCodePicker countryCodePicker;
-    ImageView img_check;
-    ImageView imageView5;
-    ImageView imageView4;
+    ImageView img_check, imageView5, imageView4;
 
     GoogleSignInOptions gso;
     GoogleSignInClient gsc;
@@ -147,9 +145,6 @@ public class dangnhap extends AppCompatActivity {
             }
         });
 
-        imageView5 = findViewById(R.id.imageView5);
-
-
         imageView5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -160,9 +155,6 @@ public class dangnhap extends AppCompatActivity {
             }
         });
 
-
-
-        imageView4 = findViewById(R.id.imageView4);
         auth = FirebaseAuth.getInstance();
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 //.requestIdToken(getString(R.string.server_client_id))
@@ -219,10 +211,13 @@ public class dangnhap extends AppCompatActivity {
 
         img_check = findViewById(R.id.img_check_dnhap);
         countryCodePicker = findViewById(R.id.ccp_dnhap);
+
+        imageView5 = findViewById(R.id.imageView5);
+        imageView4 = findViewById(R.id.imageView4);
     }
 
     private void gangiatri() {
-        st_sdt = sdt.getText().toString().trim();
+        st_sdt = "+" + countryCodePicker.getFullNumber();
         st_matkhau = matkhau.getText().toString().trim();
     }
 }

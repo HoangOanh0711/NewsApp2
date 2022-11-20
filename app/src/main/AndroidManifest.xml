@@ -31,7 +31,7 @@
             android:name=".Thoitiet.quanlydiaphuong"
             android:exported="false" />
         <activity
-            android:name=".splash"
+            android:name=".GiaVang.giavang"
             android:exported="false" />
         <activity
             android:name=".TaiKhoan.doimatkhau"
@@ -74,11 +74,10 @@
             android:name=".Thoitiet.thoitiet"
             android:exported="false" />
         <activity
-            android:name=".GiaVang.giavang"
+            android:name=".splash"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

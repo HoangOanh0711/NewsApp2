@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.newsapp.R;
+import com.example.newsapp.TruyenDuLieu;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -31,7 +32,7 @@ public class quenmatkhau3 extends AppCompatActivity {
         btn_capnhat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Phone = "0355736772";
+                Phone = TruyenDuLieu.Truyen_sdt_quenmk;
                 String _newpass = ed_matkhau.getText().toString().trim();
                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
                 reference.child(Phone).child("Mật khẩu").setValue(_newpass);
