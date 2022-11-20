@@ -38,7 +38,6 @@ public class thongtinnguoidung extends AppCompatActivity {
     RadioButton rbtn_nam, rbtn_nu;
     RadioGroup rGroup_gioitinh;
     Button btn_luuthongtin;
-    String Phone;
     int Idcheck;
     DatabaseReference databaseReference = FirebaseDatabase.getInstance()
             .getReferenceFromUrl("https://newsapp-a5dc3-default-rtdb.firebaseio.com/");
@@ -63,7 +62,7 @@ public class thongtinnguoidung extends AppCompatActivity {
         }
 
         //hiển thị thông tin hiên tại trước khi đổi thông tin//
-        if (flag == 1) {
+        /*if (flag == 1) {
             databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -89,7 +88,7 @@ public class thongtinnguoidung extends AppCompatActivity {
 
                 }
             });
-        }
+        }*/
 
 
         //nhấn nút cập nhật
