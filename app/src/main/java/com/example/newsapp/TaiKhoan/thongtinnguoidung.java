@@ -62,7 +62,7 @@ public class thongtinnguoidung extends AppCompatActivity {
             txt_et_sdt.setEnabled(!(flag == 1));
         }
 
-        //hiển thị thông tin hiên tại trước khi đổi thông tin
+        //hiển thị thông tin hiên tại trước khi đổi thông tin//
         if (flag == 1) {
             databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override

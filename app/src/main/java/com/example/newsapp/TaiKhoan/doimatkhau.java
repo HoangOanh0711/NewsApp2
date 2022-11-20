@@ -49,6 +49,7 @@ public class doimatkhau extends AppCompatActivity {
         btn_change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //đã hoàn thành
                 ganggiatri();
                 databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
