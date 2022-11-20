@@ -130,7 +130,6 @@ public class dangnhap extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.hasChild(st_sdt)) {
                             final String getMatkhau = snapshot.child(st_sdt).child("Mật khẩu").getValue(String.class);
-                            Log.e("hi",getMatkhau);
                             if (getMatkhau.equals(st_matkhau)) {
                                 Intent intent = new Intent(dangnhap.this, trangchu.class);
                                 startActivity(intent);
