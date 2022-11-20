@@ -62,7 +62,6 @@ public class fg_moi extends Fragment {
                 @Override
                 public void onClickItem(NoiDungModel noiDungModel) {
                     Intent intent = new Intent(getActivity(), docbao.class);
-                    intent.putExtra("Link báo",linkbao);
                     startActivity(intent);
                 }
             });

@@ -15,12 +15,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.newsapp.R;
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginManager;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.hbb20.CountryCodePicker;
+
+import java.util.Arrays;
 
 public class dangky extends AppCompatActivity {
 
@@ -33,12 +37,14 @@ public class dangky extends AppCompatActivity {
     String st_sdt, st_ten, st_matkhau, st_nhaplaimk;
 
     CountryCodePicker countryCodePicker;
-    ImageView img_check;
+    ImageView img_check, imageView5, imageView4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dangky);
+
+        FacebookSdk.sdkInitialize(getApplicationContext());
 
         khaibao();
         countryCodePicker.registerCarrierNumberEditText(sdt);
@@ -111,10 +117,21 @@ public class dangky extends AppCompatActivity {
 
             }
         });
+
+        imageView5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LoginManager.getInstance().logInWithReadPermissions(dangky.this, Arrays.asList("public_profile"));
+                Intent intent = new Intent(dangky.this, Facebook.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+
+            }
+        });
     }
 
     private void gangiatri() {
-        st_sdt = sdt.getText().toString().trim();
+        st_sdt = "+" + countryCodePicker.getFullNumber();
         st_ten = ten.getText().toString().trim();
         st_matkhau = matkhau.getText().toString().trim();
         st_nhaplaimk = nhaplaimk.getText().toString().trim();
@@ -131,6 +148,9 @@ public class dangky extends AppCompatActivity {
 
         img_check = findViewById(R.id.img_check_dky);
         countryCodePicker = findViewById(R.id.ccp_dky);
+
+        imageView5 = findViewById(R.id.imageView51);
+        imageView4 = findViewById(R.id.imageView41);
     }
 
     private boolean ktra() {

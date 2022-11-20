@@ -1,6 +1,7 @@
 package com.example.newsapp.DocBao;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -16,7 +17,9 @@ import com.example.newsapp.Card.CardTrangChu_Adapter;
 import com.example.newsapp.Card.ClickItem;
 import com.example.newsapp.Card.NoiDungModel;
 import com.example.newsapp.R;
+import com.example.newsapp.Thoitiet.Thoitiet2_Adapter;
 import com.example.newsapp.TinTuc.fg_moi;
+import com.example.newsapp.TruyenDuLieu;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -26,42 +29,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class docbao extends AppCompatActivity {
-    String linkbao,chude,tieude1,tgian,tieude2,anhbao,ndung,tacgia;
+    String linkbao,chude,tieude1,tgian,tieude2,anhbao,tenanh,ndung,tacgia;
 
-    TextView txt_chude,txt_tieude1,txt_tgian,txt_tieude2,txt_ghichuanh,txt_ndung,txt_tacgia;
-    RecyclerView rcv_lienquan;
+    TextView txt_chude,txt_tieude1,txt_tgian,txt_tieude2,txt_tacgia;
+    RecyclerView rcv_ndung,rcv_lienquan;
     ImageView img_quaylai, img_anhbao;
 
-    Elements data;
+    CardTrangChu_Adapter cardTrangChu_adapter;
+    List<NoiDungModel> noiDungModelList = new ArrayList<>();
+
+    Elements data,data1;
     Document document;
 
-    DocBaoModel docBaoModel;
-    private List<DocBaoModel> listthongtin = new ArrayList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_docbao);
 
-        Intent intent = getIntent();
-        linkbao = intent.getStringExtra("Link báo");
+        linkbao = TruyenDuLieu.Truyen_Linkbao;
 
         khaibao();
 
         Content content = new Content();
         content.execute();
 
-
-    }
-
-    private void gangiatri() {
-        txt_chude.setText(chude);
-        txt_tieude1.setText(tieude1);
-        txt_tgian.setText(tgian);
-        txt_tieude2.setText(tieude2);
-        txt_ndung.setText(ndung);
-        txt_tacgia.setText(tacgia);
-        Glide.with(img_anhbao).load(anhbao).into(img_anhbao);
     }
 
     private void khaibao() {
@@ -69,8 +61,7 @@ public class docbao extends AppCompatActivity {
         txt_tieude1 = findViewById(R.id.txt_tieude1_docbao);
         txt_tgian = findViewById(R.id.txt_tgian_docbao);
         txt_tieude2 = findViewById(R.id.txt_tieude2_docbao);
-        txt_ghichuanh = findViewById(R.id.txt_ghichuanh_docbao);
-        txt_ndung = findViewById(R.id.txt_noidung_docbao);
+        rcv_ndung = findViewById(R.id.rcv_noidung_docbao);
         txt_tacgia = findViewById(R.id.txt_tacgia_docbao);
 
         rcv_lienquan = findViewById(R.id.rcv_tinlienquan_docbao);
@@ -89,6 +80,22 @@ public class docbao extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void unused) {
             super.onPostExecute(unused);
+            txt_chude.setText(chude);
+            txt_tieude1.setText(tieude1);
+            txt_tgian.setText(tgian);
+            txt_tieude2.setText(tieude2);
+            txt_tacgia.setText(tacgia);
+            Glide.with(img_anhbao).load(anhbao).into(img_anhbao);
+
+            cardTrangChu_adapter = new CardTrangChu_Adapter((ArrayList<NoiDungModel>) noiDungModelList, new ClickItem() {
+                @Override
+                public void onClickItem(NoiDungModel noiDungModel) {
+                    Intent intent = new Intent(docbao.this, docbao.class);
+                    startActivity(intent);
+                }
+            });
+            rcv_lienquan.setAdapter(cardTrangChu_adapter);
+            cardTrangChu_adapter.notifyDataSetChanged();
         }
 
         @Override
@@ -97,73 +104,49 @@ public class docbao extends AppCompatActivity {
                 String url = linkbao;
                 Log.e("url", url);
                 document = Jsoup.connect(url).get();
+
+                //đổ dữ liệu cho phần báo - xong
                 data = document.select("div.content");
+                chude = data.select("div.content-left>div.bread-crumbs>ul>li.fl").eq(0).select("a").text();
+                tieude1 = data.select("div.content-detail>div.w980>h1.article-title").text();
+                tgian = data.select("div.content-detail>div.w980>div.date-time").text();
+                tieude2 = data.select("div.column-first-second>div.main-content-body>h2.sapo").text();
+                tacgia = data.select("div.column-first-second>div.main-content-body>div.author").text();
 
-                String chude = data.select("div.content-left>div.bread-crumbs>ul>li.fl").eq(0).select("a").text();
-                txt_chude.setText(chude);
-                Log.e("chude", chude);
+                Elements find = data.select("div.column-first-second>div.main-content-body>div#main-detail-body");
+                int size1 = find.select("p").size();
+                Log.e("size", String.valueOf(size1));
+                for (int i=0; i<size1;i++) {
+                    Log.e("eq", String.valueOf(i));
 
-                //txt_tieude1,txt_tgian,txt_tieude2,txt_ghichuanh,txt_ndung,txt_tacgia
+                    if ( find.select("div.VCSortableInPreviewMode[type='photo']").eq(i).select("img").attr("src") != ""){
+                        anhbao = find.select("div.VCSortableInPreviewMode[type='photo']").eq(i).select("img").attr("src");
+                        tenanh = find.select("div.VCSortableInPreviewMode[type='photo']").eq(i).select("img").attr("title");
+                        Log.e("anhbao",anhbao);
+                        Log.e("tenanh",tenanh);
+                    }
 
-                String tieude1 = data.select("div.content-detail>div.w980>h1.article-title").text();
-                //txt_tieude1.setText(tieude1);
-                Log.e("tieu1",tieude1);
+                    if (i<(size1-1))
+                    {
+                        if ( find.select("p").select("p").eq(i).text() != "" ){
+                            ndung = find.select("p").eq(i).text();
+                            Log.e("ndung",ndung);
+                        }
+                    }
 
-                String tgian = data.select("div.content-detail>div.w980>div.date-time").text();
-                //txt_tgian.setText(tgian);
-                Log.e("time",tgian);
+                }
 
-                String tieude2 = data.select("div.column-first-second>div.main-content-body>h2.sapo").text();
-                //txt_tieude2.setText(tieude2);
-                Log.e("tieu2",tieude2);
-
-
-                //int size = data.select("div.column-first-second>div.main-content-body>div.content").size();
-
-
-                String anhbao = data.select("div.column-first-second>div.main-content-body>div.content").select("div.VCSortableInPreviewMode[type='photo']").select("img").attr("src");
-                //img_anhbao.setAnhbao(anhbao);
-                Log.e("anh",anhbao);
-
-                String ndung = data.select("div.column-first-second>div.main-content-body>div.content>p").text();
-                //txt_ndung.setText(ndung);
-                Log.e("ndung",ndung);
-//                    for (int i=0; i<size;i++) {
-//                        Log.e("i", String.valueOf(0));
-//
-////                        if (data.select("div.main-content-body").select("div.content").select("p.VCObjectBoxRelatedNewsItemSapo").eq(i).text()!="") {
-////                            continue;
-////                        }
-//
-//                        if (data.select("div.main-content-body").select("div.content").select("div.VCSortableInPreviewMode").select("a.detail-img-lightbox").eq(i).select("img").attr("src")!=""){
-//                            String anhbao = data.select("div.main-content-body").select("div.content").select("div.VCSortableInPreviewMode").eq(0).select("img").attr("src");
-//                            //img_anhbao.setAnhbao(anhbao);
-//                            //Glide.with(img_anhbao).load(anhbao).into(img_anhbao);
-//                            Log.e("anh",anhbao);
-//                        }
-//
-////                        if (data.select("div.main-content-body").select("div.content").select("p").eq(i).text()!=""){
-////                            String ndung1 = data.select("div.main-content-body").select("div.content").select("p").eq(i).text();
-////                            //txt_ndung.setText(ndung1);
-////                            Log.e("ndung1",ndung1);
-////                        }
-//                        if (data.select("div.main-content-body").select("div.content").eq(i).select("span").text()!=""){
-//                            String ndung2 = data.select("div.main-content-body").select("div.content").eq(0).select("span").text();
-//                            //txt_ndung.setText(ndung2);
-//                            Log.e("ndung2",ndung2);
-//                        }
-//
-////                        if (data.select("div.main-content-body").select("div.content").select("div.VCSortableInPreviewMode").eq(i).select("p.VCObjectBoxRelatedNewsItemSapo").text()!="") {
-////                            break;
-////                        }
-//
-//
-//                    }
-
-                String tacgia = data.select("div.column-first-second>div.main-content-body>div.author").text();
-                //txt_tacgia.setText(tacgia);
-                Log.e("tacgia",tacgia);
-
+                //đổ dữ liệu cho rcv liên quan - chưa
+                data1 = document.select("ul.list-news-content>li.news-item");
+                int size = data1.size();
+                for (int i=0; i<size;i++) {
+                    String tieude = data1.select("div.name-news>h3.title-news").eq(i).text();
+                    String thoigian = data1.select("div.name-news>p.sapo").eq(i).text();
+                    String anhbao = data1.select("a.img212x132").eq(i).select("img.212x132").attr("src");
+                    String linkbao2 = "https://tuoitre.vn" + data.select("a.img212x132.pos-rlt").eq(i).attr("href");
+                    Log.e("linkphu", linkbao2);
+                    noiDungModelList.add(new NoiDungModel(tieude,thoigian,anhbao,linkbao2));
+                }
 
             } catch (Exception e) {
                 e.printStackTrace();

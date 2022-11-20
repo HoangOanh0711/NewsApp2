@@ -1,13 +1,14 @@
 package com.example.newsapp.Card;
 
 public class XuHuongModel {
-    String tieude,tgiandangbai,anhbao,tgianvid;
+    String tieude,tgiandangbai,anhbao,tgianvid,linkbao;
 
-    public XuHuongModel(String tieude, String tgiandangbai, String anhbao, String tgianvid) {
+    public XuHuongModel(String tieude, String tgiandangbai, String anhbao, String tgianvid, String linkbao) {
         this.tieude = tieude;
         this.tgiandangbai = tgiandangbai;
         this.anhbao = anhbao;
         this.tgianvid = tgianvid;
+        this.linkbao = linkbao;
     }
 
     public String getTieude() {
@@ -40,5 +41,13 @@ public class XuHuongModel {
 
     public void setTgianvid(String tgianvid) {
         this.tgianvid = tgianvid;
+    }
+
+    public String getLinkbao() {
+        return linkbao;
+    }
+
+    public void setLinkbao(String linkbao) {
+        this.linkbao = linkbao;
     }
 }

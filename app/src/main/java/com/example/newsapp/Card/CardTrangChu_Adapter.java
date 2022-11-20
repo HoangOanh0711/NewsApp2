@@ -1,5 +1,7 @@
 package com.example.newsapp.Card;
 
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.newsapp.R;
+import com.example.newsapp.Thoitiet.Thoitiet2;
+import com.example.newsapp.TruyenDuLieu;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CardTrangChu_Adapter extends RecyclerView.Adapter<CardTrangChu_Adapter.ViewHolder> {
     private ArrayList<NoiDungModel> noiDungModelArrayList;
@@ -22,6 +27,11 @@ public class CardTrangChu_Adapter extends RecyclerView.Adapter<CardTrangChu_Adap
     public CardTrangChu_Adapter(ArrayList<NoiDungModel> noiDungModelArrayList, ClickItem clickItem1) {
         this.noiDungModelArrayList = noiDungModelArrayList;
         this.clickItem = clickItem1;
+    }
+
+    public void setCardTrangChu(ArrayList<NoiDungModel> noiDungModelArrayList) {
+        this.noiDungModelArrayList = noiDungModelArrayList;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -48,6 +58,7 @@ public class CardTrangChu_Adapter extends RecyclerView.Adapter<CardTrangChu_Adap
             @Override
             public void onClick(View view) {
                 clickItem.onClickItem(noiDungModel);
+                TruyenDuLieu.Truyen_Linkbao = noiDungModel.getLinkbao();
             }
         });
     }
@@ -58,7 +69,7 @@ public class CardTrangChu_Adapter extends RecyclerView.Adapter<CardTrangChu_Adap
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        ImageView img_anhbao, img_tenbao;
+        ImageView img_anhbao;
         TextView txt_tieude, txt_thoigian;
         CardView cardView;
 
@@ -72,7 +83,6 @@ public class CardTrangChu_Adapter extends RecyclerView.Adapter<CardTrangChu_Adap
 
         @Override
         public void onClick(View view) {
-
         }
     }
 }
