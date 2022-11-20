@@ -97,64 +97,68 @@ public class thongtinnguoidung extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ganggiatri();
-                databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.hasChild(myphone)) {
-                            //kiểm tra và nhập họ và tên
-                            if (!(hovaten.isEmpty())) {
-                                databaseReference.child("Users").child(myphone).child("Họ và tên").setValue(hovaten);
-                            }
+                //cập nhật thông tin với dạng đăng nhập bằng account từ CSDL firebase
+                if (flag == 1) {
+                    databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.hasChild(myphone)) {
+                                //kiểm tra và nhập họ và tên
+                                if (!(hovaten.isEmpty())) {
+                                    databaseReference.child("Users").child(myphone).child("Họ và tên").setValue(hovaten);
+                                }
 
-                            //kiểm tra và nhập ngày sinh
-                            if (!(ngaysinh.isEmpty())) {
-                                databaseReference.child("Users").child(myphone).child("Ngày sinh").setValue(ngaysinh);
-                            }
+                                //kiểm tra và nhập ngày sinh
+                                if (!(ngaysinh.isEmpty())) {
+                                    databaseReference.child("Users").child(myphone).child("Ngày sinh").setValue(ngaysinh);
+                                }
 
-                            //kiểm tra và nhập email
-                            if (!(email.isEmpty())) {
-                                databaseReference.child("Users").child(myphone).child("Email").setValue(email);
-                            }
+                                //kiểm tra và nhập email
+                                if (!(email.isEmpty())) {
+                                    databaseReference.child("Users").child(myphone).child("Email").setValue(email);
+                                }
 
-                            //sau khi đã đổi thông tin thì thông tin đã đổi sẽ được hiển thị dưới dạng hint
-                            if (!(hovaten.isEmpty())) {
-                                txt_et_hvt.setHint(hovaten);
-                                txt_et_hvt.setText("");
-                            } else {
-                                final String hintGetHvt = snapshot.child(myphone).child("Họ và tên").getValue(String.class);
-                                txt_et_hvt.setHint(hintGetHvt);
-                            }
+                                //sau khi đã đổi thông tin thì thông tin đã đổi sẽ được hiển thị dưới dạng hint
+                                if (!(hovaten.isEmpty())) {
+                                    txt_et_hvt.setHint(hovaten);
+                                    txt_et_hvt.setText("");
+                                } else {
+                                    final String hintGetHvt = snapshot.child(myphone).child("Họ và tên").getValue(String.class);
+                                    txt_et_hvt.setHint(hintGetHvt);
+                                }
 
-                            if (!(ngaysinh.isEmpty())) {
-                                txt_et_ngaysinh.setHint(ngaysinh);
-                                txt_et_ngaysinh.setText("");
-                            } else {
-                                final String hintGetNgaysinh = snapshot.child(myphone).child("Ngày sinh").getValue(String.class);
-                                txt_et_ngaysinh.setHint(hintGetNgaysinh);
-                            }
+                                if (!(ngaysinh.isEmpty())) {
+                                    txt_et_ngaysinh.setHint(ngaysinh);
+                                    txt_et_ngaysinh.setText("");
+                                } else {
+                                    final String hintGetNgaysinh = snapshot.child(myphone).child("Ngày sinh").getValue(String.class);
+                                    txt_et_ngaysinh.setHint(hintGetNgaysinh);
+                                }
 
-                            if (!(email.isEmpty())) {
-                                txt_et_email.setHint(email);
-                                txt_et_email.setText("");
-                            } else {
-                                final String hintGetEmail = snapshot.child(myphone).child("Email").getValue(String.class);
-                                txt_et_email.setHint(hintGetEmail);
+                                if (!(email.isEmpty())) {
+                                    txt_et_email.setHint(email);
+                                    txt_et_email.setText("");
+                                } else {
+                                    final String hintGetEmail = snapshot.child(myphone).child("Email").getValue(String.class);
+                                    txt_et_email.setHint(hintGetEmail);
+                                }
+                                if (rbtn_nam.isChecked()) {
+                                    databaseReference.child("Users").child(myphone).child("Giới tính").setValue("Nam");
+                                }
+                                if (rbtn_nu.isChecked()) {
+                                    databaseReference.child("Users").child(myphone).child("Giới tính").setValue("Nữ");
+                                }
+                                Toast.makeText(thongtinnguoidung.this, "Cập nhật thông tin thành công", Toast.LENGTH_SHORT).show();
                             }
-                            if (rbtn_nam.isChecked()) {
-                                databaseReference.child("Users").child(myphone).child("Giới tính").setValue("Nam");
-                            }
-                            if (rbtn_nu.isChecked()){
-                                databaseReference.child("Users").child(myphone).child("Giới tính").setValue("Nữ");
-                            }
-                            Toast.makeText(thongtinnguoidung.this,"Cập nhật thông tin thành công",Toast.LENGTH_SHORT).show();
                         }
-                    }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(thongtinnguoidung.this,"Lỗi",Toast.LENGTH_SHORT).show();
-                    }
-                });
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Toast.makeText(thongtinnguoidung.this, "Lỗi", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+                //cập nhật thông tin với dạng đăng nhập bằng account từ CSDL firebase
             }
         });
 
