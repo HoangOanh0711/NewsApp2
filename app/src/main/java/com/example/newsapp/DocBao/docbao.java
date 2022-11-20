@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -33,7 +34,7 @@ public class docbao extends AppCompatActivity {
 
     TextView txt_chude,txt_tieude1,txt_tgian,txt_tieude2,txt_tacgia;
     RecyclerView rcv_ndung,rcv_lienquan;
-    ImageView img_quaylai, img_anhbao;
+    ImageView img_quaylai, img_anhbao, img_chiase_docbao;
 
     CardTrangChu_Adapter cardTrangChu_adapter;
     List<NoiDungModel> noiDungModelList = new ArrayList<>();
@@ -53,6 +54,20 @@ public class docbao extends AppCompatActivity {
 
         Content content = new Content();
         content.execute();
+
+        img_chiase_docbao = findViewById(R.id.img_chiase_docbao);
+        img_chiase_docbao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(Intent.ACTION_SEND);
+                myIntent.setType("text/plain");
+                String body = linkbao;
+                String sub = String.valueOf(tieude1);
+                myIntent.putExtra(Intent.EXTRA_SUBJECT,sub);
+                myIntent.putExtra(Intent.EXTRA_TEXT,body);
+                startActivity(Intent.createChooser(myIntent, "Share Using"));
+            }
+        });
 
     }
 
@@ -97,6 +112,8 @@ public class docbao extends AppCompatActivity {
             rcv_lienquan.setAdapter(cardTrangChu_adapter);
             cardTrangChu_adapter.notifyDataSetChanged();
         }
+
+
 
         @Override
         protected Void doInBackground(Void... voids) {
