@@ -68,7 +68,7 @@ public class doimatkhau extends AppCompatActivity {
                                     Toast.makeText(doimatkhau.this,"Vui lòng nhập mật khẩu mới từ 6 kí tự trở lên",Toast.LENGTH_SHORT).show();
                                 } else {
                                     if (!pass_moi.equals(pass_nhaplai)) {
-                                        Toast.makeText(doimatkhau.this,"Vui lòng nhập mật khẩu mới thêm một lần",Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(doimatkhau.this,"Nhập lại mật khẩu không giống",Toast.LENGTH_SHORT).show();
                                     } else {
                                         databaseReference.child("Users").child(myphone).child("Mật khẩu").setValue(pass_nhaplai);
                                         Toast.makeText(doimatkhau.this,"Mật khẩu đã được cập nhật",Toast.LENGTH_SHORT).show();
