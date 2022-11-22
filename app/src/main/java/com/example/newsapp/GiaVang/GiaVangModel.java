@@ -1,62 +1,44 @@
 package com.example.newsapp.GiaVang;
 
 public class GiaVangModel {
-    String hang,tenhang,giatienmua,tangmua,giatienban,tangban;
+    String tgian,loaivang,giamua,giaban;
 
-    public GiaVangModel(String hang, String tenhang, String giatienmua, String tangmua, String giatienban, String tangban) {
-        this.hang = hang;
-        this.tenhang = tenhang;
-        this.giatienmua = giatienmua;
-        this.tangmua = tangmua;
-        this.giatienban = giatienban;
-        this.tangban = tangban;
+    public GiaVangModel(String tgian, String loaivang, String giamua, String giaban) {
+        this.tgian = tgian;
+        this.loaivang = loaivang;
+        this.giamua = giamua;
+        this.giaban = giaban;
     }
 
-    public String getHang() {
-        return hang;
+    public String getTgian() {
+        return tgian;
     }
 
-    public void setHang(String hang) {
-        this.hang = hang;
+    public void setTgian(String tgian) {
+        this.tgian = tgian;
     }
 
-    public String getTenhang() {
-        return tenhang;
+    public String getLoaivang() {
+        return loaivang;
     }
 
-    public void setTenhang(String tenhang) {
-        this.tenhang = tenhang;
+    public void setLoaivang(String loaivang) {
+        this.loaivang = loaivang;
     }
 
-    public String getGiatienmua() {
-        return giatienmua;
+    public String getGiamua() {
+        return giamua;
     }
 
-    public void setGiatienmua(String giatienmua) {
-        this.giatienmua = giatienmua;
+    public void setGiamua(String giamua) {
+        this.giamua = giamua;
     }
 
-    public String getTangmua() {
-        return tangmua;
+    public String getGiaban() {
+        return giaban;
     }
 
-    public void setTangmua(String tangmua) {
-        this.tangmua = tangmua;
-    }
-
-    public String getGiatienban() {
-        return giatienban;
-    }
-
-    public void setGiatienban(String giatienban) {
-        this.giatienban = giatienban;
-    }
-
-    public String getTangban() {
-        return tangban;
-    }
-
-    public void setTangban(String tangban) {
-        this.tangban = tangban;
+    public void setGiaban(String giaban) {
+        this.giaban = giaban;
     }
 }
