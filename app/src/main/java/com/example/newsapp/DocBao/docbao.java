@@ -38,6 +38,9 @@ public class docbao extends AppCompatActivity {
     CardTrangChu_Adapter cardTrangChu_adapter;
     List<NoiDungModel> noiDungModelList = new ArrayList<>();
 
+    CardNdungBao_adapter cardNdungBao_adapter;
+    ArrayList<CardNdungBao_model> cardNdungBao_models = new ArrayList<>();
+
     Elements data,data1;
     Document document;
 
@@ -50,6 +53,10 @@ public class docbao extends AppCompatActivity {
         linkbao = TruyenDuLieu.Truyen_Linkbao;
 
         khaibao();
+
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        rcv_ndung.setLayoutManager(llm);
 
         Content content = new Content();
         content.execute();
@@ -87,7 +94,10 @@ public class docbao extends AppCompatActivity {
             txt_tacgia.setText(tacgia);
             Glide.with(img_anhbao).load(anhbao).into(img_anhbao);
 
-            cardTrangChu_adapter = new CardTrangChu_Adapter((ArrayList<NoiDungModel>) noiDungModelList, new ClickItem() {
+            cardNdungBao_adapter = new CardNdungBao_adapter(cardNdungBao_models,docbao.this);
+            rcv_ndung.setAdapter(cardNdungBao_adapter);
+
+            /*cardTrangChu_adapter = new CardTrangChu_Adapter((ArrayList<NoiDungModel>) noiDungModelList, new ClickItem() {
                 @Override
                 public void onClickItem(NoiDungModel noiDungModel) {
                     Intent intent = new Intent(docbao.this, docbao.class);
@@ -95,7 +105,7 @@ public class docbao extends AppCompatActivity {
                 }
             });
             rcv_lienquan.setAdapter(cardTrangChu_adapter);
-            cardTrangChu_adapter.notifyDataSetChanged();
+            cardTrangChu_adapter.notifyDataSetChanged();*/
         }
 
         @Override
@@ -121,23 +131,21 @@ public class docbao extends AppCompatActivity {
 
                     if ( find.select("div.VCSortableInPreviewMode[type='photo']").eq(i).select("img").attr("src") != ""){
                         anhbao = find.select("div.VCSortableInPreviewMode[type='photo']").eq(i).select("img").attr("src");
-                        tenanh = find.select("div.VCSortableInPreviewMode[type='photo']").eq(i).select("img").attr("title");
-                        Log.e("anhbao",anhbao);
-                        Log.e("tenanh",tenanh);
+                        //tenanh = find.select("div.VCSortableInPreviewMode[type='photo']").eq(i).select("img").attr("title");
                     }
 
                     if (i<(size1-1))
                     {
                         if ( find.select("p").select("p").eq(i).text() != "" ){
                             ndung = find.select("p").eq(i).text();
-                            Log.e("ndung",ndung);
+                            cardNdungBao_models.add(new CardNdungBao_model(ndung));
                         }
                     }
 
                 }
 
                 //đổ dữ liệu cho rcv liên quan - chưa
-                data1 = document.select("ul.list-news-content>li.news-item");
+                /*data1 = document.select("ul.list-news-content>li.news-item");
                 int size = data1.size();
                 for (int i=0; i<size;i++) {
                     String tieude = data1.select("div.name-news>h3.title-news").eq(i).text();
@@ -146,7 +154,7 @@ public class docbao extends AppCompatActivity {
                     String linkbao2 = "https://tuoitre.vn" + data.select("a.img212x132.pos-rlt").eq(i).attr("href");
                     Log.e("linkphu", linkbao2);
                     noiDungModelList.add(new NoiDungModel(tieude,thoigian,anhbao,linkbao2));
-                }
+                }*/
 
             } catch (Exception e) {
                 e.printStackTrace();
