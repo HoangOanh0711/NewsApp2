@@ -44,7 +44,6 @@ public class docbao extends AppCompatActivity {
     Elements data,data1;
     Document document;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +56,11 @@ public class docbao extends AppCompatActivity {
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         rcv_ndung.setLayoutManager(llm);
+
+        LinearLayoutManager llm1 = new LinearLayoutManager(this);
+        llm1.setOrientation(LinearLayoutManager.VERTICAL);
+        rcv_lienquan.setLayoutManager(llm1);
+
 
         Content content = new Content();
         content.execute();
@@ -97,7 +101,7 @@ public class docbao extends AppCompatActivity {
             cardNdungBao_adapter = new CardNdungBao_adapter(cardNdungBao_models,docbao.this);
             rcv_ndung.setAdapter(cardNdungBao_adapter);
 
-            /*cardTrangChu_adapter = new CardTrangChu_Adapter((ArrayList<NoiDungModel>) noiDungModelList, new ClickItem() {
+            cardTrangChu_adapter = new CardTrangChu_Adapter((ArrayList<NoiDungModel>) noiDungModelList, new ClickItem() {
                 @Override
                 public void onClickItem(NoiDungModel noiDungModel) {
                     Intent intent = new Intent(docbao.this, docbao.class);
@@ -105,7 +109,6 @@ public class docbao extends AppCompatActivity {
                 }
             });
             rcv_lienquan.setAdapter(cardTrangChu_adapter);
-            cardTrangChu_adapter.notifyDataSetChanged();*/
         }
 
         @Override
@@ -125,10 +128,7 @@ public class docbao extends AppCompatActivity {
 
                 Elements find = data.select("div.column-first-second>div.main-content-body>div#main-detail-body");
                 int size1 = find.select("p").size();
-                Log.e("size", String.valueOf(size1));
                 for (int i=0; i<size1;i++) {
-                    Log.e("eq", String.valueOf(i));
-
                     if ( find.select("div.VCSortableInPreviewMode[type='photo']").eq(i).select("img").attr("src") != ""){
                         anhbao = find.select("div.VCSortableInPreviewMode[type='photo']").eq(i).select("img").attr("src");
                         //tenanh = find.select("div.VCSortableInPreviewMode[type='photo']").eq(i).select("img").attr("title");
@@ -145,16 +145,20 @@ public class docbao extends AppCompatActivity {
                 }
 
                 //đổ dữ liệu cho rcv liên quan - chưa
-                /*data1 = document.select("ul.list-news-content>li.news-item");
+                data1 = document.select("div.area2>div.boxNewsHot.type2>ul.list-news>li"); //chỗ này bị sai
                 int size = data1.size();
+                Log.e("size", String.valueOf(size));
                 for (int i=0; i<size;i++) {
-                    String tieude = data1.select("div.name-news>h3.title-news").eq(i).text();
-                    String thoigian = data1.select("div.name-news>p.sapo").eq(i).text();
-                    String anhbao = data1.select("a.img212x132").eq(i).select("img.212x132").attr("src");
-                    String linkbao2 = "https://tuoitre.vn" + data.select("a.img212x132.pos-rlt").eq(i).attr("href");
-                    Log.e("linkphu", linkbao2);
+                    String tieude = data1.select("div.description>div.name-title>a").eq(i).text(); //log đc size đúng thì log từng cái này coi đúng kh
+                    String thoigian = data1.select("div.description>div.name-title>span.timeago.clearfix").eq(i).text();
+                    String anhbao = data1.select("a.img120x75.pos-rlt").eq(i).select("img.img120x75").attr("src");
+                    String linkbao2 = "https://tuoitre.vn" + data.select("a.img120x75.pos-rlt").eq(i).attr("href");
+                    Log.e("tieude", tieude);
+                    Log.e("thoigian", thoigian);
+                    Log.e("anhbao", anhbao);
+                    Log.e("linkbao2", linkbao2);
                     noiDungModelList.add(new NoiDungModel(tieude,thoigian,anhbao,linkbao2));
-                }*/
+                }
 
             } catch (Exception e) {
                 e.printStackTrace();
