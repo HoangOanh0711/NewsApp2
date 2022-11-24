@@ -1,6 +1,9 @@
 package com.example.newsapp.XoSo;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.app.ActivityOptions;
 import android.app.DatePickerDialog;
@@ -9,11 +12,13 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Pair;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.airbnb.lottie.animation.content.Content;
@@ -23,7 +28,14 @@ import com.example.newsapp.Card.NoiDungModel;
 import com.example.newsapp.DocBao.docbaovideo;
 import com.example.newsapp.GiaVang.giavang;
 import com.example.newsapp.R;
+import com.example.newsapp.TrangChu.AdapterViewPaper;
 import com.example.newsapp.TrangChu.taikhoan;
+import com.example.newsapp.TrangChu.tintuc;
+import com.example.newsapp.TrangChu.xuhuong;
+import com.example.newsapp.fg_xoso_mienbac;
+import com.example.newsapp.fg_xoso_mientrung;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -34,11 +46,14 @@ import java.util.Calendar;
 
 public class xoso extends AppCompatActivity {
 
+    ViewPager2 viewPager;
+    BottomNavigationView bottomNavigationView;
+
+    ArrayList<Fragment> fragmentArrayList = new ArrayList<>();
+
     ImageView IMG_xoso_back;
     TextView tv_date;
-
-    Elements data,data1;
-    Document document;
+    LinearLayout ll_date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +67,7 @@ public class xoso extends AppCompatActivity {
         final int month = calendar.get(Calendar.MONTH);
         final int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-        tv_date.setOnClickListener(new View.OnClickListener() {
+        ll_date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(xoso.this, new DatePickerDialog.OnDateSetListener() {
@@ -67,43 +82,57 @@ public class xoso extends AppCompatActivity {
             }
         });
 
-        Content content = new Content();
-        content.execute();
-    }
+        fragmentArrayList.add(new fg_xoso_mienbac());
+        fragmentArrayList.add(new fg_xoso_mientrung());
+        fragmentArrayList.add(new fg_xoso_miennam());
 
-    private class Content extends AsyncTask<Void,Void,Void> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected void onPostExecute(Void unused) {
-            super.onPostExecute(unused);
-        }
-        @Override
-        protected Void doInBackground(Void... voids) {
-            try {
-                String url = "https://www.minhngoc.net.vn/ket-qua-xo-so/mien-nam/23-11-2022.html";
-                document = Jsoup.connect(url).get();
-
-                data = document.select("div.box_kqxs>div.content>table.bkqmiennam>tbody>tr>td>table.leftcl>tbody>tr");
-                int size = data.size();
-                Log.e("size", String.valueOf(size));
-                for (int i=0;i<size;i++) {
-                    String tieude = data1.select("a").eq(i).text();
+        AdapterViewPaper viewPaperAdapter = new AdapterViewPaper(this, fragmentArrayList);
+        viewPager.setAdapter(viewPaperAdapter);
+        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                switch (position) {
+                    case 0:
+                        bottomNavigationView.setSelectedItemId(R.id.nav_mienbac);
+                        break;
+                    case 1:
+                        bottomNavigationView.setSelectedItemId(R.id.nav_mientrung);
+                        break;
+                    case 2:
+                        bottomNavigationView.setSelectedItemId(R.id.nav_miennam);
+                        break;
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
+                super.onPageSelected(position);
             }
-            return null;
-        }
+        });
+
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.nav_mienbac:
+                        viewPager.setCurrentItem(0);
+                        break;
+                    case R.id.nav_mientrung:
+                        viewPager.setCurrentItem(1);
+                        break;
+                    case R.id.nav_miennam:
+                        viewPager.setCurrentItem(2);
+                        break;
+                }
+                return true;
+            }
+        });
     }
+
     private void khaibao() {
         IMG_xoso_back = findViewById(R.id.img_xoso_back);
         tv_date = findViewById(R.id.tv_date);
+        ll_date = findViewById(R.id.ll_date);
+        viewPager = findViewById(R.id.view_pager_xoso);
+        bottomNavigationView = findViewById(R.id.bottom_navi_xoso);
     }
+
     //Hàm quay về màn hình trước
     public void backFromXoso(View view){
 

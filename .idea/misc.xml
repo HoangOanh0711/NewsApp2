@@ -62,12 +62,15 @@
         <entry key="..\:/APP/NewsApp/app/src/main/res/menu/bottom_navigation.xml" value="0.17864583333333334" />
         <entry key="..\:/APP/NewsApp2/app/src/main/res/drawable/bg_spinner.xml" value="0.1" />
         <entry key="..\:/APP/NewsApp2/app/src/main/res/drawable/ic_drop_down.xml" value="0.1" />
+        <entry key="..\:/APP/NewsApp2/app/src/main/res/drawable/ic_news.xml" value="0.1385" />
+        <entry key="..\:/APP/NewsApp2/app/src/main/res/layout/activity_dangnhap.xml" value="0.1796875" />
         <entry key="..\:/APP/NewsApp2/app/src/main/res/layout/activity_docbao.xml" value="0.22" />
         <entry key="..\:/APP/NewsApp2/app/src/main/res/layout/activity_docbaovideo.xml" value="0.1796875" />
         <entry key="..\:/APP/NewsApp2/app/src/main/res/layout/activity_giavang.xml" value="0.22" />
         <entry key="..\:/APP/NewsApp2/app/src/main/res/layout/activity_splash.xml" value="0.1796875" />
+        <entry key="..\:/APP/NewsApp2/app/src/main/res/layout/activity_tienich.xml" value="0.1796875" />
         <entry key="..\:/APP/NewsApp2/app/src/main/res/layout/activity_trangchu.xml" value="0.1796875" />
-        <entry key="..\:/APP/NewsApp2/app/src/main/res/layout/activity_xoso.xml" value="0.16666666666666666" />
+        <entry key="..\:/APP/NewsApp2/app/src/main/res/layout/activity_xoso.xml" value="0.3333333333333333" />
         <entry key="..\:/APP/NewsApp2/app/src/main/res/layout/card_giavang_loai.xml" value="0.22" />
         <entry key="..\:/APP/NewsApp2/app/src/main/res/layout/card_ndungbao.xml" value="0.1796875" />
         <entry key="..\:/APP/NewsApp2/app/src/main/res/layout/fragment_fg_xoso_mienbac.xml" value="0.165625" />
@@ -75,6 +78,9 @@
         <entry key="..\:/APP/NewsApp2/app/src/main/res/layout/fragment_fg_xoso_mientrung.xml" value="0.1796875" />
         <entry key="..\:/APP/NewsApp2/app/src/main/res/layout/item_selected_thumbnail.xml" value="0.22" />
         <entry key="..\:/APP/NewsApp2/app/src/main/res/layout/item_thumbnail.xml" value="0.22" />
+        <entry key="..\:/APP/NewsApp2/app/src/main/res/menu/bottom_navigation.xml" value="0.1796875" />
+        <entry key="..\:/APP/NewsApp2/app/src/main/res/menu/bottom_navigation_xoso.xml" value="0.1796875" />
+        <entry key="..\:/APP/NewsApp2/app/src/main/res/menu/main_menu_navigation.xml" value="0.1796875" />
       </map>
     </option>
   </component>
