@@ -46,7 +46,7 @@
             android:name=".DocBao.docbao"
             android:exported="false"/>
         <activity
-            android:name=".XoSo.xoso"
+            android:name=".TrangChu.trangchu"
             android:exported="false"/>
         <activity
             android:name=".TaiKhoan.dangnhap"
@@ -73,11 +73,10 @@
             android:name=".Thoitiet.thoitiet"
             android:exported="false" />
         <activity
-            android:name=".TrangChu.trangchu"
+            android:name=".XoSo.xoso"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

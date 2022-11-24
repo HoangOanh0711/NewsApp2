@@ -66,9 +66,13 @@
         <entry key="..\:/APP/NewsApp2/app/src/main/res/layout/activity_docbaovideo.xml" value="0.1796875" />
         <entry key="..\:/APP/NewsApp2/app/src/main/res/layout/activity_giavang.xml" value="0.22" />
         <entry key="..\:/APP/NewsApp2/app/src/main/res/layout/activity_splash.xml" value="0.1796875" />
-        <entry key="..\:/APP/NewsApp2/app/src/main/res/layout/activity_xoso.xml" value="0.22" />
+        <entry key="..\:/APP/NewsApp2/app/src/main/res/layout/activity_trangchu.xml" value="0.1796875" />
+        <entry key="..\:/APP/NewsApp2/app/src/main/res/layout/activity_xoso.xml" value="0.16666666666666666" />
         <entry key="..\:/APP/NewsApp2/app/src/main/res/layout/card_giavang_loai.xml" value="0.22" />
         <entry key="..\:/APP/NewsApp2/app/src/main/res/layout/card_ndungbao.xml" value="0.1796875" />
+        <entry key="..\:/APP/NewsApp2/app/src/main/res/layout/fragment_fg_xoso_mienbac.xml" value="0.165625" />
+        <entry key="..\:/APP/NewsApp2/app/src/main/res/layout/fragment_fg_xoso_miennam.xml" value="0.16666666666666666" />
+        <entry key="..\:/APP/NewsApp2/app/src/main/res/layout/fragment_fg_xoso_mientrung.xml" value="0.1796875" />
         <entry key="..\:/APP/NewsApp2/app/src/main/res/layout/item_selected_thumbnail.xml" value="0.22" />
         <entry key="..\:/APP/NewsApp2/app/src/main/res/layout/item_thumbnail.xml" value="0.22" />
       </map>
