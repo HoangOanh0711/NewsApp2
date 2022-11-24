@@ -8,39 +8,24 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.app.ActivityOptions;
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.Pair;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.CalendarView;
 import android.widget.DatePicker;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.airbnb.lottie.animation.content.Content;
-import com.example.newsapp.Card.CardTrangChu_Adapter;
-import com.example.newsapp.Card.ClickItem;
-import com.example.newsapp.Card.NoiDungModel;
-import com.example.newsapp.DocBao.docbaovideo;
-import com.example.newsapp.GiaVang.giavang;
 import com.example.newsapp.R;
 import com.example.newsapp.TrangChu.AdapterViewPaper;
 import com.example.newsapp.TrangChu.taikhoan;
-import com.example.newsapp.TrangChu.tintuc;
-import com.example.newsapp.TrangChu.xuhuong;
-import com.example.newsapp.fg_xoso_mienbac;
-import com.example.newsapp.fg_xoso_mientrung;
+import com.example.newsapp.TruyenDuLieu;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
-
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -63,6 +48,12 @@ public class xoso extends AppCompatActivity {
         khaibao();
 
         Calendar calendar = Calendar.getInstance();
+        if (TruyenDuLieu.Truyen_NgayXoso==""){
+            SimpleDateFormat dinhDangNgay = new SimpleDateFormat("dd-MM-yyyy");
+            TruyenDuLieu.Truyen_NgayXoso = dinhDangNgay.format(calendar.getTime());
+        }
+        tv_date.setText(TruyenDuLieu.Truyen_NgayXoso);
+
         final int year = calendar.get(Calendar.YEAR);
         final int month = calendar.get(Calendar.MONTH);
         final int day = calendar.get(Calendar.DAY_OF_MONTH);
@@ -74,8 +65,12 @@ public class xoso extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
                         month = month+1;
-                        String date = day+"/"+month+"/"+year;
-                        tv_date.setText(date);
+                        TruyenDuLieu.Truyen_NgayXoso = day+"-"+month+"-"+year;
+                        tv_date.setText(TruyenDuLieu.Truyen_NgayXoso);
+                        finish();
+                        overridePendingTransition(0, 0);
+                        startActivity(getIntent());
+                        overridePendingTransition(0, 0);
                     }
                 },year,month,day);
                 datePickerDialog.show();

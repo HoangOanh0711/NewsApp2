@@ -7,38 +7,6 @@
     tools:context=".XoSo.xoso"
     android:id="@+id/LayoutXoso">
 
-<!--    <ImageView-->
-<!--        android:id="@+id/img_xoso_back"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="15dp"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:onClick="backFromXoso"-->
-<!--        android:src="@drawable/ic_baseline_arrow_back_24"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--    <LinearLayout-->
-<!--        android:id="@+id/linearLayout18"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:background="@color/xanhreunnhat"-->
-<!--        android:orientation="horizontal"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/img_xoso_back">-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/tv_date"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:fontFamily="@font/roboto_bold"-->
-<!--            android:gravity="center"-->
-<!--            android:padding="5dp"-->
-<!--            android:text="12/12/2002"-->
-<!--            android:textColor="@color/trang"-->
-<!--            android:textSize="20sp" />-->
-<!--    </LinearLayout>-->
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout18"
         android:layout_width="match_parent"
