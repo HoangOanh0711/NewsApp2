@@ -1,8 +1,5 @@
 package com.example.newsapp.TaiKhoan;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -13,6 +10,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.newsapp.R;
 import com.facebook.FacebookSdk;
@@ -102,6 +102,11 @@ public class dangky extends AppCompatActivity {
                             } else {
                                 databaseReference.child("Users").child(st_sdt).child("Tên người dùng").setValue(st_ten);
                                 databaseReference.child("Users").child(st_sdt).child("Mật khẩu").setValue(st_matkhau);
+                                //bổ sung trường trống để làm phần hiển thị thông tin trước
+                                databaseReference.child("Users").child(st_sdt).child("Email").setValue("");
+                                databaseReference.child("Users").child(st_sdt).child("Giới tính").setValue("");
+                                databaseReference.child("Users").child(st_sdt).child("Họ và tên").setValue("");
+                                databaseReference.child("Users").child(st_sdt).child("Ngày sinh").setValue("");
 
                                 Intent intent = new Intent(dangky.this, dangnhap.class);
                                 startActivity(intent);

@@ -1,10 +1,4 @@
 package com.example.newsapp.TaiKhoan;
-import static android.content.ContentValues.TAG;
-
-import com.example.newsapp.TruyenDuLieu;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,8 +12,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.newsapp.R;
 import com.example.newsapp.TrangChu.trangchu;
+import com.example.newsapp.TruyenDuLieu;
 import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -203,6 +201,7 @@ public class dangnhap extends AppCompatActivity {
     private void Home() {
         finish();
         Intent intent = new Intent(getApplicationContext(), trangchu.class);
+        TruyenDuLieu.FLAG = 2;
         startActivity(intent);
     }
 

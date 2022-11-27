@@ -1,27 +1,20 @@
 package com.example.newsapp.TaiKhoan;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Switch;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.newsapp.R;
 import com.example.newsapp.TrangChu.taikhoan;
 import com.example.newsapp.TruyenDuLieu;
-import com.example.newsapp.XoSo.xoso;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -62,7 +55,7 @@ public class thongtinnguoidung extends AppCompatActivity {
         }
 
         //hiển thị thông tin hiên tại trước khi đổi thông tin//
-        /*if (flag == 1) {
+        if (flag == 1) {
             databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -88,7 +81,7 @@ public class thongtinnguoidung extends AppCompatActivity {
 
                 }
             });
-        }*/
+        }
 
 
         //nhấn nút cập nhật
