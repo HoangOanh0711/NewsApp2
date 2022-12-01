@@ -1,8 +1,11 @@
 package com.example.newsapp.Thoitiet;
 
 public class Thoitiet3 {
-    private String thanhpho,tinhtrang3,nhietdo3;
+    private String thanhpho,tinhtrang3,nhietdo3,tenthanhpho;
     private int thoitiet3,ghim;
+
+    public Thoitiet3() {
+    }
 
     public Thoitiet3(String thanhpho, String tinhtrang3, String nhietdo3, int thoitiet3) {
         this.thanhpho = thanhpho;
@@ -11,8 +14,9 @@ public class Thoitiet3 {
         this.thoitiet3 = thoitiet3;
     }
 
-    public Thoitiet3(String thanhpho) {
+    public Thoitiet3(String thanhpho, String tenthanhpho) {
         this.thanhpho = thanhpho;
+        this.tenthanhpho = tenthanhpho;
     }
 
     public String getThanhpho() {
@@ -53,5 +57,13 @@ public class Thoitiet3 {
 
     public void setGhim(int ghim) {
         this.ghim = ghim;
+    }
+
+    public String getTenthanhpho() {
+        return tenthanhpho;
+    }
+
+    public void setTenthanhpho(String tenthanhpho) {
+        this.tenthanhpho = tenthanhpho;
     }
 }
