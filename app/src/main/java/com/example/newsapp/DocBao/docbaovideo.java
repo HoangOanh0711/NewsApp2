@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.VideoView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -55,6 +56,9 @@ public class docbaovideo extends AppCompatActivity {
         Content content = new Content();
         content.execute();
 
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        rcv_lienquan.setLayoutManager(llm);
 
     }
 
@@ -107,30 +111,22 @@ public class docbaovideo extends AppCompatActivity {
                 Log.e("url", url);
                 document = Jsoup.connect(url).get();
 
-                //đổ dữ liệu cho phần báo - chưa
+                //đổ dữ liệu cho phần báo - xong
                 data = document.select("div#autonextNoiBat");
-
                 video = data.select("div.column-first-second>div.main-content-body>div.content").select("div.VCSortableInPreviewMode[type='photo']").select("img").attr("src");
                 tieude = data.select("div.description-video>h2>a.name-video").text();
                 tgian = data.select("div.description-video>span.list-category>a.time-ago").text();
                 ndung = data.select("div.description-video>p.sapo-video").text();
                 tacgia = data.select("p.authorvideo").text();
 
-                Log.e("tieude",tieude);
-                Log.e("tgian",tgian);
-                Log.e("ndung",ndung);
-                Log.e("tacgia",tacgia);
-
-
-
                 //đổ dữ liệu cho rcv liên quan - chưa
-                data1 = document.select("ul.list-news-content").select("li.news-item");
+                data1 = document.select("div.list-video.box-related.box-lastest>ul.list-video>li");
                 int size = data1.size();
                 for (int i=0; i<size;i++) {
-                    String tieude = data1.select("h3.title-news").eq(i).text();
-                    String thoigian = data1.select("p.sapo").eq(i).text();
-                    String anhbao = data1.select("a.img212x132.pos-rlt").eq(i).select("img").attr("src");
-                    linkbao = "https://tuoitre.vn" + data.select("a.img212x132.pos-rlt").eq(i).attr("href");
+                    String tieude = data1.select("h3>a.name-video-list").eq(i).text();
+                    String thoigian = data1.select("b.time-ago").eq(i).text();
+                    String anhbao = data1.select("a.item>img").eq(i).attr("src");
+                    linkbao = "https://tv.tuoitre.vn/" + data1.select("a.item").eq(i).attr("href");
                     noiDungModelList.add(new NoiDungModel(tieude,thoigian,anhbao,linkbao));
                 }
 

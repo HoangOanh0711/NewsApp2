@@ -11,7 +11,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.newsapp.R;
+import com.example.newsapp.TruyenDuLieu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +29,8 @@ public class quanlydiaphuong extends AppCompatActivity {
 
     RecyclerView rcvThoitiet3;
     Thoitiet3_Adapter thoitiet3_adapter;
-
-    List<Thoitiet3> list = new ArrayList<>();
-    String value;
+    List<Thoitiet3> thoitiet3s = new ArrayList<>();
+    String tp,tentp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,19 +39,24 @@ public class quanlydiaphuong extends AppCompatActivity {
 
         khaibao();
 
-        rcvThoitiet3 = findViewById(R.id.recyclerView_quanlydiaphuong);
-        thoitiet3_adapter = new Thoitiet3_Adapter(this);
         rcvThoitiet3.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL,false));
 
+        thoitiet3_adapter = new Thoitiet3_Adapter(thoitiet3s, new ClickItem() {
+            @Override
+            public void onClickItem(Thoitiet3 thoitiet3) {
+                Intent intent = new Intent(quanlydiaphuong.this,thoitiet.class);
+                startActivity(intent);
+            }
+        }, quanlydiaphuong.this);
         rcvThoitiet3.setAdapter(thoitiet3_adapter);
+        thoitiet3s.add(new Thoitiet3("Thành phố Hồ Chí Minh","TP. Hồ Chí Minh"));
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            value = extras.getString("Địa phương đã chọn");
-            Log.e("Địa phương đã chọn",value);
-            list.add(new Thoitiet3(value));
+            tp = extras.getString("Địa phương đã chọn");
+            tentp = extras.getString("Tên địa phương đã chọn");
+            thoitiet3s.add(new Thoitiet3(tp,tentp));
         }
-
 
         btn_themdiaphuong.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,16 +75,9 @@ public class quanlydiaphuong extends AppCompatActivity {
         });
     }
 
-    private List<Thoitiet3> getList_thoitiet1() {
-        List<Thoitiet3> list = new ArrayList<>();
-        list.add(new Thoitiet3("TP. Hồ Chí Minh","Nhiều mây","32ºC",R.drawable.img_cloudy_day));
-        list.add(new Thoitiet3("TP. Hồ Chí Minh","Nhiều mây","32ºC",R.drawable.img_cloudy_day));
-        list.add(new Thoitiet3("TP. Hồ Chí Minh","Nhiều mây","32ºC",R.drawable.img_cloudy_day));
-        return list;
-    }
-
     private void khaibao() {
         btn_themdiaphuong = findViewById(R.id.btn_themdiaphuong);
         btn_quaylai = findViewById(R.id.img_quaylai_quanlydiaphuong);
+        rcvThoitiet3 = findViewById(R.id.recyclerView_quanlydiaphuong);
     }
 }

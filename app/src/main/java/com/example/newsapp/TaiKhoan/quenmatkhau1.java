@@ -107,38 +107,53 @@ public class quenmatkhau1 extends AppCompatActivity {
             public void onClick(View view) {
                 str_sdt = "+" + countryCodePicker.getFullNumber();
                 TruyenDuLieu.Truyen_sdt_quenmk = str_sdt;
-                Log.e("sdt1",TruyenDuLieu.Truyen_sdt_quenmk);
                 if (sdt.getText().toString().trim().isEmpty()) {
                     Toast.makeText(quenmatkhau1.this,"Nhập số điện thoại của bạn",Toast.LENGTH_SHORT).show();
                     return;
                 }
-                progressdialog.show();
-                PhoneAuthProvider.getInstance().verifyPhoneNumber("+" + countryCodePicker.getFullNumber(),
-                        60, TimeUnit.SECONDS,quenmatkhau1.this,
-                        new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-                            @Override
-                            public void onVerificationFailed(@NonNull FirebaseException e) {
-                                progressdialog.dismiss();
-                                Toast.makeText(quenmatkhau1.this, e.getMessage(), Toast.LENGTH_SHORT);
-                            }
+                Query checkUser = FirebaseDatabase.getInstance().getReference("Users").orderByChild("Số điện thoại").equalTo(str_sdt);
+                checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            progressdialog.show();
+                            PhoneAuthProvider.getInstance().verifyPhoneNumber("+" + countryCodePicker.getFullNumber(),
+                                    60, TimeUnit.SECONDS,quenmatkhau1.this,
+                                    new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+                                        @Override
+                                        public void onVerificationFailed(@NonNull FirebaseException e) {
+                                            progressdialog.dismiss();
+                                            Toast.makeText(quenmatkhau1.this, e.getMessage(), Toast.LENGTH_SHORT);
+                                        }
 
-                            @Override
-                            public void onCodeSent(@NonNull String verificationId,
-                                                   @NonNull PhoneAuthProvider.ForceResendingToken token) {
-                                progressdialog.dismiss();
-                                Intent intent = new Intent(getApplicationContext(),quenmatkhau2.class);
-                                //intent.putExtra("sdt",str_sdt);
-                                intent.putExtra("otp",verificationId);
-                                startActivity(intent);
-                            }
+                                        @Override
+                                        public void onCodeSent(@NonNull String verificationId,
+                                                               @NonNull PhoneAuthProvider.ForceResendingToken token) {
+                                            progressdialog.dismiss();
+                                            Intent intent = new Intent(getApplicationContext(),quenmatkhau2.class);
+                                            //intent.putExtra("sdt",str_sdt);
+                                            intent.putExtra("otp",verificationId);
+                                            startActivity(intent);
+                                        }
 
-                            @Override
-                            public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
-                                progressdialog.dismiss();
-                                final String code = phoneAuthCredential.getSmsCode();
-                            }
+                                        @Override
+                                        public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
+                                            progressdialog.dismiss();
+                                            final String code = phoneAuthCredential.getSmsCode();
+                                        }
+                                    }
+                            );
+                        } else {
+                            Toast.makeText(quenmatkhau1.this,"Số điện thoại chưa được đăng ký",Toast.LENGTH_SHORT);
                         }
-                );
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(quenmatkhau1.this,"Lỗi kết nối mạng",Toast.LENGTH_SHORT);
+                    }
+                });
+
             }
         });
 

@@ -1,0 +1,679 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".XoSo.fg_xoso_mientrung">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/xanh3"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center_horizontal"
+                    android:padding="10dp"
+                    android:text="Giải"
+                    android:textColor="@color/den"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/trung_tp1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center_horizontal"
+                    android:padding="10dp"
+                    android:text="Bạc Liêu"
+                    android:textColor="@color/den"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/trung_tp2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center_horizontal"
+                    android:padding="10dp"
+                    android:text="An Giang"
+                    android:textColor="@color/den"
+                    android:textSize="22sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/xanh1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:text="G8"
+                    android:textColor="@color/den"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/trung_g8"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:text="99"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/trung_1g8"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:text="58"
+                    android:textColor="@color/den"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/xanh2"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:text="G7"
+                    android:textColor="@color/den"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/trung_g7"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:text="350"
+                    android:textColor="@color/den"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/trung_1g7"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:text="520"
+                    android:textColor="@color/den"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/xanh1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="G6"
+                    android:textColor="@color/den"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/trung_g6_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="123456"
+                        android:textColor="@color/den"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/trung_g6_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="123456"
+                        android:textColor="@color/den"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/trung_g6_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="123456"
+                        android:textColor="@color/den"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/trung_1g6_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="123456"
+                        android:textColor="@color/den"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/trung_1g6_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="123456"
+                        android:textColor="@color/den"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/trung_1g6_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="123456"
+                        android:textColor="@color/den"
+                        android:textSize="18sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/xanh2"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:text="G5"
+                    android:textColor="@color/den"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/trung_g5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:text="7667"
+                    android:textColor="@color/den"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/trung_1g5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:text="0640"
+                    android:textColor="@color/den"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/xanh1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="G4"
+                    android:textColor="@color/den"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/trung_g4_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="123456"
+                        android:textColor="@color/den"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/trung_g4_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="123456"
+                        android:textColor="@color/den"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/trung_g4_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="123456"
+                        android:textColor="@color/den"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/trung_g4_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="123456"
+                        android:textColor="@color/den"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/trung_g4_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="123456"
+                        android:textColor="@color/den"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/trung_g4_6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="123456"
+                        android:textColor="@color/den"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/trung_g4_7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="123456"
+                        android:textColor="@color/den"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/trung_1g4_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="123456"
+                        android:textColor="@color/den"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/trung_1g4_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="123456"
+                        android:textColor="@color/den"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/trung_1g4_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="123456"
+                        android:textColor="@color/den"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/trung_1g4_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="123456"
+                        android:textColor="@color/den"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/trung_1g4_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="123456"
+                        android:textColor="@color/den"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/trung_1g4_6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="123456"
+                        android:textColor="@color/den"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/trung_1g4_7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="123456"
+                        android:textColor="@color/den"
+                        android:textSize="18sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/xanh2"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="G3"
+                    android:textColor="@color/den"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/trung_g3_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="123456"
+                        android:textColor="@color/den"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/trung_g3_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="123456"
+                        android:textColor="@color/den"
+                        android:textSize="18sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/trung_1g3_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="123456"
+                        android:textColor="@color/den"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/trung_1g3_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="123456"
+                        android:textColor="@color/den"
+                        android:textSize="18sp" />
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/xanh1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:text="G2"
+                    android:textColor="@color/den"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/trung_g2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:text="123456"
+                    android:textColor="@color/den"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/trung_1g2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:text="123456"
+                    android:textColor="@color/den"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/xanh2"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:text="G1"
+                    android:textColor="@color/den"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/trung_g1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:text="30812"
+                    android:textColor="@color/den"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/trung_1g1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center_horizontal"
+                    android:padding="5dp"
+                    android:text="57702"
+                    android:textColor="@color/den"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/xanh1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Đặc Biệt"
+                    android:textColor="@color/den"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/trung_g0"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center_horizontal"
+                    android:padding="25dp"
+                    android:text="163005"
+                    android:textColor="@color/den"
+                    android:textSize="28sp" />
+
+                <TextView
+                    android:id="@+id/trung_1g0"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center_horizontal"
+                    android:padding="25dp"
+                    android:text="069787"
+                    android:textColor="@color/den"
+                    android:textSize="28sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

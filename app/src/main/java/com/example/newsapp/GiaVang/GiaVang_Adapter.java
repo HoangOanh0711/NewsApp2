@@ -1,19 +1,14 @@
 package com.example.newsapp.GiaVang;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.newsapp.R;
-import com.example.newsapp.Thoitiet.Thoitiet1;
-import com.example.newsapp.Thoitiet.Thoitiet1_Adapter;
 
 import java.util.List;
 
@@ -44,12 +39,9 @@ public class GiaVang_Adapter extends RecyclerView.Adapter<GiaVang_Adapter.GiaVan
             return;
         }
 
-        Glide.with(holder.imgtenhang).load(giaVangModel.getHang()).into(holder.imgtenhang);
-        holder.txttenhang.setText(giaVangModel.getTenhang());
-        holder.txtgiatienmua.setText(giaVangModel.getGiatienmua());
-        holder.txttangmua.setText(giaVangModel.getTangmua());
-        holder.txtgiatienban.setText(giaVangModel.getGiatienban());
-        holder.txttangban.setText(giaVangModel.getTangban());
+        holder.txttenhang.setText(giaVangModel.getLoaivang());
+        holder.txtgiatienmua.setText(giaVangModel.getGiamua());
+        holder.txtgiatienban.setText(giaVangModel.getGiaban());
     }
 
     @Override
@@ -62,20 +54,14 @@ public class GiaVang_Adapter extends RecyclerView.Adapter<GiaVang_Adapter.GiaVan
 
     public class GiaVangViewHolder extends RecyclerView.ViewHolder{
 
-        private TextView txttenhang,txtgiatienmua,txttangmua,txtgiatienban,txttangban;
-        private ImageView imgtenhang;
+        private TextView txttenhang,txtgiatienmua,txtgiatienban;
 
         public GiaVangViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            imgtenhang = itemView.findViewById(R.id.txt_hang_cardgiavang);
             txttenhang = itemView.findViewById(R.id.txt_ten_cardgiavang);
-
             txtgiatienmua = itemView.findViewById(R.id.txt_giatienmua_cardgiavang);
-            txttangmua = itemView.findViewById(R.id.txt_tangmua_cardgiavang);
-
             txtgiatienban = itemView.findViewById(R.id.txt_giatienban_cardgiavang);
-            txttangban = itemView.findViewById(R.id.txt_tangban_cardgiavang);
         }
     }
 }
