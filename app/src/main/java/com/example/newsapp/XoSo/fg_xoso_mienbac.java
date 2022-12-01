@@ -26,7 +26,7 @@ public class fg_xoso_mienbac extends Fragment {
     Elements data;
     Document document;
     TextView[] tv_xoso = new TextView[19];
-    String[] str_xoso = new String[19];
+    String[] str_xoso = new String[27];
     
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -82,14 +82,40 @@ public class fg_xoso_mienbac extends Fragment {
                 String url = "https://www.minhngoc.net.vn/ket-qua-xo-so/mien-bac/"+TruyenDuLieu.Truyen_NgayXoso+".html";
                 Log.e("url",url);
                 document = Jsoup.connect(url).get();
-                data = document.select("div.box-news-latest.isstream").select("li.news-item");
-                int size = data.size();
-                //str_xoso[0] = data.select("h3.title-news").select("a").text();
-                for (int i=0; i<size;i++) {
-                    str_xoso[8] = data.select("h3.title-news").eq(i).select("a").text();
-                    str_xoso[9] = data.select("p.sapo").eq(i).text();
-                    str_xoso[10] = data.select("a.img212x132.pos-rlt").eq(i).select("img").attr("src");
-                }
+                data = document.select("div.box_kqxs").eq(0);
+
+
+                str_xoso[0]= data.select("td.giai7").select("div").eq(0).text();
+                str_xoso[1]= data.select("td.giai7").select("div").eq(1).text();
+                str_xoso[2]= data.select("td.giai7").select("div").eq(2).text();
+                str_xoso[3]= data.select("td.giai7").select("div").eq(3).text();
+                str_xoso[4]= data.select("td.giai6").select("div").eq(0).text();
+                str_xoso[5]= data.select("td.giai6").select("div").eq(1).text();
+                str_xoso[6]= data.select("td.giai6").select("div").eq(2).text();
+                str_xoso[7]= data.select("td.giai5").select("div").eq(0).text();
+                str_xoso[8]= data.select("td.giai5").select("div").eq(1).text();
+                str_xoso[9]= data.select("td.giai5").select("div").eq(2).text();
+                str_xoso[10]= data.select("td.giai5").select("div").eq(3).text();
+                str_xoso[11]= data.select("td.giai5").select("div").eq(4).text();
+                str_xoso[12]= data.select("td.giai5").select("div").eq(5).text();
+                str_xoso[13]= data.select("td.giai4").select("div").eq(0).text();
+                str_xoso[14]= data.select("td.giai4").select("div").eq(1).text();
+                str_xoso[15]= data.select("td.giai4").select("div").eq(2).text();
+                str_xoso[16]= data.select("td.giai4").select("div").eq(3).text();
+                str_xoso[17]= data.select("td.giai3").select("div").eq(0).text();
+                str_xoso[18]= data.select("td.giai3").select("div").eq(1).text();
+                str_xoso[19]= data.select("td.giai3").select("div").eq(2).text();
+                str_xoso[20]= data.select("td.giai3").select("div").eq(3).text();
+                str_xoso[21]= data.select("td.giai3").select("div").eq(4).text();
+                str_xoso[22]= data.select("td.giai3").select("div").eq(5).text();
+                str_xoso[23]= data.select("td.giai2").select("div").eq(0).text();
+                str_xoso[24]= data.select("td.giai2").select("div").eq(1).text();
+                str_xoso[25]= data.select("td.giai1").eq(0).text();
+                str_xoso[26]= data.select("td.giaidb").eq(0).text();
+
+
+
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
