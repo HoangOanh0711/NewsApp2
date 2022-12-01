@@ -25,7 +25,7 @@ public class fg_xoso_mienbac extends Fragment {
     View view;
     Elements data;
     Document document;
-    TextView[] tv_xoso = new TextView[19];
+    TextView[] tv_xoso = new TextView[27];
     String[] str_xoso = new String[27];
     
     @Override
@@ -41,25 +41,33 @@ public class fg_xoso_mienbac extends Fragment {
     }
 
     private void khaibao() {
-        tv_xoso[0] = view.findViewById(R.id.bac_g8);
-        tv_xoso[1] = view.findViewById(R.id.bac_g7);
-        tv_xoso[2] = view.findViewById(R.id.bac_g6_1);
-        tv_xoso[3] = view.findViewById(R.id.bac_g6_2);
-        tv_xoso[4] = view.findViewById(R.id.bac_g6_3);
-        tv_xoso[5] = view.findViewById(R.id.bac_g5);
-        tv_xoso[6] = view.findViewById(R.id.bac_g4_1);
-        tv_xoso[7] = view.findViewById(R.id.bac_g4_2);
-        tv_xoso[8] = view.findViewById(R.id.bac_g4_3);
-        tv_xoso[9] = view.findViewById(R.id.bac_g4_4);
-        tv_xoso[10] = view.findViewById(R.id.bac_g4_5);
-        tv_xoso[11] = view.findViewById(R.id.bac_g4_6);
-        tv_xoso[12] = view.findViewById(R.id.bac_g4_7);
-        tv_xoso[13] = view.findViewById(R.id.bac_g3_1);
-        tv_xoso[14] = view.findViewById(R.id.bac_g3_2);
-        tv_xoso[15] = view.findViewById(R.id.bac_g2);
-        tv_xoso[16] = view.findViewById(R.id.bac_g1);
-        tv_xoso[17] = view.findViewById(R.id.bac_g0);
-        tv_xoso[18] = view.findViewById(R.id.bac_tp); //thành phố
+        tv_xoso[0] = view.findViewById(R.id.bac_g7_1);
+        tv_xoso[1] = view.findViewById(R.id.bac_g7_2);
+        tv_xoso[2] = view.findViewById(R.id.bac_g7_3);
+        tv_xoso[3] = view.findViewById(R.id.bac_g7_4);
+        tv_xoso[4] = view.findViewById(R.id.bac_g6_1);
+        tv_xoso[5] = view.findViewById(R.id.bac_g6_2);
+        tv_xoso[6] = view.findViewById(R.id.bac_g6_3);
+        tv_xoso[7] = view.findViewById(R.id.bac_g5_1);
+        tv_xoso[8] = view.findViewById(R.id.bac_g5_2);
+        tv_xoso[9] = view.findViewById(R.id.bac_g5_3);
+        tv_xoso[10] = view.findViewById(R.id.bac_g5_4);
+        tv_xoso[11] = view.findViewById(R.id.bac_g5_5);
+        tv_xoso[12] = view.findViewById(R.id.bac_g5_6);
+        tv_xoso[13] = view.findViewById(R.id.bac_g4_1);
+        tv_xoso[14] = view.findViewById(R.id.bac_g4_2);
+        tv_xoso[15] = view.findViewById(R.id.bac_g4_3);
+        tv_xoso[16] = view.findViewById(R.id.bac_g4_4);
+        tv_xoso[17] = view.findViewById(R.id.bac_g3_1);
+        tv_xoso[18] = view.findViewById(R.id.bac_g3_2);
+        tv_xoso[19] = view.findViewById(R.id.bac_g3_3);
+        tv_xoso[20] = view.findViewById(R.id.bac_g3_4);
+        tv_xoso[21] = view.findViewById(R.id.bac_g3_5);
+        tv_xoso[22] = view.findViewById(R.id.bac_g3_6);
+        tv_xoso[23] = view.findViewById(R.id.bac_g2_1);
+        tv_xoso[24] = view.findViewById(R.id.bac_g2_2);
+        tv_xoso[25] = view.findViewById(R.id.bac_g1);
+        tv_xoso[26] = view.findViewById(R.id.bac_g0);
     }
 
     private class Content extends AsyncTask<Void,Void,Void> {
@@ -71,7 +79,7 @@ public class fg_xoso_mienbac extends Fragment {
         @Override
         protected void onPostExecute(Void unused) {
             super.onPostExecute(unused);
-            for (int i=0;i<19;i++) {
+            for (int i=0;i<27;i++) {
                 tv_xoso[i].setText(str_xoso[i]);
             }
         }
@@ -83,8 +91,7 @@ public class fg_xoso_mienbac extends Fragment {
                 Log.e("url",url);
                 document = Jsoup.connect(url).get();
                 data = document.select("div.box_kqxs").eq(0);
-
-
+                
                 str_xoso[0]= data.select("td.giai7").select("div").eq(0).text();
                 str_xoso[1]= data.select("td.giai7").select("div").eq(1).text();
                 str_xoso[2]= data.select("td.giai7").select("div").eq(2).text();
@@ -112,9 +119,6 @@ public class fg_xoso_mienbac extends Fragment {
                 str_xoso[24]= data.select("td.giai2").select("div").eq(1).text();
                 str_xoso[25]= data.select("td.giai1").eq(0).text();
                 str_xoso[26]= data.select("td.giaidb").eq(0).text();
-
-
-
 
             } catch (Exception e) {
                 e.printStackTrace();

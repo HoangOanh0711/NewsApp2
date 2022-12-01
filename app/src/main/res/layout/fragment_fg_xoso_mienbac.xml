@@ -17,100 +17,83 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@color/xanh3">
+                android:background="@color/xanh1"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:fontFamily="@font/roboto_bold"
-                    android:gravity="center_horizontal"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center"
                     android:padding="10dp"
-                    android:text="Giải"
-                    android:textColor="@color/den"
-                    android:textSize="22sp" />
-
-                <TextView
-                    android:id="@+id/bac_tp"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="4"
-                    android:fontFamily="@font/roboto_bold"
-                    android:gravity="center_horizontal"
-                    android:padding="10dp"
-                    android:text="Bạc Liêu"
-                    android:textColor="@color/den"
-                    android:textSize="22sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@color/xanh1">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    android:fontFamily="@font/roboto_regular"
-                    android:gravity="center_horizontal"
-                    android:padding="5dp"
-                    android:text="G8"
-                    android:textColor="@color/den"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/bac_g8"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="4"
-                    android:fontFamily="@font/roboto_regular"
-                    android:gravity="center_horizontal"
-                    android:padding="5dp"
-                    android:text="99"
-                    android:textColor="@color/den"
-                    android:textSize="20sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@color/xanh2">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:fontFamily="@font/roboto_regular"
-                    android:gravity="center_horizontal"
-                    android:padding="5dp"
                     android:text="G7"
                     android:textColor="@color/den"
                     android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/bac_g7"
+                <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:fontFamily="@font/roboto_regular"
-                    android:gravity="center_horizontal"
-                    android:padding="5dp"
-                    android:text="350"
-                    android:textColor="@color/den"
-                    android:textSize="18sp" />
+                    android:orientation="horizontal"
+                    android:gravity="center">
 
+                    <TextView
+                        android:id="@+id/bac_g7_1"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="1234"
+                        android:textColor="@color/den"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/bac_g7_2"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="1234"
+                        android:textColor="@color/den"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/bac_g7_3"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="1234"
+                        android:textColor="@color/den"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/bac_g7_4"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="1234"
+                        android:textColor="@color/den"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@color/xanh1">
+                android:background="@color/xanh2"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="0dp"
@@ -125,13 +108,14 @@
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/bac_g6_1"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
                         android:gravity="center_horizontal"
@@ -142,7 +126,8 @@
 
                     <TextView
                         android:id="@+id/bac_g6_2"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
                         android:gravity="center_horizontal"
@@ -153,7 +138,8 @@
 
                     <TextView
                         android:id="@+id/bac_g6_3"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
                         android:gravity="center_horizontal"
@@ -168,39 +154,128 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@color/xanh2">
+                android:background="@color/xanh1"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="2"
                     android:fontFamily="@font/roboto_regular"
-                    android:gravity="center_horizontal"
+                    android:gravity="center"
                     android:padding="5dp"
                     android:text="G5"
                     android:textColor="@color/den"
                     android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/bac_g5"
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="4"
-                    android:fontFamily="@font/roboto_regular"
-                    android:gravity="center_horizontal"
-                    android:padding="5dp"
-                    android:text="7667"
-                    android:textColor="@color/den"
-                    android:textSize="18sp" />
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/bac_g5_1"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center_horizontal"
+                            android:padding="5dp"
+                            android:text="123456"
+                            android:textColor="@color/den"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/bac_g5_2"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center_horizontal"
+                            android:padding="5dp"
+                            android:text="123456"
+                            android:textColor="@color/den"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/bac_g5_3"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center_horizontal"
+                            android:padding="5dp"
+                            android:text="123456"
+                            android:textColor="@color/den"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/bac_g5_4"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center_horizontal"
+                            android:padding="5dp"
+                            android:text="123456"
+                            android:textColor="@color/den"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/bac_g5_5"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center_horizontal"
+                            android:padding="5dp"
+                            android:text="123456"
+                            android:textColor="@color/den"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/bac_g5_6"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center_horizontal"
+                            android:padding="5dp"
+                            android:text="123456"
+                            android:textColor="@color/den"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@color/xanh1">
+                android:background="@color/xanh2"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="0dp"
@@ -262,39 +337,6 @@
                         android:text="123456"
                         android:textColor="@color/den"
                         android:textSize="18sp" />
-
-                    <TextView
-                        android:id="@+id/bac_g4_5"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_regular"
-                        android:gravity="center_horizontal"
-                        android:padding="5dp"
-                        android:text="123456"
-                        android:textColor="@color/den"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:id="@+id/bac_g4_6"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_regular"
-                        android:gravity="center_horizontal"
-                        android:padding="5dp"
-                        android:text="123456"
-                        android:textColor="@color/den"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:id="@+id/bac_g4_7"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/roboto_regular"
-                        android:gravity="center_horizontal"
-                        android:padding="5dp"
-                        android:text="123456"
-                        android:textColor="@color/den"
-                        android:textSize="18sp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -303,7 +345,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:background="@color/xanh2">
+                android:background="@color/xanh1">
 
                 <TextView
                     android:layout_width="0dp"
@@ -322,9 +364,130 @@
                     android:layout_weight="4"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/bac_g3_1"
+                    <LinearLayout
                         android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/bac_g3_1"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center_horizontal"
+                            android:padding="5dp"
+                            android:text="123456"
+                            android:textColor="@color/den"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/bac_g3_2"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center_horizontal"
+                            android:padding="5dp"
+                            android:text="123456"
+                            android:textColor="@color/den"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/bac_g3_3"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center_horizontal"
+                            android:padding="5dp"
+                            android:text="123456"
+                            android:textColor="@color/den"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/bac_g3_4"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center_horizontal"
+                            android:padding="5dp"
+                            android:text="123456"
+                            android:textColor="@color/den"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/bac_g3_5"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center_horizontal"
+                            android:padding="5dp"
+                            android:text="123456"
+                            android:textColor="@color/den"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/bac_g3_6"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center_horizontal"
+                            android:padding="5dp"
+                            android:text="123456"
+                            android:textColor="@color/den"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@color/xanh2">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="G2"
+                    android:textColor="@color/den"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/bac_g2_1"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
                         android:gravity="center_horizontal"
@@ -334,8 +497,9 @@
                         android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/bac_g3_2"
-                        android:layout_width="match_parent"
+                        android:id="@+id/bac_g2_2"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
                         android:gravity="center_horizontal"
@@ -352,39 +516,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@color/xanh1">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:fontFamily="@font/roboto_regular"
-                    android:gravity="center_horizontal"
-                    android:padding="5dp"
-                    android:text="G2"
-                    android:textColor="@color/den"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:id="@+id/bac_g2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="4"
-                    android:fontFamily="@font/roboto_regular"
-                    android:gravity="center_horizontal"
-                    android:padding="5dp"
-                    android:text="123456"
-                    android:textColor="@color/den"
-                    android:textSize="18sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@color/xanh2">
+                android:background="@color/xanh1"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="0dp"
@@ -414,16 +547,16 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@color/xanh1">
+                android:background="@color/xanh2"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_gravity="center"
                     android:layout_weight="2"
                     android:fontFamily="@font/roboto_regular"
                     android:gravity="center"
-                    android:layout_gravity="center"
                     android:padding="10dp"
                     android:text="Đặc Biệt"
                     android:textColor="@color/den"
