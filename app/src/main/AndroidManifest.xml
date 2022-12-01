@@ -62,6 +62,8 @@
             android:name=".GiaVang.giavang"
             android:exported="false" />
         <activity
+
+
             android:name=".TaiKhoan.quenmatkhau3"
             android:exported="false" />
         <activity
@@ -74,6 +76,8 @@
             android:name=".Thoitiet.thoitiet"
             android:exported="false" />
         <activity
+
+
 
             android:name=".splash"
             android:exported="true">
