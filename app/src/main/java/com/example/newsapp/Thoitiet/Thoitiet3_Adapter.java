@@ -64,7 +64,6 @@ public class Thoitiet3_Adapter extends RecyclerView.Adapter<Thoitiet3_Adapter.Th
         DecimalFormat df = new DecimalFormat("#.#");
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         String url = "https://api.openweathermap.org/data/2.5/weather?q="+thoitiet3.getThanhpho()+"&appid=830d983248574a22491e0e61de20ba7d";
-        Log.e("url",url);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

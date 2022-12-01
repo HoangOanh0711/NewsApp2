@@ -101,19 +101,15 @@ public class thoitiet extends AppCompatActivity {
         String url = "http://api.openweathermap.org/data/2.5/forecast?q="+TruyenDuLieu.Truyen_TP+"&appid=830d983248574a22491e0e61de20ba7d";
         RequestQueue requestQueue = Volley.newRequestQueue(thoitiet.this);
         DecimalFormat df = new DecimalFormat("#.#");
-        Log.e("url",url);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
-
                     JSONArray jsonArrayList = jsonObject.getJSONArray("list");
                     for (int i=0;i<jsonArrayList.length();i++) {
                         JSONObject jsonObjectList = jsonArrayList.getJSONObject(i);
-                        Log.e("a", String.valueOf(jsonObjectList));
                         String ngay = jsonObjectList.getString("dt");
-                        Log.e("ngay", ngay);
 
                         long l = Long.valueOf(ngay);
                         Date date = new Date(l*1000L);
@@ -126,14 +122,11 @@ public class thoitiet extends AppCompatActivity {
                         String NhietdoMax = df.format(max);
                         String NhietdoMin = df.format(min) + "ºC";
                         String Nhietdo = NhietdoMax +"/"+NhietdoMin;
-                        Log.e("Nhietdo",Nhietdo);
 
                         JSONArray jsonArrayWeather = jsonObjectList.getJSONArray("weather");
                         JSONObject jsonObjectWeather = jsonArrayWeather.getJSONObject(0);
                         String status = jsonObjectWeather.getString("main");
                         String icon = jsonObjectWeather.getString("icon");
-                        Log.e("status",status);
-                        Log.e("icon",icon);
 
                         thoitiet2s.add(new Thoitiet2(Day,Nhietdo,icon,status));
                     }
