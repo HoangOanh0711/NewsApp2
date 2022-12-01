@@ -91,7 +91,7 @@ public class fg_xoso_mienbac extends Fragment {
                 Log.e("url",url);
                 document = Jsoup.connect(url).get();
                 data = document.select("div.box_kqxs").eq(0);
-                
+
                 str_xoso[0]= data.select("td.giai7").select("div").eq(0).text();
                 str_xoso[1]= data.select("td.giai7").select("div").eq(1).text();
                 str_xoso[2]= data.select("td.giai7").select("div").eq(2).text();
