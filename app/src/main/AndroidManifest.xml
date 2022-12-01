@@ -15,6 +15,7 @@
         android:roundIcon="@drawable/img_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.NewsApp"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
 
         <activity
@@ -70,10 +71,10 @@
             android:name=".TaiKhoan.quenmatkhau4"
             android:exported="false" />
         <activity
-            android:name=".Thoitiet.thoitiet"
+            android:name=".XoSo.xoso"
             android:exported="false" />
         <activity
-            android:name=".XoSo.xoso"
+            android:name=".Thoitiet.thoitiet"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -58,6 +58,10 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.14.2'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
 
+    //hỗ trợ weather
+    implementation 'com.android.volley:volley:1.2.1'
+    implementation 'com.squareup.picasso:picasso:2.8'
+
     implementation platform('com.google.firebase:firebase-bom:30.5.0')
 
     implementation 'com.facebook.android:facebook-android-sdk:15.0.2'
