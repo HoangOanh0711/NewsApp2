@@ -32,11 +32,10 @@ import java.util.Date;
 import java.util.List;
 
 public class thoitiet extends AppCompatActivity {
-    RecyclerView rcvThoitiet1, rcvThoitiet2;
-    Thoitiet1_Adapter thoitiet1_adapter;
+    RecyclerView rcvThoitiet2;
     Thoitiet2_Adapter thoitiet2_adapter;
-    ImageView danhsach;
-    TextView tentp;
+    ImageView danhsach, icon;
+    TextView tentp, nhietdo, tinhtrang;
     List<Thoitiet2> thoitiet2s = new ArrayList<>();
 
     @Override
@@ -48,19 +47,13 @@ public class thoitiet extends AppCompatActivity {
 
         tentp.setText(TruyenDuLieu.Truyen_TenTP);
 
-        thoitiet1_adapter = new Thoitiet1_Adapter(this);
-        LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(this, RecyclerView.HORIZONTAL,false);
-        rcvThoitiet1.setLayoutManager(linearLayoutManager1);
-        thoitiet1_adapter.setMthoitiet1(getList_thoitiet1());
-        rcvThoitiet1.setAdapter(thoitiet1_adapter);
-
         thoitiet2_adapter = new Thoitiet2_Adapter(this);
         LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(this, RecyclerView.VERTICAL,false);
         rcvThoitiet2.setLayoutManager(linearLayoutManager2);
         thoitiet2_adapter.setMthoitiet2(thoitiet2s);
         rcvThoitiet2.setAdapter(thoitiet2_adapter);
 
-
+        CallThoitiet();
         CallThoitiet7days();
 
         danhsach.setOnClickListener(new View.OnClickListener() {
@@ -76,25 +69,43 @@ public class thoitiet extends AppCompatActivity {
     private void khaibao() {
         tentp = findViewById(R.id.txt_tentp_thoitiet);
         danhsach = findViewById(R.id.img_danhsach_thoitiet);
-        rcvThoitiet1 = findViewById(R.id.recycler_ngang_thoitiet);
         rcvThoitiet2 = findViewById(R.id.recycler_doc_thoitiet);
+        nhietdo = findViewById(R.id.txt_nhietdo);
+        tinhtrang = findViewById(R.id.txt_tinhtrang);
+        icon = findViewById(R.id.img_thoitiet);
     }
 
-    private List<Thoitiet1> getList_thoitiet1() {
-        List<Thoitiet1> list = new ArrayList<>();
-        list.add(new Thoitiet1("13h","32ºC",R.drawable.img_cloudy_day));
-        list.add(new Thoitiet1("14h","32ºC",R.drawable.img_cloud));
-        list.add(new Thoitiet1("15h","32ºC",R.drawable.img_cloudy_day));
-        list.add(new Thoitiet1("16h","32ºC",R.drawable.img_cloud));
-        list.add(new Thoitiet1("17h","32ºC",R.drawable.img_hail));
-        list.add(new Thoitiet1("18h","32ºC",R.drawable.img_cloudy_day));
-        list.add(new Thoitiet1("19h","32ºC",R.drawable.img_cloudy_day));
-        list.add(new Thoitiet1("14h","32ºC",R.drawable.img_cloud));
-        list.add(new Thoitiet1("15h","32ºC",R.drawable.img_cloudy_day));
-        list.add(new Thoitiet1("16h","32ºC",R.drawable.img_cloud));
-        list.add(new Thoitiet1("17h","32ºC",R.drawable.img_hail));
-        list.add(new Thoitiet1("18h","32ºC",R.drawable.img_cloudy_day));
-        return list;
+    private void CallThoitiet() {
+        String url = "https://api.openweathermap.org/data/2.5/weather?q="+TruyenDuLieu.Truyen_TP+"&appid=830d983248574a22491e0e61de20ba7d";
+        RequestQueue requestQueue = Volley.newRequestQueue(thoitiet.this);
+        DecimalFormat df = new DecimalFormat("#.#");
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    JSONArray jsonArrayWeather = jsonObject.getJSONArray("weather");
+                    JSONObject jsonObjectWeather = jsonArrayWeather.getJSONObject(0);
+                    String status = jsonObjectWeather.getString("main");
+                    String icon1 = jsonObjectWeather.getString("icon");
+
+                    Glide.with(icon).load("http://openweathermap.org/img/wn/"+icon1+"@4x.png").into(icon);
+                    tinhtrang.setText(status);
+
+                    JSONObject jsonObjectMain = jsonObject.getJSONObject("main");
+                    double temp = jsonObjectMain.getDouble("temp") - 273.15;
+                    nhietdo.setText(df.format(temp) + "ºC");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("Error at sign in : ",error.getMessage());
+            }
+        });
+        requestQueue.add(stringRequest);
     }
 
     private void CallThoitiet7days() {

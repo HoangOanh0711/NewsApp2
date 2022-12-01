@@ -8,9 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
@@ -36,9 +38,12 @@ import java.util.List;
 
 public class Thoitiet3_Adapter extends RecyclerView.Adapter<Thoitiet3_Adapter.Thoitiet3ViewHolder>{
     private List<Thoitiet3> mthoitiet3;
+    private ClickItem clickItem;
     private Context context;
 
-    public Thoitiet3_Adapter(Context context) {
+    public Thoitiet3_Adapter(List<Thoitiet3> mthoitiet3, ClickItem clickItem, Context context) {
+        this.mthoitiet3 = mthoitiet3;
+        this.clickItem = clickItem;
         this.context = context;
     }
 
@@ -90,10 +95,19 @@ public class Thoitiet3_Adapter extends RecyclerView.Adapter<Thoitiet3_Adapter.Th
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                Log.e("Error at sign in : ",error.getMessage());
             }
         });
         requestQueue.add(stringRequest);
+
+        holder.cardview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clickItem.onClickItem(thoitiet3);
+                TruyenDuLieu.Truyen_TenTP = thoitiet3.getTenthanhpho();
+                TruyenDuLieu.Truyen_TP = thoitiet3.getThanhpho();
+            }
+        });
     }
 
     @Override
@@ -108,6 +122,7 @@ public class Thoitiet3_Adapter extends RecyclerView.Adapter<Thoitiet3_Adapter.Th
 
         private ImageView imgThoitiet3;
         private TextView txt_tp, txt_tinhtrang3, txt_nhietdo3;
+        private CardView cardview;
 
         public Thoitiet3ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -116,7 +131,7 @@ public class Thoitiet3_Adapter extends RecyclerView.Adapter<Thoitiet3_Adapter.Th
             txt_tp = itemView.findViewById(R.id.txt_thanhpho_thoitiettp);
             txt_tinhtrang3 = itemView.findViewById(R.id.txt_tinhtrang_thoitiettp);
             txt_nhietdo3 = itemView.findViewById(R.id.txt_nhietdo_thoitiettp);
-
+            cardview = itemView.findViewById(R.id.layout_card_thoitiet3);
         }
     }
 }

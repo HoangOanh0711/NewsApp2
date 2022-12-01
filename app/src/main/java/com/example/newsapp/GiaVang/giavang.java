@@ -3,32 +3,20 @@ package com.example.newsapp.GiaVang;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager2.widget.ViewPager2;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.airbnb.lottie.animation.content.Content;
-import com.example.newsapp.Card.CardTrangChu_Adapter;
-import com.example.newsapp.Card.ClickItem;
-import com.example.newsapp.Card.NoiDungModel;
-import com.example.newsapp.DocBao.docbao;
 import com.example.newsapp.R;
-import com.example.newsapp.Thoitiet.Thoitiet1;
-import com.example.newsapp.Thoitiet.Thoitiet1_Adapter;
-import com.example.newsapp.TinTuc.fg_moi;
 import com.example.newsapp.TrangChu.taikhoan;
-import com.google.android.material.tabs.TabLayout;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

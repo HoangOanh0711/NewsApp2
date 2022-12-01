@@ -29,7 +29,7 @@ public class quanlydiaphuong extends AppCompatActivity {
 
     RecyclerView rcvThoitiet3;
     Thoitiet3_Adapter thoitiet3_adapter;
-    List<Thoitiet3> thoitiet3s;
+    List<Thoitiet3> thoitiet3s = new ArrayList<>();
     String tp,tentp;
 
     @Override
@@ -39,13 +39,16 @@ public class quanlydiaphuong extends AppCompatActivity {
 
         khaibao();
 
-        thoitiet3_adapter = new Thoitiet3_Adapter(this);
         rcvThoitiet3.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL,false));
 
-        thoitiet3s = new ArrayList<>();
-        thoitiet3_adapter.setMthoitiet3(thoitiet3s);
+        thoitiet3_adapter = new Thoitiet3_Adapter(thoitiet3s, new ClickItem() {
+            @Override
+            public void onClickItem(Thoitiet3 thoitiet3) {
+                Intent intent = new Intent(quanlydiaphuong.this,thoitiet.class);
+                startActivity(intent);
+            }
+        }, quanlydiaphuong.this);
         rcvThoitiet3.setAdapter(thoitiet3_adapter);
-
         thoitiet3s.add(new Thoitiet3("Thành phố Hồ Chí Minh","TP. Hồ Chí Minh"));
 
         Bundle extras = getIntent().getExtras();
@@ -76,6 +79,5 @@ public class quanlydiaphuong extends AppCompatActivity {
         btn_themdiaphuong = findViewById(R.id.btn_themdiaphuong);
         btn_quaylai = findViewById(R.id.img_quaylai_quanlydiaphuong);
         rcvThoitiet3 = findViewById(R.id.recyclerView_quanlydiaphuong);
-
     }
 }

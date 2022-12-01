@@ -51,111 +51,80 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+        android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <TextView
-                    android:id="@+id/txt_nhietdo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:fontFamily="@font/roboto_bold"
-                    android:text="30ºC"
-                    android:textColor="@color/trang"
-                    android:textSize="50sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:id="@+id/img_thoitiet"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/img_cloudy_day"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txt_nhietdo" />
-
-                <TextView
-                    android:id="@+id/txt_tinhtrang"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="Nhiều mây"
-                    android:textColor="@color/trang"
-                    android:textSize="30sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/img_thoitiet" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <LinearLayout
-                android:id="@+id/linearLayout7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
-
-                <TextView
-                    android:id="@+id/theogio"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="THEO GIỜ"
-                    android:textColor="@color/trang"
-                    android:textSize="22sp" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_ngang_thoitiet"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:scrollbars="horizontal"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginStart="10dp"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/txt_nhietdo"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
+                android:fontFamily="@font/roboto_bold"
+                android:text="30ºC"
+                android:textColor="@color/trang"
+                android:textSize="50sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/theongay"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="THEO NGÀY"
-                    android:textColor="@color/trang"
-                    android:textSize="22sp" />
+            <ImageView
+                android:id="@+id/img_thoitiet"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="-10dp"
+                android:src="@drawable/img_cloudy_day"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_nhietdo" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_doc_thoitiet"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:scrollbars="vertical" />
-            </LinearLayout>
+            <TextView
+                android:id="@+id/txt_tinhtrang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-10dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Nhiều mây"
+                android:textColor="@color/trang"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_thoitiet" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
+
+            <TextView
+                android:id="@+id/theongay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="DỰ BÁO SẮP TỚI"
+                android:textColor="@color/trang"
+                android:textSize="22sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_doc_thoitiet"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="30dp"
+                android:scrollbars="vertical" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>
