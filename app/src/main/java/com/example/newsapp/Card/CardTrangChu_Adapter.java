@@ -48,12 +48,6 @@ public class CardTrangChu_Adapter extends RecyclerView.Adapter<CardTrangChu_Adap
         holder.txt_tieude.setText(noiDungModel.getTieude());
         Glide.with(holder.img_anhbao).load(noiDungModel.getAnhbao()).into(holder.img_anhbao);
 
-        /*String sImage = String.valueOf(Picasso.get().load(noiDungModel.getAnhbao()));
-        byte[] bytes = Base64.decode(sImage, Base64.DEFAULT);
-        Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-        holder.img_anhbao.setImageBitmap(bitmap);
-        Picasso.get().load(noiDungModel.getAnhbao()).into(holder.img_anhbao);*/
-
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

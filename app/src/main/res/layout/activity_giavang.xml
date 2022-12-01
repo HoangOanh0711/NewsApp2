@@ -55,12 +55,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
+        <Spinner
+            android:id="@+id/spn_thumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:layout_margin="10dp"/>
+
         <TextView
             android:layout_gravity="center"
             android:textSize="18sp"
             android:fontFamily="@font/roboto_regular"
             android:textColor="@color/den"
-            android:text="Đơn vị tính: ngàn đồng / lượng"
+            android:text="Đơn vị tính: 1.000đ chỉ"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -75,7 +82,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/loai"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:gravity="center"
                 android:textSize="18sp"
                 android:fontFamily="@font/roboto_bold"
