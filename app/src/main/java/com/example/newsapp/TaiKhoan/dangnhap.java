@@ -66,8 +66,6 @@ public class dangnhap extends AppCompatActivity {
 
         khaibao();
 
-
-
         //kiểm tra định dạng số điện thoại ở từng quốc gia
         countryCodePicker.registerCarrierNumberEditText(sdt);
         countryCodePicker.setPhoneNumberValidityChangeListener(new CountryCodePicker.PhoneNumberValidityChangeListener() {

@@ -154,17 +154,27 @@ public class dangky extends AppCompatActivity {
     }
 
     private boolean ktra() {
-        if (st_matkhau.isEmpty()) {
-            Toast.makeText(this, "Mật khẩu đang để trống", Toast.LENGTH_SHORT).show();
+        if (st_sdt.isEmpty()) {
+            Toast.makeText(this, "Nhập số điện thoại", Toast.LENGTH_SHORT).show();
             return false;
-        } if (st_matkhau.length()<5) {
+        }
+        if (st_matkhau.isEmpty()) {
+            Toast.makeText(this, "Nhập mật khẩu", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (st_nhaplaimk.isEmpty()) {
+            Toast.makeText(this, "Nhập lại mật khẩu", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (st_matkhau.length()<6) {
             Toast.makeText(this, "Mật khẩu quá ngắn", Toast.LENGTH_SHORT).show();
             return false;
         }
         if (!st_matkhau.equals(st_nhaplaimk)) {
             Toast.makeText(this, "Mật khẩu khác nhau", Toast.LENGTH_SHORT).show();
             return false;
-        }else {
+        }
+        else {
             return true;
         }
     }

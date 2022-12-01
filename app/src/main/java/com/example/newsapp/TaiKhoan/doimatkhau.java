@@ -29,7 +29,7 @@ public class doimatkhau extends AppCompatActivity {
 
     ImageButton IMG_dmk_back;
     TextInputEditText mk_ht, mk_moi, mk_nhaplai;
-    String pass_ht, pass_moi, pass_nhaplai;
+    String pass_ht, pass_moi, pass_nhaplai,myphone;
     DatabaseReference databaseReference = FirebaseDatabase.getInstance()
             .getReferenceFromUrl("https://newsapp-a5dc3-default-rtdb.firebaseio.com/");
     Button btn_change;
@@ -37,20 +37,19 @@ public class doimatkhau extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doimatkhau);
-        IMG_dmk_back = findViewById(R.id.img_dmk_back);
 
         khaibao();
-        String Phone = "0397370612";
-        String myphone = TruyenDuLieu.Tr_sdt;
-        Log.e("sdt",myphone);
 
+        myphone = TruyenDuLieu.Tr_sdt;
+        pass_ht = mk_ht.getText().toString().trim();
+        pass_moi = mk_moi.getText().toString().trim();
+        pass_nhaplai = mk_nhaplai.getText().toString().trim();
 
         //Nút cập nhật mật khẩu
         btn_change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //đã hoàn thành
-                ganggiatri();
                 databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -104,13 +103,10 @@ public class doimatkhau extends AppCompatActivity {
         mk_moi = (TextInputEditText) findViewById(R.id.txt_et_mk_moi);
         mk_nhaplai = (TextInputEditText) findViewById(R.id.txt_et_mk_nhaplai);
         btn_change = (Button) findViewById(R.id.btn_capnhat_dmk);
+        IMG_dmk_back = findViewById(R.id.img_dmk_back);
     }
 
-    private void ganggiatri() {
-        pass_ht = mk_ht.getText().toString().trim();
-        pass_moi = mk_moi.getText().toString().trim();
-        pass_nhaplai = mk_nhaplai.getText().toString().trim();
-    }
+
     //Hàm quay về màn hình trước
 //    public void backFromDMK(View view){
 //
