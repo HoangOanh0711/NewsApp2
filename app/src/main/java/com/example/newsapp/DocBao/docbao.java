@@ -30,16 +30,14 @@ import java.util.List;
 
 public class docbao extends AppCompatActivity {
     String linkbao,chude,tieude1,tgian,tieude2,anhbao,tenanh,ndung,tacgia;
+    String[] ndungs = new String[50];
 
-    TextView txt_chude,txt_tieude1,txt_tgian,txt_tieude2,txt_tacgia;
-    RecyclerView rcv_ndung,rcv_lienquan;
+    TextView txt_chude,txt_tieude1,txt_tgian,txt_tieude2,txt_tacgia, txt_ndung;
+    RecyclerView rcv_lienquan;
     ImageView img_quaylai, img_anhbao;
 
     CardTrangChu_Adapter cardTrangChu_adapter;
     List<NoiDungModel> noiDungModelList = new ArrayList<>();
-
-    CardNdungBao_adapter cardNdungBao_adapter;
-    ArrayList<CardNdungBao_model> cardNdungBao_models = new ArrayList<>();
 
     Elements data,data1;
     Document document;
@@ -52,10 +50,6 @@ public class docbao extends AppCompatActivity {
         linkbao = TruyenDuLieu.Truyen_Linkbao;
 
         khaibao();
-
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-        rcv_ndung.setLayoutManager(llm);
 
         LinearLayoutManager llm1 = new LinearLayoutManager(this);
         llm1.setOrientation(LinearLayoutManager.VERTICAL);
@@ -72,8 +66,8 @@ public class docbao extends AppCompatActivity {
         txt_tieude1 = findViewById(R.id.txt_tieude1_docbao);
         txt_tgian = findViewById(R.id.txt_tgian_docbao);
         txt_tieude2 = findViewById(R.id.txt_tieude2_docbao);
-        rcv_ndung = findViewById(R.id.rcv_noidung_docbao);
         txt_tacgia = findViewById(R.id.txt_tacgia_docbao);
+        txt_ndung = findViewById(R.id.txt_card_ndungbao);
 
         rcv_lienquan = findViewById(R.id.rcv_tinlienquan_docbao);
 
@@ -96,10 +90,11 @@ public class docbao extends AppCompatActivity {
             txt_tgian.setText(tgian);
             txt_tieude2.setText(tieude2);
             txt_tacgia.setText(tacgia);
+            for (int i=0;i<ndungs.length;i++) {
+                if (ndungs[i]!=null)
+                txt_ndung.append(ndungs[i] + "\n");
+            }
             Glide.with(img_anhbao).load(anhbao).into(img_anhbao);
-
-            cardNdungBao_adapter = new CardNdungBao_adapter(cardNdungBao_models,docbao.this);
-            rcv_ndung.setAdapter(cardNdungBao_adapter);
 
             cardTrangChu_adapter = new CardTrangChu_Adapter((ArrayList<NoiDungModel>) noiDungModelList, new ClickItem() {
                 @Override
@@ -137,8 +132,7 @@ public class docbao extends AppCompatActivity {
                     if (i<(size1-1))
                     {
                         if ( find.select("p").select("p").eq(i).text() != "" ){
-                            ndung = find.select("p").eq(i).text();
-                            cardNdungBao_models.add(new CardNdungBao_model(ndung));
+                            ndungs[i] = find.select("p").eq(i).text();
                         }
                     }
 
