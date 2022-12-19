@@ -32,6 +32,7 @@ import androidx.fragment.app.Fragment;
 import com.example.newsapp.GiaVang.giavang;
 import com.example.newsapp.LichVanNien.lichvannien;
 import com.example.newsapp.R;
+import com.example.newsapp.TaiKhoan.dangnhap;
 import com.example.newsapp.TaiKhoan.doimatkhau;
 import com.example.newsapp.TaiKhoan.thongtinnguoidung;
 import com.example.newsapp.Thoitiet.thoitiet;
@@ -45,10 +46,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class taikhoan extends Fragment {
-    private ImageView IMG_caidat_anhdaidien,  IMG_caidat_dangxuat,IMG_caidat_thoitiet, IMG_caidat_xoso, IMG_caidat_giavang,
-            IMG_caidat_lichviet, IMG_caidat_ttnd, IMG_caidat_dmk;
-    private TextView TXT_caidat_tecmmguoidung, TXT_caidat_tienich, TXT_caidat_thoitiet, TXT_caidat_xoso, TXT_caidat_giavang,
-            TXT_caidat_lichviet,  txt_caidat_dangxuat, TXT_caidat_ttnd, TXT_caidat_dmk;
+    private ImageView IMG_caidat_anhdaidien;
+    private TextView TXT_caidat_tecmmguoidung;
     LinearLayout thongtinngdung,doimk,thoitiet,xoso,giavang,lichviet,dangxuat;
     private SaveState saveState;
     private Context context;
@@ -61,18 +60,11 @@ public class taikhoan extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_taikhoan, container, false);
-        Phone = "0397370612";
+
         String myphone = TruyenDuLieu.Tr_sdt;
         //Ánh xạ
-        thongtinngdung =view.findViewById(R.id.layout_caidat_ttnd);
-        doimk =view.findViewById(R.id.layout_caidat_dmk);
-        thoitiet =view.findViewById(R.id.layout_caidat_thoitiet);
-        xoso =view.findViewById(R.id.layout_caidat_xoso);
-        giavang =view.findViewById(R.id.layout_caidat_giavang);
-        lichviet =view.findViewById(R.id.layout_caidat_lichviet);
-        dangxuat = view.findViewById(R.id.layout_caidat_dangxuat);
-        TXT_caidat_tecmmguoidung = view.findViewById(R.id.txt_caidat_tecmmguoidung);
-        IMG_caidat_anhdaidien = view.findViewById(R.id.img_caidat_anhdaidien);
+        khaibao(view);
+
         databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -104,6 +96,7 @@ public class taikhoan extends Fragment {
                 startActivity(intentgiavang);
             }
         });
+
         // chuyển qua màn hình xổ số
         xoso.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,6 +105,7 @@ public class taikhoan extends Fragment {
                 startActivity(intentxoso);
             }
         });
+
         // chuyển qua màn hình lịch việt
         lichviet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,6 +114,7 @@ public class taikhoan extends Fragment {
                 startActivity(intentlichviet);
             }
         });
+
         // chuyển qua màn hình thông tin đăng nhập
         thongtinngdung.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,6 +123,7 @@ public class taikhoan extends Fragment {
                 startActivity(intentttnd);
             }
         });
+
         //chuyển qua màn hình đổi mật khẩu
         doimk.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,6 +132,7 @@ public class taikhoan extends Fragment {
                 startActivity(intentdmk);
             }
         });
+
         //chuyển qua màn hình đổi mật khẩu
         thoitiet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,7 +141,28 @@ public class taikhoan extends Fragment {
                 startActivity(intentdmk);
             }
         });
+
+        //đăng xuất
+        dangxuat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentdmk = new Intent(getActivity(), dangnhap.class);
+                startActivity(intentdmk);
+            }
+        });
         return view;
+    }
+
+    private void khaibao(View view) {
+        thongtinngdung =view.findViewById(R.id.layout_caidat_ttnd);
+        doimk =view.findViewById(R.id.layout_caidat_dmk);
+        thoitiet =view.findViewById(R.id.layout_caidat_thoitiet);
+        xoso =view.findViewById(R.id.layout_caidat_xoso);
+        giavang =view.findViewById(R.id.layout_caidat_giavang);
+        lichviet =view.findViewById(R.id.layout_caidat_lichviet);
+        dangxuat = view.findViewById(R.id.layout_caidat_dangxuat);
+        TXT_caidat_tecmmguoidung = view.findViewById(R.id.txt_caidat_tecmmguoidung);
+        IMG_caidat_anhdaidien = view.findViewById(R.id.img_caidat_anhdaidien);
     }
 
     public static taikhoan newInstance() {
@@ -158,4 +176,6 @@ public class taikhoan extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
+
+
 }

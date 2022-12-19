@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.example.newsapp.GiaVang.giavang;
 import com.example.newsapp.R;
 import com.example.newsapp.TrangChu.taikhoan;
+import com.example.newsapp.TrangChu.trangchu;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
@@ -44,18 +45,22 @@ public class lichvannien extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lichvannien);
-//        initWidgets();
 
         khaibao();
 
         selectedDate = LocalDate.now();
-//        setMonthView();
-
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
                 String d="Ngày "+i2+" tháng "+(i1+1);
                 event(d);
+            }
+        });
+        IMG_lichvannien_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(lichvannien.this, trangchu.class);
+                startActivity(intent);
             }
         });
     }
@@ -67,21 +72,6 @@ public class lichvannien extends AppCompatActivity {
         txt_ngay = findViewById(R.id.txt_ngaysukien_lichvannien);
         txt_tensukien = findViewById(R.id.txt_tensukien_lichvannien);
         layout_event = findViewById(R.id.linear_event);
-    }
-
-    //Hàm quay về màn hình trước
-    public void backFromLichVanNien(View view){
-
-        Intent intent = new Intent(getApplicationContext(), taikhoan.class);
-        Pair[] pairs = new Pair[1];
-        pairs[0] = new Pair<View, String>(findViewById(R.id.LayoutLichVanNien),"transition_taikhoan");
-
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(lichvannien.this,pairs);
-            startActivity(intent,options.toBundle());
-        }else {
-            startActivity(intent);
-        }
     }
 
     private void event(String date) {
@@ -207,72 +197,4 @@ public class lichvannien extends AppCompatActivity {
                 layout_event.setVisibility(View.GONE);
         }
     }
-//    private void initWidgets()
-//    {
-//        calendarRecyclerView = findViewById(R.id.calendarRecyclerView);
-//        monthYearText = findViewById(R.id.monthYearTV);
-//    }
-//
-//    private void setMonthView()
-//    {
-//        monthYearText.setText(monthYearFromDate(selectedDate));
-//        ArrayList<String> daysInMonth = daysInMonthArray(selectedDate);
-//
-//        lichvannienAdapter calendarAdapter = new lichvannienAdapter(daysInMonth, this);
-//        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 7);
-//        calendarRecyclerView.setLayoutManager(layoutManager);
-//        calendarRecyclerView.setAdapter(calendarAdapter);
-//    }
-//
-//    private ArrayList<String> daysInMonthArray(LocalDate date)
-//    {
-//        ArrayList<String> daysInMonthArray = new ArrayList<>();
-//        YearMonth yearMonth = YearMonth.from(date);
-//
-//        int daysInMonth = yearMonth.lengthOfMonth();
-//
-//        LocalDate firstOfMonth = selectedDate.withDayOfMonth(1);
-//        int dayOfWeek = firstOfMonth.getDayOfWeek().getValue();
-//
-//        for(int i = 1; i <= 42; i++)
-//        {
-//            if(i <= dayOfWeek || i > daysInMonth + dayOfWeek)
-//            {
-//                daysInMonthArray.add("");
-//            }
-//            else
-//            {
-//                daysInMonthArray.add(String.valueOf(i - dayOfWeek));
-//            }
-//        }
-//        return  daysInMonthArray;
-//    }
-//
-//    private String monthYearFromDate(LocalDate date)
-//    {
-//        DateTimeFormatter formatter = ofPattern("MMMM yyyy");
-//        return date.format(formatter);
-//    }
-//
-//    public void previousMonthAction(View view)
-//    {
-//        selectedDate = selectedDate.minusMonths(1);
-//        setMonthView();
-//    }
-//
-//    public void nextMonthAction(View view)
-//    {
-//        selectedDate = selectedDate.plusMonths(1);
-//        setMonthView();
-//    }
-//
-//    @Override
-//    public void onItemClick(int position, String dayText)
-//    {
-//        if(!dayText.equals(""))
-//        {
-//            String message = "Selected Date " + dayText + " " + monthYearFromDate(selectedDate);
-//            Toast.makeText(this, message, Toast.LENGTH_LONG).show();
-//        }
-//    }
 }

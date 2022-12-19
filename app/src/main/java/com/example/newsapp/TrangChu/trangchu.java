@@ -7,9 +7,13 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.newsapp.R;
+import com.example.newsapp.TaiKhoan.thongtinnguoidung;
 import com.example.newsapp.TrangChu.AdapterViewPaper;
 import com.example.newsapp.TrangChu.taikhoan;
 import com.example.newsapp.TrangChu.tintuc;
@@ -75,5 +79,13 @@ public class trangchu extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        Intent intent = new Intent(trangchu.this, thongtinnguoidung.class);
+        intent.putExtra("Check",1);
+        startActivity(intent);
     }
 }

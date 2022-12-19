@@ -2,8 +2,11 @@ package com.example.newsapp.TaiKhoan;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.app.ActivityOptions;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -21,6 +24,7 @@ import android.widget.Toast;
 
 import com.example.newsapp.R;
 import com.example.newsapp.TrangChu.taikhoan;
+import com.example.newsapp.TrangChu.trangchu;
 import com.example.newsapp.TruyenDuLieu;
 import com.example.newsapp.XoSo.xoso;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -54,6 +58,8 @@ public class thongtinnguoidung extends AppCompatActivity {
 
         khaibao();
         myphone = TruyenDuLieu.Tr_sdt;
+
+        //set format date
         txt_et_ngaysinh.addTextChangedListener(new TextWatcher() {
             private String current = "";
             private String ddmmyyyy = "DDMMYYYY";
@@ -116,6 +122,7 @@ public class thongtinnguoidung extends AppCompatActivity {
 
             }
         });
+
         showdata();
 
         //nhấn nút cập nhật
@@ -155,12 +162,10 @@ public class thongtinnguoidung extends AppCompatActivity {
             }
         });
 
-        // gọi click này
         IMG_thongtinnguoidung_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // gọi intent cho nó chuyển về á
-                Intent intentTTND = new Intent(getApplicationContext(), taikhoan.class);
+                Intent intentTTND = new Intent(getApplicationContext(), trangchu.class);
                 startActivity(intentTTND);
              }
         });
@@ -200,7 +205,6 @@ public class thongtinnguoidung extends AppCompatActivity {
 
     }
 
-    //phần này để làm cho
     private void ganggiatri() {
         hovaten = txt_et_hvt.getText().toString();
         ngaysinh = txt_et_ngaysinh.getText().toString().trim();
@@ -220,19 +224,6 @@ public class thongtinnguoidung extends AppCompatActivity {
         btn_luuthongtin = (Button) findViewById(R.id.btn_luuthongtin_thongtinngdung);
         IMG_thongtinnguoidung_back = findViewById(R.id.img_thongtinnguoidung_back);
     }
-    //Hàm quay về màn hình trước
-    public void backFromTTND(View view){
 
-        Intent intent = new Intent(getApplicationContext(), taikhoan.class);
-        Pair[] pairs = new Pair[1];
-        pairs[0] = new Pair<View, String>(findViewById(R.id.LayoutTTND),"transition_taikhoan");
 
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(thongtinnguoidung.this,pairs);
-            startActivity(intent,options.toBundle());
-        }else {
-            startActivity(intent);
-        }
-    }
-    // muốn bôi đen thế này bạn dùng ctrl + / nha
 }

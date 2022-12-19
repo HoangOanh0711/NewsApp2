@@ -19,6 +19,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.example.newsapp.R;
+import com.example.newsapp.TrangChu.trangchu;
 import com.example.newsapp.TruyenDuLieu;
 
 import org.json.JSONArray;
@@ -34,7 +35,7 @@ import java.util.List;
 public class thoitiet extends AppCompatActivity {
     RecyclerView rcvThoitiet2;
     Thoitiet2_Adapter thoitiet2_adapter;
-    ImageView danhsach, icon;
+    ImageView danhsach, icon, quaylai;
     TextView tentp, nhietdo, tinhtrang;
     List<Thoitiet2> thoitiet2s = new ArrayList<>();
 
@@ -64,6 +65,14 @@ public class thoitiet extends AppCompatActivity {
             }
         });
 
+        quaylai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(thoitiet.this, trangchu.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void khaibao() {
@@ -73,6 +82,7 @@ public class thoitiet extends AppCompatActivity {
         nhietdo = findViewById(R.id.txt_nhietdo);
         tinhtrang = findViewById(R.id.txt_tinhtrang);
         icon = findViewById(R.id.img_thoitiet);
+        quaylai = findViewById(R.id.img_quaylai_thoitiet);
     }
 
     private void CallThoitiet() {
