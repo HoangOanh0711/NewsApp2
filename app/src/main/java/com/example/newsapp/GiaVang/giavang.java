@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.example.newsapp.R;
 import com.example.newsapp.TrangChu.taikhoan;
+import com.example.newsapp.TrangChu.trangchu;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -85,6 +86,14 @@ public class giavang extends AppCompatActivity {
 
             }
         });
+
+        IMG_giavang_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(giavang.this, trangchu.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private class Content extends AsyncTask<Void,Void,Void> {
@@ -138,19 +147,5 @@ public class giavang extends AppCompatActivity {
         list.add(new Thumbnail("Tây Nguyên"));
         list.add(new Thumbnail("Đông Nam Bộ"));
         return list;
-    }
-
-    //Hàm quay về màn hình trước
-    public void backFromGiaVang(View view){
-        Intent intent = new Intent(getApplicationContext(), taikhoan.class);
-        Pair[] pairs = new Pair[1];
-        pairs[0] = new Pair<View, String>(findViewById(R.id.layoutgiavang),"transition_taikhoan");
-
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(giavang.this,pairs);
-            startActivity(intent,options.toBundle());
-        }else {
-            startActivity(intent);
-        }
     }
 }

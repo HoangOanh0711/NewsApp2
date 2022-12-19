@@ -1,5 +1,6 @@
 package com.example.newsapp.TaiKhoan;
 
+import com.example.newsapp.TrangChu.trangchu;
 import com.example.newsapp.TruyenDuLieu;
 import com.example.newsapp.TaiKhoan.dangnhap;
 import androidx.annotation.NonNull;
@@ -92,7 +93,7 @@ public class doimatkhau extends AppCompatActivity {
         IMG_dmk_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentDMK = new Intent(getApplicationContext(), taikhoan.class);
+                Intent intentDMK = new Intent(getApplicationContext(), trangchu.class);
                 startActivity(intentDMK);
             }
         });
@@ -106,19 +107,4 @@ public class doimatkhau extends AppCompatActivity {
         IMG_dmk_back = findViewById(R.id.img_dmk_back);
     }
 
-
-    //Hàm quay về màn hình trước
-//    public void backFromDMK(View view){
-//
-//         Intent intent = new Intent(getApplicationContext(), taikhoan.class);
-//        Pair[] pairs = new Pair[1];
-//        pairs[0] = new Pair<View, String>(findViewById(R.id.LayoutDMK),"transition_taikhoan");
-//
-//        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-//            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(doimatkhau.this,pairs);
-//            startActivity(intent,options.toBundle());
-//        }else {
-//            startActivity(intent);
-//        }
-//    }
 }

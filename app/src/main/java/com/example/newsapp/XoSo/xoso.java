@@ -17,9 +17,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.newsapp.LichVanNien.lichvannien;
 import com.example.newsapp.R;
 import com.example.newsapp.TrangChu.AdapterViewPaper;
 import com.example.newsapp.TrangChu.taikhoan;
+import com.example.newsapp.TrangChu.trangchu;
 import com.example.newsapp.TruyenDuLieu;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -118,6 +120,14 @@ public class xoso extends AppCompatActivity {
                 return true;
             }
         });
+
+        IMG_xoso_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(xoso.this, trangchu.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void khaibao() {
@@ -126,20 +136,5 @@ public class xoso extends AppCompatActivity {
         ll_date = findViewById(R.id.ll_date);
         viewPager = findViewById(R.id.view_pager_xoso);
         bottomNavigationView = findViewById(R.id.bottom_navi_xoso);
-    }
-
-    //Hàm quay về màn hình trước
-    public void backFromXoso(View view){
-
-        Intent intent = new Intent(getApplicationContext(), taikhoan.class);
-        Pair[] pairs = new Pair[1];
-        pairs[0] = new Pair<View, String>(findViewById(R.id.LayoutXoso),"transition_taikhoan");
-
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(xoso.this,pairs);
-            startActivity(intent,options.toBundle());
-        }else {
-            startActivity(intent);
-        }
     }
 }
