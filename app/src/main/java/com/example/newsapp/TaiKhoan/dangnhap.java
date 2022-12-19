@@ -122,7 +122,6 @@ public class dangnhap extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 gangiatri();
-                TruyenDuLieu.FLAG = 1;
                 databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
