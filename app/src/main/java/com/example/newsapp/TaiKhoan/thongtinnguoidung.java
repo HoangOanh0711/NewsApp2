@@ -51,6 +51,7 @@ public class thongtinnguoidung extends AppCompatActivity {
         setContentView(R.layout.activity_thongtinnguoidung);
 
         khaibao();
+        myphone = TruyenDuLieu.Tr_sdt;
         showdata();
 
         //nhấn nút cập nhật
@@ -105,9 +106,23 @@ public class thongtinnguoidung extends AppCompatActivity {
         databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.hasChild(myphone)) {
-                    final String hintGetNgaysinh = snapshot.child(myphone).child("Ngày sinh").getValue(String.class);
-                    txt_et_ngaysinh.setHint(hintGetNgaysinh);
+                if (snapshot.exists()) {
+                    final String hoten = snapshot.child(myphone).child("Họ và tên").getValue(String.class);
+                    final String gioitinh = snapshot.child(myphone).child("Giới tính").getValue(String.class);
+                    final String ngaysinh = snapshot.child(myphone).child("Ngày sinh").getValue(String.class);
+                    final String email = snapshot.child(myphone).child("Email").getValue(String.class);
+                    txt_et_hvt.setHint(hoten);
+                    txt_et_email.setHint(email);
+                    txt_et_ngaysinh.setHint(ngaysinh);
+                    txt_et_sdt.setText(myphone);
+                    txt_et_sdt.setFocusable(false);
+                    txt_et_sdt.setClickable(true);
+                    Log.e("thongtin",gioitinh);
+                    if (gioitinh.equals("Nam")) {
+                        rbtn_nam.isChecked();
+                    } else if (gioitinh=="Nữ") {
+                        rbtn_nu.isChecked();
+                    }
                 }
             }
 
@@ -126,7 +141,6 @@ public class thongtinnguoidung extends AppCompatActivity {
         email = txt_et_email.getText().toString().trim();
         sdt = txt_et_sdt.getText().toString().trim();
         Idcheck = rGroup_gioitinh.getCheckedRadioButtonId();
-        myphone = TruyenDuLieu.Tr_sdt;
     }
 
     private void khaibao(){
