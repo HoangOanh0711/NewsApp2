@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -21,6 +22,7 @@ import com.example.newsapp.Card.CardTrangChu_Adapter;
 import com.example.newsapp.Card.ClickItem;
 import com.example.newsapp.Card.NoiDungModel;
 import com.example.newsapp.R;
+import com.example.newsapp.TrangChu.trangchu;
 import com.example.newsapp.TruyenDuLieu;
 
 import org.jsoup.Jsoup;
@@ -36,6 +38,7 @@ public class docbaovideo extends AppCompatActivity {
     TextView tv_tieude,tv_tgian,tv_ndung,tv_tacgia;
     VideoView vv;
     RecyclerView rcv_lienquan;
+    ImageView quaylai;
 
     CardTrangChu_Adapter cardTrangChu_adapter;
     List<NoiDungModel> noiDungModelList = new ArrayList<>();
@@ -60,6 +63,14 @@ public class docbaovideo extends AppCompatActivity {
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         rcv_lienquan.setLayoutManager(llm);
 
+        quaylai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(docbaovideo.this, trangchu.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void khaibao() {
@@ -69,7 +80,7 @@ public class docbaovideo extends AppCompatActivity {
         tv_ndung = findViewById(R.id.txt_tieude2_docbaovideo);
         tv_tacgia = findViewById(R.id.txt_tacgia_docbaovideo);
         rcv_lienquan = findViewById(R.id.rcv_tinlienquan_docbaovideo);
-
+        quaylai = findViewById(R.id.img_quaylai_docbaovideo);
     }
 
     private class Content extends AsyncTask<Void,Void,Void> {

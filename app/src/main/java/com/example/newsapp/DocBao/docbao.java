@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,6 +20,7 @@ import com.example.newsapp.Card.NoiDungModel;
 import com.example.newsapp.R;
 import com.example.newsapp.Thoitiet.Thoitiet2_Adapter;
 import com.example.newsapp.TinTuc.fg_moi;
+import com.example.newsapp.TrangChu.trangchu;
 import com.example.newsapp.TruyenDuLieu;
 
 import org.jsoup.Jsoup;
@@ -55,10 +57,16 @@ public class docbao extends AppCompatActivity {
         llm1.setOrientation(LinearLayoutManager.VERTICAL);
         rcv_lienquan.setLayoutManager(llm1);
 
-
         Content content = new Content();
         content.execute();
 
+        img_quaylai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(docbao.this, trangchu.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void khaibao() {
@@ -126,7 +134,6 @@ public class docbao extends AppCompatActivity {
                 for (int i=0; i<size1;i++) {
                     if ( find.select("div.VCSortableInPreviewMode[type='photo']").eq(i).select("img").attr("src") != ""){
                         anhbao = find.select("div.VCSortableInPreviewMode[type='photo']").eq(i).select("img").attr("src");
-                        //tenanh = find.select("div.VCSortableInPreviewMode[type='photo']").eq(i).select("img").attr("title");
                     }
 
                     if (i<(size1-1))
@@ -139,18 +146,21 @@ public class docbao extends AppCompatActivity {
                 }
 
                 //đổ dữ liệu cho rcv liên quan - chưa
-                data1 = document.select("div.area2>div.boxNewsHot.type2>ul.list-news>li"); //chỗ này bị sai
+                data1 = document.select("div.box-category3.canyoucare.box-top>ul.list-news>li"); //chỗ này bị sai
                 int size = data1.size();
-                Log.e("size", String.valueOf(size));
+                if (size == 0)
+                {
+                    url = "https://tuoitre.vn/khi-nao-hoc-sinh-ha-noi-duoc-nghi-hoc-neu-ret-dam-20221219221837761.htm";
+                    document = Jsoup.connect(url).get();
+                    data1 = document.select("div.box-category3.canyoucare.box-top>ul.list-news>li");
+                    size = data1.size();
+                }
+
                 for (int i=0; i<size;i++) {
-                    String tieude = data1.select("div.description>div.name-title>a").eq(i).text(); //log đc size đúng thì log từng cái này coi đúng kh
-                    String thoigian = data1.select("div.description>div.name-title>span.timeago.clearfix").eq(i).text();
-                    String anhbao = data1.select("a.img120x75.pos-rlt").eq(i).select("img.img120x75").attr("src");
-                    String linkbao2 = "https://tuoitre.vn" + data.select("a.img120x75.pos-rlt").eq(i).attr("href");
-                    Log.e("tieude", tieude);
-                    Log.e("thoigian", thoigian);
-                    Log.e("anhbao", anhbao);
-                    Log.e("linkbao2", linkbao2);
+                    String tieude = data1.eq(i).select("div.name-title").text(); //log đc size đúng thì log từng cái này coi đúng kh
+                    String thoigian = "1 giờ";
+                    String anhbao = data1.select("a.img188x117.pos-rlt").select("img.img188x117").eq(i).attr("src");
+                    String linkbao2 = "https://tuoitre.vn"+data.select("div.name-title>a").eq(i).attr("href");
                     noiDungModelList.add(new NoiDungModel(tieude,thoigian,anhbao,linkbao2));
                 }
 
