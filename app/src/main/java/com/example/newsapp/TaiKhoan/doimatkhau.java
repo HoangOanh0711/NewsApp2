@@ -41,43 +41,26 @@ public class doimatkhau extends AppCompatActivity {
 
         khaibao();
 
-        myphone = TruyenDuLieu.Tr_sdt;
-        pass_ht = mk_ht.getText().toString().trim();
-        pass_moi = mk_moi.getText().toString().trim();
-        pass_nhaplai = mk_nhaplai.getText().toString().trim();
-
         //Nút cập nhật mật khẩu
         btn_change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //đã hoàn thành
+                gangiatri();
+                if (ktra()) {
                 databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.hasChild(myphone)) {
                             final String getmk = snapshot.child(myphone).child("Mật khẩu").getValue(String.class);
-                            Log.e("getmk:",getmk);
-                            if (pass_ht.isEmpty()) {
-                                Toast.makeText(doimatkhau.this,"Vui lòng nhập mật khẩu hiện tại",Toast.LENGTH_SHORT).show();
+                            if (getmk.equals(pass_ht)) {
+                                databaseReference.child("Users").child(myphone).child("Mật khẩu").setValue(pass_moi);
+                                Toast.makeText(doimatkhau.this,"Mật khẩu đã được cập nhật",Toast.LENGTH_SHORT).show();
+                                mk_ht.setText("");
+                                mk_moi.setText("");
+                                mk_nhaplai.setText("");
                             }
-                            if (!getmk.equals(pass_ht)) {
-                                Log.i("mkht",pass_ht);
+                            else {
                                 Toast.makeText(doimatkhau.this,"Mật khẩu hiện tại không đúng",Toast.LENGTH_SHORT).show();
-                            } else {
-                                if (pass_moi.length() < 6) {
-                                    Toast.makeText(doimatkhau.this,"Vui lòng nhập mật khẩu mới từ 6 kí tự trở lên",Toast.LENGTH_SHORT).show();
-                                } else {
-                                    if (!pass_moi.equals(pass_nhaplai)) {
-                                        Toast.makeText(doimatkhau.this,"Nhập lại mật khẩu không giống",Toast.LENGTH_SHORT).show();
-                                    } else {
-                                        databaseReference.child("Users").child(myphone).child("Mật khẩu").setValue(pass_nhaplai);
-                                        Toast.makeText(doimatkhau.this,"Mật khẩu đã được cập nhật",Toast.LENGTH_SHORT).show();
-                                        mk_ht.setText("");
-                                        mk_moi.setText("");
-                                        mk_nhaplai.setText("");
-                                    }
-                                }
-
                             }
                         }
                     }
@@ -87,6 +70,7 @@ public class doimatkhau extends AppCompatActivity {
                         Toast.makeText(doimatkhau.this,"Lỗi",Toast.LENGTH_SHORT).show();
                     }
                 });
+                }
             }
         });
 
@@ -107,4 +91,36 @@ public class doimatkhau extends AppCompatActivity {
         IMG_dmk_back = findViewById(R.id.img_dmk_back);
     }
 
+    private void gangiatri() {
+        myphone = TruyenDuLieu.Tr_sdt;
+        pass_ht = mk_ht.getText().toString().trim();
+        pass_moi = mk_moi.getText().toString().trim();
+        pass_nhaplai = mk_nhaplai.getText().toString().trim();
+    }
+
+    private boolean ktra() {
+        if (pass_ht.isEmpty()) {
+            Toast.makeText(this, "Vui lòng nhập mật khẩu hiện tại", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (pass_moi.isEmpty()) {
+            Toast.makeText(this, "Vui lòng nhập mật khẩu mới", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (pass_nhaplai.isEmpty()) {
+            Toast.makeText(this, "Vui lòng nhập lại mật khẩu mới", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (pass_moi.length()<6) {
+            Toast.makeText(this, "Mật khẩu mới quá ngắn", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (!pass_moi.equals(pass_nhaplai)) {
+            Toast.makeText(this, "Mật khẩu mới không trùng khớp", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
 }

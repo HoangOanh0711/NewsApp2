@@ -162,6 +162,10 @@ public class dangky extends AppCompatActivity {
             Toast.makeText(this, "Nhập mật khẩu", Toast.LENGTH_SHORT).show();
             return false;
         }
+        if (st_ten.isEmpty()) {
+            Toast.makeText(this, "Nhập tên", Toast.LENGTH_SHORT).show();
+            return false;
+        }
         if (st_nhaplaimk.isEmpty()) {
             Toast.makeText(this, "Nhập lại mật khẩu", Toast.LENGTH_SHORT).show();
             return false;
