@@ -13,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,6 +25,9 @@ import com.example.newsapp.Card.NoiDungModel;
 import com.example.newsapp.R;
 import com.example.newsapp.TrangChu.trangchu;
 import com.example.newsapp.TruyenDuLieu;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -34,7 +38,7 @@ import java.util.List;
 
 public class docbaovideo extends AppCompatActivity {
 
-    String linkbao,video,tieude,tgian,ndung,tacgia;
+    String linkbao,tieude,tgian,ndung,tacgia;
     TextView tv_tieude,tv_tgian,tv_ndung,tv_tacgia;
     VideoView vv;
     RecyclerView rcv_lienquan;
@@ -46,6 +50,7 @@ public class docbaovideo extends AppCompatActivity {
     Elements data,data1;
     Document document;
 
+    private YouTubePlayerView youTubePlayerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,10 +76,18 @@ public class docbaovideo extends AppCompatActivity {
             }
         });
 
+        youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
+            @Override
+            public void onReady(@NonNull YouTubePlayer youTubePlayer) {
+                String videoId = "pg3EISkqTII";
+                youTubePlayer.cueVideo(videoId, 0);
+            }
+        });
+
     }
 
     private void khaibao() {
-        vv = findViewById(R.id.img_anhbao_docbaovideo);
+        youTubePlayerView = findViewById(R.id.img_anhbao_docbaovideo);
         tv_tieude = findViewById(R.id.txt_tieude_docbaovideo);
         tv_tgian = findViewById(R.id.txt_tgian_docbaovideo);
         tv_ndung = findViewById(R.id.txt_tieude2_docbaovideo);
@@ -98,12 +111,6 @@ public class docbaovideo extends AppCompatActivity {
             tv_ndung.setText(ndung);
             tv_tacgia.setText(tacgia);
 
-            /*MediaController mediacontroller = new MediaController(docbaovideo.this);
-            mediacontroller.setAnchorView(vv);
-            vv.setMediaController(mediacontroller);
-            vv.setVideoURI(Uri.parse(video));
-            vv.start();*/
-
             cardTrangChu_adapter = new CardTrangChu_Adapter((ArrayList<NoiDungModel>) noiDungModelList, new ClickItem() {
                 @Override
                 public void onClickItem(NoiDungModel noiDungModel) {
@@ -124,13 +131,12 @@ public class docbaovideo extends AppCompatActivity {
 
                 //đổ dữ liệu cho phần báo - xong
                 data = document.select("div#autonextNoiBat");
-                video = data.select("div.column-first-second>div.main-content-body>div.content").select("div.VCSortableInPreviewMode[type='photo']").select("img").attr("src");
                 tieude = data.select("div.description-video>h2>a.name-video").text();
                 tgian = data.select("div.description-video>span.list-category>a.time-ago").text();
                 ndung = data.select("div.description-video>p.sapo-video").text();
                 tacgia = data.select("p.authorvideo").text();
 
-                //đổ dữ liệu cho rcv liên quan - chưa
+                //đổ dữ liệu cho rcv liên quan - xong
                 data1 = document.select("div.list-video.box-related.box-lastest>ul.list-video>li");
                 int size = data1.size();
                 for (int i=0; i<size;i++) {
