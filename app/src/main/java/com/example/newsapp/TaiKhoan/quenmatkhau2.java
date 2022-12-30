@@ -48,9 +48,7 @@ public class quenmatkhau2 extends AppCompatActivity {
         khaibao();
         setupOTPInput();
 
-        /*txt_sdt.setText(String.format(
-                "+84-%s", getIntent().getStringExtra("phone")
-        ));*/
+
 
         /*btn_taiday_quenmk.setOnClickListener(new View.OnClickListener() {
             @Override
