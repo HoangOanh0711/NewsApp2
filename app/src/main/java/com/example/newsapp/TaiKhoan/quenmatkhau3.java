@@ -1,13 +1,13 @@
 package com.example.newsapp.TaiKhoan;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.newsapp.R;
 import com.example.newsapp.TruyenDuLieu;
@@ -31,10 +31,10 @@ public class quenmatkhau3 extends AppCompatActivity {
         st_nhaplaimk = ed_nhaplaimk.getText().toString().trim();
         Phone = TruyenDuLieu.Truyen_sdt_quenmk;
 
-        //Phone = "+84814181559";
+        //Phone = "+84989454162";
         user = getIntent().getStringExtra("Users");
         pass = getIntent().getStringExtra("Mật khẩu");
-        //Phone = getIntent().getStringExtra("");
+        Phone = getIntent().getStringExtra("");
 
         btn_capnhat.setOnClickListener(new View.OnClickListener() {
             @Override
