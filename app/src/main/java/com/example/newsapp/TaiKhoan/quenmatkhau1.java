@@ -1,7 +1,6 @@
 package com.example.newsapp.TaiKhoan;
 
 import android.app.MediaRouteButton;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -42,7 +41,7 @@ public class quenmatkhau1 extends AppCompatActivity {
     ImageView img_check;
 
     FirebaseAuth mAuth;
-    ProgressDialog progressdialog;
+    //ProgressDialog progressdialog;
     String str_sdt;
 
     private quenmatkhau1 binding;
