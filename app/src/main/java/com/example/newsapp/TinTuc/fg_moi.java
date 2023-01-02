@@ -76,7 +76,6 @@ public class fg_moi extends Fragment {
                 document = Jsoup.connect(url).get();
                 data = document.select("div.list__listing").select("div.box-category-middle").select("div.box-category-item");
                 int size = data.size();
-                Log.e("fg_moi", String.valueOf(size));
                 for (int i=0; i<size;i++) {
                     String tieude = data.select("h3.box-title-text").select("a.box-category-link-title").eq(i).text();
                     String thoigian = data.select("p.box-category-sapo").eq(i).text();
