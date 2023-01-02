@@ -131,7 +131,6 @@ public class docbao extends AppCompatActivity {
 
                 Elements find = data.select("div.detail-content.afcbc-body");
                 int size1 = find.select("p").size();
-                Log.e("size", String.valueOf(size1));
                 for (int i=0; i<size1;i++) {
                     if ( find.select("div.VCSortableInPreviewMode[type='photo']").eq(i).select("img").attr("src") != ""){
                         anhbao = find.select("div.VCSortableInPreviewMode[type='photo']").eq(i).select("img").attr("src");
@@ -145,24 +144,26 @@ public class docbao extends AppCompatActivity {
 
                 }
 
-
                 //đổ dữ liệu cho rcv liên quan - chưa
-                data1 = document.select("div.box-category3.canyoucare.box-top>ul.list-news>li"); //chỗ này bị sai
+                data1 = document.select("div#news_same_row1>div.box-category-item"); //chỗ này bị sai
                 int size = data1.size();
+                Log.e("size", String.valueOf(size1));
                 if (size == 0)
                 {
-                    url = "https://tuoitre.vn/khi-nao-hoc-sinh-ha-noi-duoc-nghi-hoc-neu-ret-dam-20221219221837761.htm";
+                    url = "https://tuoitre.vn/ban-doc-tuoi-tre-mong-co-phep-mau-cuu-song-be-trai-lot-vo-tru-be-tong-35m-20230102140431598.htm";
                     document = Jsoup.connect(url).get();
-                    data1 = document.select("div.box-category3.canyoucare.box-top>ul.list-news>li");
+                    data1 = document.select("div#news_same_row1>div.box-category-item");
                     size = data1.size();
                 }
-
                 for (int i=0; i<size;i++) {
-                    String tieude = data1.eq(i).select("div.name-title").text(); //log đc size đúng thì log từng cái này coi đúng kh
+                    String tieude = data1.select("h3.box-title-text").eq(i).text(); //log đc size đúng thì log từng cái này coi đúng kh
                     String thoigian = "1 giờ";
-                    String anhbao = data1.select("a.img188x117.pos-rlt").select("img.img188x117").eq(i).attr("src");
-                    String linkbao2 = "https://tuoitre.vn"+data.select("div.name-title>a").eq(i).attr("href");
+                    String anhbao = data1.select("a.box-category-link-with-avatar.img-resize").select("img.box-category-avatar").eq(i).attr("src");
+                    String linkbao2 = "https://tuoitre.vn"+data.select("a.box-category-link-with-avatar.img-resize").eq(i).attr("href");
                     noiDungModelList.add(new NoiDungModel(tieude,thoigian,anhbao,linkbao2));
+                    Log.e("show",tieude);
+                    Log.e("show",anhbao);
+                    Log.e("show",linkbao2);
                 }
 
             } catch (Exception e) {
