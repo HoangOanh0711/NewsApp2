@@ -122,20 +122,20 @@ public class docbao extends AppCompatActivity {
                 document = Jsoup.connect(url).get();
 
                 //đổ dữ liệu cho phần báo - xong
-                data = document.select("div.content");
-                chude = data.select("div.content-left>div.bread-crumbs>ul>li.fl").eq(0).select("a").text();
-                tieude1 = data.select("div.content-detail>div.w980>h1.article-title").text();
-                tgian = data.select("div.content-detail>div.w980>div.date-time").text();
-                tieude2 = data.select("div.column-first-second>div.main-content-body>h2.sapo").text();
-                tacgia = data.select("div.column-first-second>div.main-content-body>div.author").text();
+                data = document.select("div.detail__cmain");
+                chude = data.select("div.detail-cate>a").text();
+                tieude1 = data.select("h1.detail-title.article-title").text();
+                tgian = data.select("div.detail-time").text();
+                tieude2 = data.select("h2.detail-sapo").text();
+                tacgia = data.select("div.author-info").text();
 
-                Elements find = data.select("div.column-first-second>div.main-content-body>div#main-detail-body");
+                Elements find = data.select("div.detail-content.afcbc-body");
                 int size1 = find.select("p").size();
+                Log.e("size", String.valueOf(size1));
                 for (int i=0; i<size1;i++) {
                     if ( find.select("div.VCSortableInPreviewMode[type='photo']").eq(i).select("img").attr("src") != ""){
                         anhbao = find.select("div.VCSortableInPreviewMode[type='photo']").eq(i).select("img").attr("src");
                     }
-
                     if (i<(size1-1))
                     {
                         if ( find.select("p").select("p").eq(i).text() != "" ){
@@ -144,6 +144,7 @@ public class docbao extends AppCompatActivity {
                     }
 
                 }
+
 
                 //đổ dữ liệu cho rcv liên quan - chưa
                 data1 = document.select("div.box-category3.canyoucare.box-top>ul.list-news>li"); //chỗ này bị sai
