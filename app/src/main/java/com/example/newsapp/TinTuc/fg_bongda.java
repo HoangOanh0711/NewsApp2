@@ -45,6 +45,7 @@ public class fg_bongda extends Fragment {
 
         Content content = new Content();
         content.execute();
+        Log.e("bongda","bongda");
 
         return view;
     }
