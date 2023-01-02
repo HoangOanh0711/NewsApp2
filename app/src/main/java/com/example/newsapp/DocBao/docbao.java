@@ -31,7 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class docbao extends AppCompatActivity {
-    String linkbao,chude,tieude1,tgian,tieude2,anhbao,tenanh,ndung,tacgia;
+    String linkbao,chude,tieude1,tgian,tieude2,anhbao,tacgia;
     String[] ndungs = new String[50];
 
     TextView txt_chude,txt_tieude1,txt_tgian,txt_tieude2,txt_tacgia, txt_ndung;
