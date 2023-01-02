@@ -1,10 +1,5 @@
 package com.example.newsapp.DocBao;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -15,14 +10,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.airbnb.lottie.animation.content.Content;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.bumptech.glide.Glide;
 import com.example.newsapp.Card.CardTrangChu_Adapter;
 import com.example.newsapp.Card.ClickItem;
 import com.example.newsapp.Card.NoiDungModel;
 import com.example.newsapp.R;
-import com.example.newsapp.Thoitiet.Thoitiet2_Adapter;
-import com.example.newsapp.TinTuc.fg_moi;
 import com.example.newsapp.TrangChu.trangchu;
 import com.example.newsapp.TruyenDuLieu;
 
