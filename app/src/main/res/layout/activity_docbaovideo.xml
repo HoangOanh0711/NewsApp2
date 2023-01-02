@@ -160,7 +160,7 @@
             app:tint="@color/trang" />
 
         <ImageView
-            android:id="@+id/img_binhluan_docbao"
+            android:id="@+id/img_binhluan_docbaovideo"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginStart="20dp"

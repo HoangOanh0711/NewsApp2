@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
@@ -41,7 +42,7 @@ public class docbaovideo extends AppCompatActivity {
     String linkbao,tieude,tgian,ndung,tacgia;
     TextView tv_tieude,tv_tgian,tv_ndung,tv_tacgia;
     RecyclerView rcv_lienquan;
-    ImageView quaylai;
+    ImageView quaylai,img_tim, img_binhluan;
 
     CardTrangChu_Adapter cardTrangChu_adapter;
     List<NoiDungModel> noiDungModelList = new ArrayList<>();
@@ -83,6 +84,19 @@ public class docbaovideo extends AppCompatActivity {
             }
         });
 
+        img_tim.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(docbaovideo.this,"Chức năng này đang được phát triển",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        img_binhluan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(docbaovideo.this,"Chức năng này đang được phát triển",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void khaibao() {
@@ -93,6 +107,8 @@ public class docbaovideo extends AppCompatActivity {
         tv_tacgia = findViewById(R.id.txt_tacgia_docbaovideo);
         rcv_lienquan = findViewById(R.id.rcv_tinlienquan_docbaovideo);
         quaylai = findViewById(R.id.img_quaylai_docbaovideo);
+        img_tim = findViewById(R.id.img_like_docbaovideo);
+        img_binhluan = findViewById(R.id.img_binhluan_docbaovideo);
     }
 
     private class Content extends AsyncTask<Void,Void,Void> {

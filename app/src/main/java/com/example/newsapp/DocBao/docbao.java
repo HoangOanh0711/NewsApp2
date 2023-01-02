@@ -37,9 +37,9 @@ public class docbao extends AppCompatActivity {
     String linkbao,chude,tieude1,tgian,tieude2,anhbao,tacgia;
     String[] ndungs = new String[50];
 
-    TextView txt_chude,txt_tieude1,txt_tgian,txt_tieude2,txt_tacgia, txt_ndung;
+    TextView txt_chude,txt_tieude1,txt_tgian,txt_tieude2,txt_tacgia, txt_ndung, text_cochu;
     RecyclerView rcv_lienquan;
-    ImageView img_quaylai, img_anhbao, img_chiase_docbao, img_luubai_docbao;
+    ImageView img_quaylai, img_anhbao, img_chiase_docbao, img_luubai_docbao, img_tim, img_binhluan;
 
     CardTrangChu_Adapter cardTrangChu_adapter;
     List<NoiDungModel> noiDungModelList = new ArrayList<>();
@@ -74,7 +74,7 @@ public class docbao extends AppCompatActivity {
 
         databaseSavedArticle = new DatabaseHandler(mContext, "TinDaLuu.sqlite", null, 1);
         databaseSavedArticle.QueryData("CREATE TABLE IF NOT EXISTS contacts(id INTEGER PRIMARY KEY AUTOINCREMENT, img NVARCHAR(100),title NVARCHAR(100),link VARCHAR(100),date NVARCHAR(20))");*/
-        img_luubai_docbao = findViewById(R.id.img_luubai_docbao);
+
         img_luubai_docbao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,7 +92,6 @@ public class docbao extends AppCompatActivity {
             }
         });
 
-        img_chiase_docbao = findViewById(R.id.img_chiase_docbao);
         img_chiase_docbao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,6 +110,27 @@ public class docbao extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(docbao.this, trangchu.class);
                 startActivity(intent);
+            }
+        });
+
+        text_cochu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(docbao.this,"Chức năng này đang được phát triển",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        img_tim.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(docbao.this,"Chức năng này đang được phát triển",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        img_binhluan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(docbao.this,"Chức năng này đang được phát triển",Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -137,6 +157,12 @@ public class docbao extends AppCompatActivity {
 
         img_quaylai = findViewById(R.id.img_quaylai_docbao);
         img_anhbao = findViewById(R.id.img_anhbao_docbao);
+        img_chiase_docbao = findViewById(R.id.img_chiase_docbao);
+        img_luubai_docbao = findViewById(R.id.img_luubai_docbao);
+
+        text_cochu = findViewById(R.id.txt_cochu_docbao);
+        img_tim = findViewById(R.id.img_like_docbao);
+        img_binhluan = findViewById(R.id.img_binhluan_docbao);
     }
 
     private class Content extends AsyncTask<Void,Void,Void> {
