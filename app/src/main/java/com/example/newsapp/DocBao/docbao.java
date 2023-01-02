@@ -37,6 +37,7 @@ public class docbao extends AppCompatActivity {
     RecyclerView rcv_lienquan;
     ImageView img_quaylai, img_anhbao, img_chiase_docbao, img_luubai_docbao, img_tim, img_binhluan;
 
+
     CardTrangChu_Adapter cardTrangChu_adapter;
     List<NoiDungModel> noiDungModelList = new ArrayList<>();
 
@@ -119,7 +120,17 @@ public class docbao extends AppCompatActivity {
         img_tim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(docbao.this,"Chức năng này đang được phát triển",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(docbao.this,"Chức năng này đang được phát triển",Toast.LENGTH_SHORT).show();
+
+                if (view.getId() == R.id.img_like_docbao) {
+
+                    img_tim.setBackgroundResource(R.drawable.ic_favorite_red_24dp);
+                    img_tim.setSelected(true);
+                } else {
+                        img_tim.setBackgroundResource(R.drawable.ic_favorite_shadow_24dp);
+                        img_tim.setSelected(false);
+
+                }
             }
         });
 
