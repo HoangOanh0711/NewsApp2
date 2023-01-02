@@ -1,21 +1,19 @@
 package com.example.newsapp.TaiKhoan;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.newsapp.R;
-import com.example.newsapp.TruyenDuLieu;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -23,37 +21,50 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
+import org.jetbrains.annotations.NotNull;
+
 public class quenmatkhau2 extends AppCompatActivity {
 
-    Button btn_xacnhan;
+    Button btn_xacnhan, btn_taiday_quenmk;
     TextView txt_sdt;
     EditText ed_otp1, ed_otp2, ed_otp3, ed_otp4, ed_otp5, ed_otp6;
 
-    private static final String TAG = "PhoneAuthActivity";
+    //private static final String TAG = "PhoneAuthActivity";
 
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
-    private PhoneAuthProvider.ForceResendingToken forceResendingToken;
+    //private FirebaseAuth mAuth;
+    //private FirebaseAuth.AuthStateListener mAuthListener;
+    //private PhoneAuthProvider.ForceResendingToken forceResendingToken;
 
     private String mVerificationId;
-    private PhoneAuthProvider.ForceResendingToken mResendToken;
+    //private PhoneAuthProvider.ForceResendingToken mResendToken;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quenmatkhau2);
-        mAuth = FirebaseAuth.getInstance();
+        //mAuth = FirebaseAuth.getInstance();
 
         khaibao();
         setupOTPInput();
 
-        Log.e("qua đc",TruyenDuLieu.Truyen_sdt_quenmk);
-        txt_sdt.setText("Hãy điền OTP gồm 6 số vừa được gửi đến số điện thoại "+ TruyenDuLieu.Truyen_sdt_quenmk);
+
+
+        /*btn_taiday_quenmk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(quenmatkhau2.this, "OTP Send Successfully.", Toast.LENGTH_SHORT).show();
+            }
+        });*/
+
+        //Log.e("qua đc",TruyenDuLieu.Truyen_sdt_quenmk);
+        //txt_sdt.setText("Hãy điền OTP gồm 6 số vừa được gửi đến số điện thoại "+ TruyenDuLieu.Truyen_sdt_quenmk);
         mVerificationId = getIntent().getStringExtra("otp");
 
         btn_xacnhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btn_xacnhan.setVisibility(View.INVISIBLE);
                 if (ed_otp1.getText().toString().isEmpty() ||
                         ed_otp2.getText().toString().isEmpty() ||
                         ed_otp3.getText().toString().isEmpty() ||
@@ -61,9 +72,40 @@ public class quenmatkhau2 extends AppCompatActivity {
                         ed_otp5.getText().toString().isEmpty() ||
                         ed_otp6.getText().toString().isEmpty()) {
                     Toast.makeText(quenmatkhau2.this,"Nhập OTP đã được gửi qua số điện thoại",Toast.LENGTH_SHORT).show();
-                    return;
+                    //return;
+                } else {
+                    if (mVerificationId != null) {
+                        String code = ed_otp1.getText().toString().trim() +
+                                ed_otp2.getText().toString().trim() +
+                                ed_otp3.getText().toString().trim() +
+                                ed_otp4.getText().toString().trim() +
+                                ed_otp5.getText().toString().trim() +
+                                ed_otp6.getText().toString().trim();
+
+                        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, code);
+                        FirebaseAuth
+                                .getInstance()
+                                .signInWithCredential(credential)
+                                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
+                                        if (task.isSuccessful()) {
+                                            //binding.progressBarVerify.setVisibility(View.VISIBLE);
+                                            btn_xacnhan.setVisibility(View.INVISIBLE);
+                                            Toast.makeText(quenmatkhau2.this, "Welcome...", Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(quenmatkhau2.this, quenmatkhau3.class);
+                                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                            startActivity(intent);
+                                        } else {
+                                            //binding.progressBarVerify.setVisibility(View.GONE);
+                                            btn_xacnhan.setVisibility(View.VISIBLE);
+                                            Toast.makeText(quenmatkhau2.this, "OTP is not Valid!", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+                    }
                 }
-                String otp = ed_otp1.getText().toString() +
+                /*String otp = ed_otp1.getText().toString() +
                         ed_otp2.getText().toString() +
                         ed_otp3.getText().toString() +
                         ed_otp4.getText().toString() +
@@ -84,7 +126,7 @@ public class quenmatkhau2 extends AppCompatActivity {
                             }
                         }
                     });
-                }
+                }*/
             }
         });
 
@@ -96,9 +138,9 @@ public class quenmatkhau2 extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (ed_otp1.getText().toString().length()==1) {
+                //if (ed_otp1.getText().toString().length()==1) {
                     ed_otp2.requestFocus();
-                }
+                //}
             }
 
             @Override
@@ -114,9 +156,9 @@ public class quenmatkhau2 extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (ed_otp2.getText().toString().length()==1) {
+                //if (ed_otp2.getText().toString().length()==1) {
                     ed_otp3.requestFocus();
-                }
+                //}
             }
 
             @Override
@@ -132,9 +174,9 @@ public class quenmatkhau2 extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (ed_otp3.getText().toString().length()==1) {
+                //if (ed_otp3.getText().toString().length()==1) {
                     ed_otp4.requestFocus();
-                }
+                //}
             }
 
             @Override
@@ -150,9 +192,9 @@ public class quenmatkhau2 extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (ed_otp4.getText().toString().length()==1) {
+                //if (ed_otp4.getText().toString().length()==1) {
                     ed_otp5.requestFocus();
-                }
+                //}
             }
 
             @Override
@@ -168,9 +210,9 @@ public class quenmatkhau2 extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (ed_otp5.getText().toString().length()==1) {
+                //if (ed_otp5.getText().toString().length()==1) {
                     ed_otp6.requestFocus();
-                }
+                //}
             }
 
             @Override
@@ -179,13 +221,13 @@ public class quenmatkhau2 extends AppCompatActivity {
             }
         });
     }
-    @Override
+    /*@Override
     public void onStop() {
         super.onStop();
         if (mAuthListener != null) {
             mAuth.removeAuthStateListener(mAuthListener);
         }
-    }
+    }*/
 
     private void setupOTPInput() {
         ed_otp1.addTextChangedListener(new TextWatcher() {
@@ -196,9 +238,10 @@ public class quenmatkhau2 extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (ed_otp1.getText().toString().length()==1) {
+                /*if (ed_otp1.getText().toString().length()==1) {
                     ed_otp2.requestFocus();
-                }
+                }*/
+                ed_otp2.requestFocus();
             }
 
             @Override
@@ -214,9 +257,9 @@ public class quenmatkhau2 extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (ed_otp2.getText().toString().length()==1) {
+                //if (ed_otp2.getText().toString().length()==1) {
                     ed_otp3.requestFocus();
-                }
+                //}
             }
 
             @Override
@@ -232,9 +275,9 @@ public class quenmatkhau2 extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (ed_otp3.getText().toString().length()==1) {
+                //if (ed_otp3.getText().toString().length()==1) {
                     ed_otp4.requestFocus();
-                }
+                //}
             }
 
             @Override
@@ -250,9 +293,9 @@ public class quenmatkhau2 extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (ed_otp4.getText().toString().length()==1) {
+                //if (ed_otp4.getText().toString().length()==1) {
                     ed_otp5.requestFocus();
-                }
+                //}
             }
 
             @Override
@@ -268,9 +311,9 @@ public class quenmatkhau2 extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (ed_otp5.getText().toString().length()==1) {
+                //if (ed_otp5.getText().toString().length()==1) {
                     ed_otp6.requestFocus();
-                }
+                //}
             }
 
             @Override

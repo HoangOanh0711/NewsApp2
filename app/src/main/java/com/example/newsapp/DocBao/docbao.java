@@ -4,13 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.airbnb.lottie.animation.content.Content;
 import com.bumptech.glide.Glide;
@@ -36,13 +39,19 @@ public class docbao extends AppCompatActivity {
 
     TextView txt_chude,txt_tieude1,txt_tgian,txt_tieude2,txt_tacgia, txt_ndung;
     RecyclerView rcv_lienquan;
-    ImageView img_quaylai, img_anhbao;
+    ImageView img_quaylai, img_anhbao, img_chiase_docbao, img_luubai_docbao;
 
     CardTrangChu_Adapter cardTrangChu_adapter;
     List<NoiDungModel> noiDungModelList = new ArrayList<>();
 
     Elements data,data1;
     Document document;
+
+    //public static DatabaseHandler databaseArticleWasRead;
+    //public static DatabaseHandler databaseSavedArticle;
+    //private Context mContext;
+    SharedPreferences sPref;
+    final String SAVED_TEXT = linkbao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +69,43 @@ public class docbao extends AppCompatActivity {
         Content content = new Content();
         content.execute();
 
+        /*databaseArticleWasRead = new DatabaseHandler(mContext, "TinDaDoc.sqlite", null, 1);
+        databaseArticleWasRead.QueryData("CREATE TABLE IF NOT EXISTS contacts(id INTEGER PRIMARY KEY AUTOINCREMENT, title NVARCHAR(100),link VARCHAR(100))");
+
+        databaseSavedArticle = new DatabaseHandler(mContext, "TinDaLuu.sqlite", null, 1);
+        databaseSavedArticle.QueryData("CREATE TABLE IF NOT EXISTS contacts(id INTEGER PRIMARY KEY AUTOINCREMENT, img NVARCHAR(100),title NVARCHAR(100),link VARCHAR(100),date NVARCHAR(20))");*/
+        img_luubai_docbao = findViewById(R.id.img_luubai_docbao);
+        img_luubai_docbao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //databaseSavedArticle.QueryData("INSERT INTO contacts VALUES(null,'" + linkbao + "')");
+                //Toast.makeText(view.getContext(), "Đã Lưu", Toast.LENGTH_SHORT).show();
+                //notifyDataSetChanged();
+                switch (v.getId()) {
+                    case R.id.img_luubai_docbao:
+                        saveText();
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+        });
+
+        img_chiase_docbao = findViewById(R.id.img_chiase_docbao);
+        img_chiase_docbao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(Intent.ACTION_SEND);
+                myIntent.setType("text/plain");
+                String body = linkbao;
+                String sub = String.valueOf(tieude1);
+                myIntent.putExtra(Intent.EXTRA_SUBJECT,sub);
+                myIntent.putExtra(Intent.EXTRA_TEXT,body);
+                startActivity(Intent.createChooser(myIntent, "Share Using"));
+            }
+        });
+
         img_quaylai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,6 +113,16 @@ public class docbao extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+    }
+
+    void saveText() {
+        sPref = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor ed = sPref.edit();
+        //String body = linkbao;
+        ed.putString(SAVED_TEXT, txt_tieude1.getText().toString());
+        ed.commit();
+        Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show();
     }
 
     private void khaibao() {
