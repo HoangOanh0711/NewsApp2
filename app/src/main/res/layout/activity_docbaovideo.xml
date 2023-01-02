@@ -65,12 +65,11 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-                android:id="@+id/img_anhbao_docbaovideo"
+            <VideoView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:videoId="Bj51yJcaq5E"
-                app:autoPlay="true" />
+                android:layout_height="250dp"
+                android:scaleType="centerCrop"
+                android:id="@+id/img_anhbao_docbaovideo" />
 
             <TextView
                 android:id="@+id/txt_tieude_docbaovideo"
