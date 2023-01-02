@@ -21,17 +21,15 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
-import org.jetbrains.annotations.NotNull;
-
 public class quenmatkhau2 extends AppCompatActivity {
 
-    Button btn_xacnhan, btn_taiday_quenmk;
-    TextView txt_sdt;
+    Button btn_xacnhan;
+    TextView txt_sdt, btn_taiday_quenmk;
     EditText ed_otp1, ed_otp2, ed_otp3, ed_otp4, ed_otp5, ed_otp6;
 
     //private static final String TAG = "PhoneAuthActivity";
 
-    //private FirebaseAuth mAuth;
+    private FirebaseAuth mAuth;
     //private FirebaseAuth.AuthStateListener mAuthListener;
     //private PhoneAuthProvider.ForceResendingToken forceResendingToken;
 
@@ -43,28 +41,80 @@ public class quenmatkhau2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quenmatkhau2);
-        //mAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+
 
         khaibao();
         setupOTPInput();
 
 
 
-        /*btn_taiday_quenmk.setOnClickListener(new View.OnClickListener() {
+        //btn_taiday_quenmk = findViewById(R.id.btn_taiday_quenmk);
+        btn_taiday_quenmk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(quenmatkhau2.this, "OTP Send Successfully.", Toast.LENGTH_SHORT).show();
             }
-        });*/
+        });
 
         //Log.e("qua đc",TruyenDuLieu.Truyen_sdt_quenmk);
         //txt_sdt.setText("Hãy điền OTP gồm 6 số vừa được gửi đến số điện thoại "+ TruyenDuLieu.Truyen_sdt_quenmk);
-        mVerificationId = getIntent().getStringExtra("otp");
 
+        mVerificationId = getIntent().getStringExtra("OTP");
+
+        //btn_xacnhan = findViewById(R.id.btn_xacnhan);
         btn_xacnhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                btn_xacnhan.setVisibility(View.INVISIBLE);
+                //btn_xacnhan.setVisibility(View.INVISIBLE);
+                if (!ed_otp1.getText().toString().trim().isEmpty() && !ed_otp2.getText().toString().trim().isEmpty()
+                        && !ed_otp3.getText().toString().trim().isEmpty()
+                        && !ed_otp4.getText().toString().trim().isEmpty()
+                        && !ed_otp5.getText().toString().trim().isEmpty()
+                        && !ed_otp6.getText().toString().trim().isEmpty()) {
+
+                    // marging user's input in a string
+                    String getuserotp = ed_otp1.getText().toString() +
+                            ed_otp2.getText().toString() +
+                            ed_otp3.getText().toString() +
+                            ed_otp4.getText().toString() +
+                            ed_otp5.getText().toString() +
+                            ed_otp6.getText().toString();
+
+                    if (mVerificationId != null) {
+
+                        //progressBar.setVisibility(View.VISIBLE);
+                        btn_xacnhan.setVisibility(View.INVISIBLE);
+
+                        PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.getCredential(mVerificationId, getuserotp);
+                        FirebaseAuth.getInstance().signInWithCredential(phoneAuthCredential)
+                                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
+
+                                        //progressBar.setVisibility(View.GONE);
+                                        btn_xacnhan.setVisibility(View.VISIBLE);
+
+                                        if (task.isSuccessful()) {
+                                            Intent intent = new Intent(getApplicationContext(), quenmatkhau3.class);
+                                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                            startActivity(intent);
+                                        } else {
+                                            Toast.makeText(quenmatkhau2.this, "Enter corrent OTP", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+
+
+                    } else {
+                        Toast.makeText(quenmatkhau2.this, "Please check internet", Toast.LENGTH_SHORT).show();
+                    }
+
+                    //Toast.makeText(MainActivity2.this, "OTP Verify", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(quenmatkhau2.this, "Please fill all number", Toast.LENGTH_SHORT).show();
+                }
+                /*
                 if (ed_otp1.getText().toString().isEmpty() ||
                         ed_otp2.getText().toString().isEmpty() ||
                         ed_otp3.getText().toString().isEmpty() ||
@@ -90,21 +140,19 @@ public class quenmatkhau2 extends AppCompatActivity {
                                     @Override
                                     public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
                                         if (task.isSuccessful()) {
-                                            //binding.progressBarVerify.setVisibility(View.VISIBLE);
                                             btn_xacnhan.setVisibility(View.INVISIBLE);
                                             Toast.makeText(quenmatkhau2.this, "Welcome...", Toast.LENGTH_SHORT).show();
                                             Intent intent = new Intent(quenmatkhau2.this, quenmatkhau3.class);
                                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                             startActivity(intent);
                                         } else {
-                                            //binding.progressBarVerify.setVisibility(View.GONE);
                                             btn_xacnhan.setVisibility(View.VISIBLE);
                                             Toast.makeText(quenmatkhau2.this, "OTP is not Valid!", Toast.LENGTH_SHORT).show();
                                         }
                                     }
                                 });
                     }
-                }
+                }*/
                 /*String otp = ed_otp1.getText().toString() +
                         ed_otp2.getText().toString() +
                         ed_otp3.getText().toString() +
@@ -130,6 +178,7 @@ public class quenmatkhau2 extends AppCompatActivity {
             }
         });
 
+        /*
         ed_otp1.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -219,8 +268,10 @@ public class quenmatkhau2 extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {
 
             }
-        });
+        });*/
     }
+
+
     /*@Override
     public void onStop() {
         super.onStop();
@@ -324,6 +375,7 @@ public class quenmatkhau2 extends AppCompatActivity {
     }
     private void khaibao() {
 
+        btn_taiday_quenmk = findViewById(R.id.btn_taiday_quenmk);
         btn_xacnhan = findViewById(R.id.btn_xacnhan);
         ed_otp1 = findViewById(R.id.ed_otp1);
         ed_otp2 = findViewById(R.id.ed_otp2);

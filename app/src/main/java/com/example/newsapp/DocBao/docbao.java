@@ -189,7 +189,7 @@ public class docbao extends AppCompatActivity {
             txt_tacgia.setText(tacgia);
             for (int i=0;i<ndungs.length;i++) {
                 if (ndungs[i]!=null)
-                txt_ndung.append(ndungs[i] + "\n");
+                    txt_ndung.append(ndungs[i] + "\n");
             }
             Glide.with(img_anhbao).load(anhbao).into(img_anhbao);
 
