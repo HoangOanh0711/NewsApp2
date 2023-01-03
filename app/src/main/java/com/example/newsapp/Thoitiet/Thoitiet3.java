@@ -4,16 +4,6 @@ public class Thoitiet3 {
     private String thanhpho,tinhtrang3,nhietdo3,tenthanhpho;
     private int thoitiet3,ghim;
 
-    public Thoitiet3() {
-    }
-
-    public Thoitiet3(String thanhpho, String tinhtrang3, String nhietdo3, int thoitiet3) {
-        this.thanhpho = thanhpho;
-        this.tinhtrang3 = tinhtrang3;
-        this.nhietdo3 = nhietdo3;
-        this.thoitiet3 = thoitiet3;
-    }
-
     public Thoitiet3(String thanhpho, String tenthanhpho) {
         this.thanhpho = thanhpho;
         this.tenthanhpho = tenthanhpho;

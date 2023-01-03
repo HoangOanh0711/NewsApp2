@@ -33,14 +33,12 @@ import java.util.ArrayList;
 
 public class lichvannien extends AppCompatActivity {
 
-    private TextView monthYearText;
-    private RecyclerView calendarRecyclerView;
     private LocalDate selectedDate;
-
     ImageView IMG_lichvannien_back, img_sukien;
     CalendarView calendarView;
     TextView txt_ngay,txt_tensukien;
     LinearLayout layout_event;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

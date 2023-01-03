@@ -32,7 +32,6 @@ import java.util.List;
 
 public class xuhuong extends Fragment {
     private View view;
-
     private RecyclerView recyclerView;
     private CardXuHuong_Adapter cardXuHuong_adapter;
     private List<XuHuongModel> xuHuongModelList = new ArrayList<>();
@@ -78,7 +77,7 @@ public class xuhuong extends Fragment {
             try {
                 String url = "https://tv.tuoitre.vn/";
                 document = Jsoup.connect(url).get();
-                //dữ liệu báo vid - rồi (chưa lấy link)
+                //dữ liệu báo vid
                 data = document.select("div.box-highlight>ul>li.autonext-item");
                 int size = data.size();
                 for (int i=0; i<size;i++) {

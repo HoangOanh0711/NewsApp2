@@ -20,11 +20,6 @@ public class GiaVang_Adapter extends RecyclerView.Adapter<GiaVang_Adapter.GiaVan
         this.giaVangModels = giaVangModels;
     }
 
-    public void setMgiavang(List<GiaVangModel> mgiavang) {
-        this.giaVangModels = mgiavang;
-        notifyDataSetChanged();
-    }
-
     @NonNull
     @Override
     public GiaVang_Adapter.GiaVangViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

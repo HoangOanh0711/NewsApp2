@@ -172,14 +172,12 @@ public class dangnhap extends AppCompatActivity {
             public void onClick(View v) {
                 LoginManager.getInstance().logInWithReadPermissions(dangnhap.this, Arrays.asList("public_profile"));
                 Intent intent = new Intent(dangnhap.this, trangchu.class);
-                //intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
             }
         });
 
         auth = FirebaseAuth.getInstance();
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                //.requestIdToken(getString(R.string.server_client_id))
                 .requestEmail()
                 .build();
 

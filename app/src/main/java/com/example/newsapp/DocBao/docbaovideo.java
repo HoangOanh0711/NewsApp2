@@ -144,14 +144,14 @@ public class docbaovideo extends AppCompatActivity {
                 Log.e("url", url);
                 document = Jsoup.connect(url).get();
 
-                //đổ dữ liệu cho phần báo - xong
+                //đổ dữ liệu cho phần báo
                 data = document.select("div#autonextNoiBat");
                 tieude = data.select("div.description-video>h2>a.name-video").text();
                 tgian = data.select("div.description-video>span.list-category>a.time-ago").text();
                 ndung = data.select("div.description-video>p.sapo-video").text();
                 tacgia = data.select("p.authorvideo").text();
 
-                //đổ dữ liệu cho rcv liên quan - chưa
+                //đổ dữ liệu cho rcv liên quan
                 data1 = document.select("div.list-video.box-related.box-lastest>ul.list-video>li");
                 int size = data1.size();
                 for (int i=0; i<size;i++) {

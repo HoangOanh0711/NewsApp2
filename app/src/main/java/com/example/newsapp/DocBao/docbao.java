@@ -210,7 +210,7 @@ public class docbao extends AppCompatActivity {
                 Log.e("url", url);
                 document = Jsoup.connect(url).get();
 
-                //đổ dữ liệu cho phần báo - xong
+                //đổ dữ liệu cho phần báo
                 data = document.select("div.detail__cmain");
                 chude = data.select("div.detail-cate>a").text();
                 tieude1 = data.select("h1.detail-title.article-title").text();
@@ -233,7 +233,7 @@ public class docbao extends AppCompatActivity {
 
                 }
 
-                //đổ dữ liệu cho rcv liên quan - chưa
+                //đổ dữ liệu cho rcv liên quan
                 data1 = document.select("div#news_same_row1>div.box-category-item"); //chỗ này bị sai
                 int size = data1.size();
                 Log.e("size", String.valueOf(size1));
@@ -250,9 +250,6 @@ public class docbao extends AppCompatActivity {
                     String anhbao = data1.select("a.box-category-link-with-avatar.img-resize").select("img.box-category-avatar").eq(i).attr("src");
                     String linkbao2 = "https://tuoitre.vn"+data.select("a.box-category-link-with-avatar.img-resize").eq(i).attr("href");
                     noiDungModelList.add(new NoiDungModel(tieude,thoigian,anhbao,linkbao2));
-                    Log.e("show",tieude);
-                    Log.e("show",anhbao);
-                    Log.e("show",linkbao2);
                 }
 
             } catch (Exception e) {

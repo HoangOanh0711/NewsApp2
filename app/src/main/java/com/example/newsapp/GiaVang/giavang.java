@@ -118,7 +118,7 @@ public class giavang extends AppCompatActivity {
             try {
                 String url = linkbai;
                 document = Jsoup.connect(url).get();
-                //dữ liệu giá vàng - rồi
+                //dữ liệu giá vàng
                 data = document.select("div.bang-gia-vang-outer>div.content");
                 giocapnhat = data.select("h2").text();
 

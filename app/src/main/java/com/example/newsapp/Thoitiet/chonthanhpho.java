@@ -76,6 +76,4 @@ public class chonthanhpho extends AppCompatActivity {
         listView = findViewById(R.id.list_chontp);
         btn_quaylai = findViewById(R.id.img_quaylai_chontp);
     }
-
-
 }

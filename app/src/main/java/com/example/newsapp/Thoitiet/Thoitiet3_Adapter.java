@@ -47,11 +47,6 @@ public class Thoitiet3_Adapter extends RecyclerView.Adapter<Thoitiet3_Adapter.Th
         this.context = context;
     }
 
-    public void setMthoitiet3(List<Thoitiet3> mthoitiet3) {
-        this.mthoitiet3 = mthoitiet3;
-        notifyDataSetChanged();
-    }
-
     @NonNull
     @Override
     public Thoitiet3ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

@@ -50,10 +50,6 @@ public class taikhoan extends Fragment {
     private ImageView IMG_caidat_anhdaidien;
     private TextView TXT_caidat_tecmmguoidung;
     LinearLayout thongtinngdung,doimk,thoitiet,xoso,giavang,lichviet,dangxuat;
-    private SaveState saveState;
-    private Context context;
-    String Phone;
-    public static final int MY_REQUEST_CODE = 10;
     DatabaseReference databaseReference = FirebaseDatabase.getInstance()
             .getReferenceFromUrl("https://newsapp-a5dc3-default-rtdb.firebaseio.com/");
 
