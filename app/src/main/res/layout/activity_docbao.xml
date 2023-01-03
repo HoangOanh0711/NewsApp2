@@ -20,6 +20,7 @@
             android:id="@+id/img_quaylai_docbao"
             android:layout_width="25dp"
             android:layout_height="25dp"
+            android:layout_marginStart="5dp"
             android:src="@drawable/ic_arrow_back"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +31,7 @@
             android:id="@+id/txt_chude_docbao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
+            android:layout_marginStart="30dp"
             android:fontFamily="@font/roboto_bold"
             android:text="Thế giới"
             android:textColor="@color/trang"
@@ -113,44 +114,32 @@
                 android:textColor="@color/den"
                 android:textSize="18sp" />
 
-            <LinearLayout
+            <ImageView
+                android:id="@+id/img_anhbao_docbao"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/img_anhbao_docbao"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/img_cloudy_day" />
-
-                <TextView
-                    android:id="@+id/txt_ghichuanh_docbao"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="10dp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:gravity="center"
-                    android:text="Khu vực Bắc Bộ thời tiết ngày nắng, đêm và sáng trời lạnh đến rét - Ảnh: NAM TRẦN"
-                    android:textColor="@color/den"
-                    android:textSize="15sp" />
-            </LinearLayout>
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_cloudy_day"
+                android:layout_marginTop="10dp"/>
 
             <TextView
-                android:id="@+id/txt_noidung_docbao"
+                android:id="@+id/txt_card_ndungbao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:fontFamily="@font/roboto_regular"
-                android:text="Hôm nay dự báo sẽ có gió mạnh, sóng lớn trên khu vực Bắc Biển Đông, vịnh Bắc Bộ và vùng biển từ Quảng Trị đến Ninh Thuận. Nguyên nhân do ảnh hưởng của gió mùa đông bắc kết hợp hoàn lưu bão số 7. Cơ quan khí tượng cảnh báo các tàu thuyền hoạt động trên biển cần chú ý các bản tin để có nơi trú tránh an toàn.Hôm nay dự báo sẽ có gió mạnh, sóng lớn trên khu vực Bắc Biển Đông, vịnh Bắc Bộ và vùng biển từ Quảng Trị đến Ninh Thuận. Nguyên nhân do ảnh hưởng của gió mùa đông bắc kết hợp hoàn lưu bão số 7. Cơ quan khí tượng cảnh báo các tàu thuyền hoạt động trên biển cần chú ý các bản tin để có nơi trú tránh an toàn.Hôm nay dự báo sẽ có gió mạnh, sóng lớn trên khu vực Bắc Biển Đông, vịnh Bắc Bộ và vùng biển từ Quảng Trị đến Ninh Thuận. Nguyên nhân do ảnh hưởng của gió mùa đông bắc kết hợp hoàn lưu bão số 7. Cơ quan khí tượng cảnh báo các tàu thuyền hoạt động trên biển cần chú ý các bản tin để có nơi trú tránh an toàn.Hôm nay dự báo sẽ có gió mạnh, sóng lớn trên khu vực Bắc Biển Đông, vịnh Bắc Bộ và vùng biển từ Quảng Trị đến Ninh Thuận. Nguyên nhân do ảnh hưởng của gió mùa đông bắc kết hợp hoàn lưu bão số 7. Cơ quan khí tượng cảnh báo các tàu thuyền hoạt động trên biển cần chú ý các bản tin để có nơi trú tránh an toàn.Hôm nay dự báo sẽ có gió mạnh, sóng lớn trên khu vực Bắc Biển Đông, vịnh Bắc Bộ và vùng biển từ Quảng Trị đến Ninh Thuận. Nguyên nhân do ảnh hưởng của gió mùa đông bắc kết hợp hoàn lưu bão số 7. Cơ quan khí tượng cảnh báo các tàu thuyền hoạt động trên biển cần chú ý các bản tin để có nơi trú tránh an toàn.Hôm nay dự báo sẽ có gió mạnh, sóng lớn trên khu vực Bắc Biển Đông, vịnh Bắc Bộ và vùng biển từ Quảng Trị đến Ninh Thuận. Nguyên nhân do ảnh hưởng của gió mùa đông bắc kết hợp hoàn lưu bão số 7. Cơ quan khí tượng cảnh báo các tàu thuyền hoạt động trên biển cần chú ý các bản tin để có nơi trú tránh an toàn.Hôm nay dự báo sẽ có gió mạnh, sóng lớn trên khu vực Bắc Biển Đông, vịnh Bắc Bộ và vùng biển từ Quảng Trị đến Ninh Thuận. Nguyên nhân do ảnh hưởng của gió mùa đông bắc kết hợp hoàn lưu bão số 7. Cơ quan khí tượng cảnh báo các tàu thuyền hoạt động trên biển cần chú ý các bản tin để có nơi trú tránh an toàn."
                 android:textColor="@color/den"
                 android:textSize="18sp" />
+
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:id="@+id/rcv_noidung_docbao"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="10dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_marginEnd="10dp" />-->
 
             <TextView
                 android:id="@+id/txt_tacgia_docbao"
@@ -160,7 +149,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="15dp"
                 android:fontFamily="@font/roboto_regular"
-                android:text="LÊ PHANLÊ PHANLÊ PHANLÊ PHAN"
+                android:text="LÊ PHAN"
                 android:textColor="@color/den"
                 android:textSize="18sp" />
 
@@ -178,9 +167,8 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcv_tinlienquan_docbao"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp" />
+                android:layout_height="410dp"
+                android:layout_marginTop="5dp" />
         </LinearLayout>
 
     </ScrollView>
@@ -198,7 +186,7 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginStart="10dp"
-            android:src="@drawable/ic_outline_favorite_border_24"
+            android:background="@drawable/ic_favorite_shadow_24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

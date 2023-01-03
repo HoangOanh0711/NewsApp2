@@ -68,7 +68,7 @@
                 android:id="@+id/txtl_ttnd_hovaten"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="3dp"
                 android:inputType="text"
                 android:textColorHint="@color/den"
                 android:textSize="16sp" />
@@ -147,8 +147,8 @@
                 android:id="@+id/txtl_ttnd_ngaysinh"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:inputType="date"
+                android:layout_marginTop="3dp"
+                android:inputType="date|datetime"
                 android:textColorHint="@color/den"
                 android:textSize="16sp" />
         </LinearLayout>
@@ -178,8 +178,9 @@
                 android:id="@+id/txtl_ttnd_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="3dp"
                 android:inputType="textEmailAddress"
+                android:textColorHint="@color/den"
                 android:textSize="16sp" />
         </LinearLayout>
         <!--        kết thúc layout email-->
@@ -208,7 +209,7 @@
                 android:id="@+id/txtl_ttnd_sodienthoai"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="3dp"
                 android:inputType="phone"
                 android:textColorHint="@color/den"
                 android:textSize="16sp" />

@@ -62,7 +62,6 @@ public class fg_moi extends Fragment {
                 @Override
                 public void onClickItem(NoiDungModel noiDungModel) {
                     Intent intent = new Intent(getActivity(), docbao.class);
-                    intent.putExtra("Link báo",linkbao);
                     startActivity(intent);
                 }
             });
@@ -75,13 +74,14 @@ public class fg_moi extends Fragment {
             try {
                 String url = "https://tuoitre.vn/tin-moi-nhat.htm";
                 document = Jsoup.connect(url).get();
-                data = document.select("ul.list-news-content").select("li.news-item");
+                data = document.select("div.list__listing").select("div.box-category-middle").select("div.box-category-item");
                 int size = data.size();
                 for (int i=0; i<size;i++) {
-                    String tieude = data.select("h3.title-news").eq(i).text();
-                    String thoigian = data.select("p.sapo").eq(i).text();
-                    String anhbao = data.select("a.img212x132.pos-rlt").eq(i).select("img").attr("src");
-                    linkbao = "https://tuoitre.vn" + data.select("a.img212x132.pos-rlt").eq(i).attr("href");
+                    String tieude = data.select("h3.box-title-text").select("a.box-category-link-title").eq(i).text();
+                    String thoigian = data.select("p.box-category-sapo").eq(i).text();
+                    String anhbao = data.select("a.box-category-link-with-avatar.img-resize").eq(i).select("img").attr("src");
+                    linkbao = "https://tuoitre.vn" + data.select("a.box-category-link-with-avatar.img-resize").eq(i).attr("href");
+                    Log.e("fg_moi", linkbao);
                     noiDungModelList.add(new NoiDungModel(tieude,thoigian,anhbao,linkbao));
                 }
             } catch (Exception e) {

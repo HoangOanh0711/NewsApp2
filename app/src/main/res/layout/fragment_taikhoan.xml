@@ -30,12 +30,11 @@
         <TextView
             android:id="@+id/txt_caidat_tecmmguoidung"
             android:layout_width="wrap_content"
-
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="30dp"
             android:fontFamily="@font/roboto_bold"
-            android:text="User Name"
+            android:text="User"
             android:textColor="@color/trang"
             android:textSize="28sp"
             app:layout_constraintBottom_toBottomOf="parent"

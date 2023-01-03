@@ -212,7 +212,7 @@
             <TextView
                 android:id="@+id/btn_taiday_quenmk"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginStart="3dp"
                 android:fontFamily="@font/roboto_bold"
                 android:text="Gửi lại"

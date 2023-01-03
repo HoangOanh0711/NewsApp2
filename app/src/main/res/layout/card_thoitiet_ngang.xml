@@ -48,10 +48,10 @@
             android:id="@+id/img_thoitiet_card2"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginEnd="60dp"
+            android:layout_marginEnd="95dp"
             android:src="@drawable/img_cloudy_day"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/txt_nhietdo_card2"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView

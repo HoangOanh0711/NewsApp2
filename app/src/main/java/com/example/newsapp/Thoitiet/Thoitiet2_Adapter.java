@@ -1,6 +1,7 @@
 package com.example.newsapp.Thoitiet;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +11,21 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 import com.example.newsapp.R;
+import com.example.newsapp.TruyenDuLieu;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class Thoitiet2_Adapter extends RecyclerView.Adapter<Thoitiet2_Adapter.Thoitiet2ViewHolder>{
@@ -41,7 +55,7 @@ public class Thoitiet2_Adapter extends RecyclerView.Adapter<Thoitiet2_Adapter.Th
             return;
         }
 
-        holder.imgAnh2.setImageResource(thoitiet2.getAnh2());
+        Glide.with(holder.imgAnh2).load("http://openweathermap.org/img/wn/"+thoitiet2.getAnh()+"@2x.png").into(holder.imgAnh2);
         holder.txtthoigian2.setText(thoitiet2.getThoigian2());
         holder.txtnhietdo2.setText(thoitiet2.getNhietdo2());
         holder.txttinhtrang2.setText(thoitiet2.getTinhtrang2());

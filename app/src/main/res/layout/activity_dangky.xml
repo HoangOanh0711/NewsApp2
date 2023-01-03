@@ -293,23 +293,23 @@
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/imageView4"
+                android:id="@+id/imageView41"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_marginTop="2dp"
                 android:src="@drawable/img_google"
-                app:layout_constraintEnd_toStartOf="@+id/imageView5"
+                app:layout_constraintEnd_toStartOf="@+id/imageView51"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
 
             <ImageView
-                android:id="@+id/imageView5"
+                android:id="@+id/imageView51"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_marginTop="2dp"
                 android:src="@drawable/img_facebook"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView4"
+                app:layout_constraintStart_toEndOf="@+id/imageView41"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
