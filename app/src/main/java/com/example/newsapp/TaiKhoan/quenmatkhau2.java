@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -47,8 +48,6 @@ public class quenmatkhau2 extends AppCompatActivity {
         khaibao();
         setupOTPInput();
 
-
-
         //btn_taiday_quenmk = findViewById(R.id.btn_taiday_quenmk);
         btn_taiday_quenmk.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +60,7 @@ public class quenmatkhau2 extends AppCompatActivity {
         //txt_sdt.setText("Hãy điền OTP gồm 6 số vừa được gửi đến số điện thoại "+ TruyenDuLieu.Truyen_sdt_quenmk);
 
         mVerificationId = getIntent().getStringExtra("OTP");
+        Log.e("qmk2",mVerificationId);
 
         //btn_xacnhan = findViewById(R.id.btn_xacnhan);
         btn_xacnhan.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +84,7 @@ public class quenmatkhau2 extends AppCompatActivity {
                     if (mVerificationId != null) {
 
                         //progressBar.setVisibility(View.VISIBLE);
-                        btn_xacnhan.setVisibility(View.INVISIBLE);
+                        //btn_xacnhan.setVisibility(View.INVISIBLE);
 
                         PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.getCredential(mVerificationId, getuserotp);
                         FirebaseAuth.getInstance().signInWithCredential(phoneAuthCredential)
@@ -106,9 +106,9 @@ public class quenmatkhau2 extends AppCompatActivity {
                                 });
 
 
-                    } else {
+                    } /*else {
                         Toast.makeText(quenmatkhau2.this, "Please check internet", Toast.LENGTH_SHORT).show();
-                    }
+                    }*/
 
                     //Toast.makeText(MainActivity2.this, "OTP Verify", Toast.LENGTH_SHORT).show();
                 } else {

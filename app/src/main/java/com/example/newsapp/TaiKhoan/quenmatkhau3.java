@@ -2,6 +2,7 @@ package com.example.newsapp.TaiKhoan;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,23 +30,24 @@ public class quenmatkhau3 extends AppCompatActivity {
 
         st_matkhau = ed_matkhau.getText().toString().trim();
         st_nhaplaimk = ed_nhaplaimk.getText().toString().trim();
-        Phone = TruyenDuLieu.Truyen_sdt_quenmk;
+        //Phone = TruyenDuLieu.Truyen_sdt_quenmk;
 
-        //Phone = "+84989454162";
         user = getIntent().getStringExtra("Users");
         pass = getIntent().getStringExtra("Mật khẩu");
-        Phone = getIntent().getStringExtra("");
+        //Phone = getIntent().getStringExtra("");
 
         btn_capnhat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ktra();
-                //Phone = TruyenDuLieu.Truyen_sdt_quenmk;
+                //ktra();
+                Log.e("st_matkhau",st_matkhau);
+                Log.e("st_nhaplaimk",st_nhaplaimk);
+                /*Phone = TruyenDuLieu.Truyen_sdt_quenmk;
                 newpass = ed_matkhau.getText().toString().trim();
                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
                 reference.child(Phone).child("Mật khẩu").setValue(newpass);
                 startActivity(new Intent(getApplicationContext(), quenmatkhau4.class));
-                finish();
+                finish();*/
             }
         });
     }

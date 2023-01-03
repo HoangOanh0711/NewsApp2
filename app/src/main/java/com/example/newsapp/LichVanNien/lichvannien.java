@@ -92,26 +92,31 @@ public class lichvannien extends AppCompatActivity {
                 txt_ngay.setText(date);
                 txt_tensukien.setText("Ngày thành lập Đảng Cộng sản Việt Nam");
                 layout_event.setVisibility(View.VISIBLE);
+                img_sukien.setImageResource(R.drawable.event);
                 break;
             case "Ngày 27 tháng 2":
                 txt_ngay.setText(date);
                 txt_tensukien.setText("Ngày Thầy thuốc Việt Nam");
                 layout_event.setVisibility(View.VISIBLE);
+                img_sukien.setImageResource(R.drawable.event);
                 break;
             case "Ngày 8 tháng 3":
                 txt_ngay.setText(date);
                 txt_tensukien.setText("Ngày Quốc tế Phụ nữ");
                 layout_event.setVisibility(View.VISIBLE);
+                img_sukien.setImageResource(R.drawable.womens_day);
                 break;
             case "Ngày 20 tháng 3":
                 txt_ngay.setText(date);
                 txt_tensukien.setText("Ngày Quốc tế Hạnh phúc");
                 layout_event.setVisibility(View.VISIBLE);
+                img_sukien.setImageResource(R.drawable.event);
                 break;
             case "Ngày 26 tháng 3":
                 txt_ngay.setText(date);
                 txt_tensukien.setText("Ngày thành lập Đoàn Thanh niên Cộng sản Hồ Chí Minh");
                 layout_event.setVisibility(View.VISIBLE);
+                img_sukien.setImageResource(R.drawable.event);
                 break;
             case "Ngày 22 tháng 4":
                 txt_ngay.setText(date);
@@ -123,11 +128,13 @@ public class lichvannien extends AppCompatActivity {
                 txt_ngay.setText(date);
                 txt_tensukien.setText("Quốc tế lao động");
                 layout_event.setVisibility(View.VISIBLE);
+                img_sukien.setImageResource(R.drawable.event);
                 break;
             case "Ngày 19 tháng 5":
                 txt_ngay.setText(date);
                 txt_tensukien.setText("Ngày sinh của Chủ tịch Hồ Chí Minh");
                 layout_event.setVisibility(View.VISIBLE);
+                img_sukien.setImageResource(R.drawable.event);
                 break;
             case "Ngày 1 tháng 6":
                 txt_ngay.setText(date);
@@ -139,36 +146,43 @@ public class lichvannien extends AppCompatActivity {
                 txt_ngay.setText(date);
                 txt_tensukien.setText("Ngày Gia đình Việt Nam");
                 layout_event.setVisibility(View.VISIBLE);
+                img_sukien.setImageResource(R.drawable.event);
                 break;
             case "Ngày 27 tháng 7":
                 txt_ngay.setText(date);
                 txt_tensukien.setText("Ngày Thương binh Liệt sĩ");
                 layout_event.setVisibility(View.VISIBLE);
+                img_sukien.setImageResource(R.drawable.event);
                 break;
             case "Ngày 19 tháng 8":
                 txt_ngay.setText(date);
                 txt_tensukien.setText("Ngày Cách mạng tháng Tám thành công");
                 layout_event.setVisibility(View.VISIBLE);
+                img_sukien.setImageResource(R.drawable.event);
                 break;
             case "Ngày 2 tháng 9":
                 txt_ngay.setText(date);
                 txt_tensukien.setText("Ngày Quốc khánh nước Cộng hoà Xã hội Chủ nghĩa Việt Nam\"");
                 layout_event.setVisibility(View.VISIBLE);
+                img_sukien.setImageResource(R.drawable.event);
                 break;
             case "Ngày 7 tháng 9":
                 txt_ngay.setText(date);
                 txt_tensukien.setText("Ngày thành lập Đài Truyền hình Việt Nam");
                 layout_event.setVisibility(View.VISIBLE);
+                img_sukien.setImageResource(R.drawable.event);
                 break;
             case "Ngày 13 tháng 10":
                 txt_ngay.setText(date);
                 txt_tensukien.setText("Ngày Doanh nhân Việt Nam");
                 layout_event.setVisibility(View.VISIBLE);
+                img_sukien.setImageResource(R.drawable.event);
                 break;
             case "Ngày 14 tháng 10":
                 txt_ngay.setText(date);
                 txt_tensukien.setText("Ngày thành lập Hội Nông dân Việt Nam");
                 layout_event.setVisibility(View.VISIBLE);
+                img_sukien.setImageResource(R.drawable.event);
                 break;
             case "Ngày 20 tháng 10":
                 txt_ngay.setText(date);
@@ -180,18 +194,19 @@ public class lichvannien extends AppCompatActivity {
                 txt_ngay.setText(date);
                 txt_tensukien.setText("Ngày Nhà giáo Việt Nam");
                 layout_event.setVisibility(View.VISIBLE);
+                img_sukien.setImageResource(R.drawable.event);
                 break;
             case "Ngày 22 tháng 12":
                 txt_ngay.setText(date);
                 txt_tensukien.setText("Ngày thành lập Quân đội Nhân dân Việt Nam");
                 layout_event.setVisibility(View.VISIBLE);
+                img_sukien.setImageResource(R.drawable.event);
                 break;
             case "Ngày 25 tháng 12":
                 txt_ngay.setText(date);
                 txt_tensukien.setText("Lễ Giáng Sinh");
                 img_sukien.setImageResource(R.drawable.calendar);
                 layout_event.setVisibility(View.VISIBLE);
-                img_sukien.setImageResource(R.drawable.calendar);
                 break;
             default:
                 layout_event.setVisibility(View.GONE);

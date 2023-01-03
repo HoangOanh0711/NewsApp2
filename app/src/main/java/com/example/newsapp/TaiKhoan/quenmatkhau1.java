@@ -55,6 +55,8 @@ public class quenmatkhau1 extends AppCompatActivity {
 
         khaibao();
 
+        //str_sdt = "+" + countryCodePicker.getFullNumber();
+
 
         mAuth = FirebaseAuth.getInstance();
         //progressdialog = new ProgressDialog(quenmatkhau1.this);
@@ -105,12 +107,10 @@ public class quenmatkhau1 extends AppCompatActivity {
         btn_guiotp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //str_sdt = "+" + countryCodePicker.getFullNumber();
+                str_sdt = "+" + countryCodePicker.getFullNumber();
                 //TruyenDuLieu.Truyen_sdt_quenmk = str_sdt;
-                if (sdt.getText().toString().trim().isEmpty()) {
+                if (str_sdt.isEmpty()) {
                     Toast.makeText(quenmatkhau1.this, "Invalid Phone Number", Toast.LENGTH_SHORT).show();
-                } else if (sdt.getText().toString().trim().length() != 10) {
-                    Toast.makeText(quenmatkhau1.this, "Type valid Phone Number", Toast.LENGTH_SHORT).show();
                 } else {
                     otpSend();
                 }
@@ -194,14 +194,15 @@ public class quenmatkhau1 extends AppCompatActivity {
                 Toast.makeText(quenmatkhau1.this, "OTP is successfully send.", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(quenmatkhau1.this, quenmatkhau2.class);
                 intent.putExtra("", sdt.getText().toString().trim());
-                intent.putExtra("verificationId", verificationId);
+                intent.putExtra("OTP", verificationId);
                 startActivity(intent);
             }
         };
 
         PhoneAuthOptions options =
                 PhoneAuthOptions.newBuilder(mAuth)
-                        .setPhoneNumber("+84" + sdt.getText().toString().trim())
+                        .setPhoneNumber("+" + countryCodePicker.getFullNumber())
+        //st_sdt = "+" + countryCodePicker.getFullNumber();
                         .setTimeout(120L, TimeUnit.SECONDS)
                         .setActivity(this)
                         .setCallbacks(mCallbacks)

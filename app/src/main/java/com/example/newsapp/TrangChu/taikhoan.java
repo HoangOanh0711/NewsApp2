@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContentInfo;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,24 +62,26 @@ public class taikhoan extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_taikhoan, container, false);
 
-        String myphone = TruyenDuLieu.Tr_sdt;
+        if (TruyenDuLieu.Tr_sdt!=null) {
+            String myphone = TruyenDuLieu.Tr_sdt;
+
+            databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.hasChild(myphone)) {
+                        final String username = snapshot.child(myphone).child("Tên người dùng").getValue(String.class);
+                        TXT_caidat_tecmmguoidung.setText(username);
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
         //Ánh xạ
         khaibao(view);
-
-        databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.hasChild(myphone)) {
-                    final String username = snapshot.child(myphone).child("Tên người dùng").getValue(String.class);
-                    TXT_caidat_tecmmguoidung.setText(username);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
 
         //đổi ảnh đại diện
         IMG_caidat_anhdaidien.setOnClickListener(new View.OnClickListener() {
@@ -148,6 +151,8 @@ public class taikhoan extends Fragment {
             public void onClick(View v) {
                 Intent intentdmk = new Intent(getActivity(), dangnhap.class);
                 startActivity(intentdmk);
+                TruyenDuLieu.Tr_sdt=null;
+
             }
         });
         return view;
@@ -163,13 +168,6 @@ public class taikhoan extends Fragment {
         dangxuat = view.findViewById(R.id.layout_caidat_dangxuat);
         TXT_caidat_tecmmguoidung = view.findViewById(R.id.txt_caidat_tecmmguoidung);
         IMG_caidat_anhdaidien = view.findViewById(R.id.img_caidat_anhdaidien);
-    }
-
-    public static taikhoan newInstance() {
-        taikhoan fragment = new taikhoan();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override

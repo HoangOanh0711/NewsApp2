@@ -27,6 +27,10 @@ import com.example.newsapp.TrangChu.taikhoan;
 import com.example.newsapp.TrangChu.trangchu;
 import com.example.newsapp.TruyenDuLieu;
 import com.example.newsapp.XoSo.xoso;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
@@ -48,6 +52,10 @@ public class thongtinnguoidung extends AppCompatActivity {
     Button btn_luuthongtin;
     int Idcheck;
     String myphone;
+
+    GoogleSignInOptions gso;
+    GoogleSignInClient gsc;
+
     DatabaseReference databaseReference = FirebaseDatabase.getInstance()
             .getReferenceFromUrl("https://newsapp-a5dc3-default-rtdb.firebaseio.com/");
 
@@ -172,37 +180,46 @@ public class thongtinnguoidung extends AppCompatActivity {
     }
 
     private void showdata() {
-        databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    final String hoten = snapshot.child(myphone).child("Họ và tên").getValue(String.class);
-                    final String gioitinh = snapshot.child(myphone).child("Giới tính").getValue(String.class);
-                    final String ngaysinh = snapshot.child(myphone).child("Ngày sinh").getValue(String.class);
-                    final String email = snapshot.child(myphone).child("Email").getValue(String.class);
+        if (TruyenDuLieu.Tr_sdt!=null) {
+            databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        final String hoten = snapshot.child(myphone).child("Họ và tên").getValue(String.class);
+                        final String gioitinh = snapshot.child(myphone).child("Giới tính").getValue(String.class);
+                        final String ngaysinh = snapshot.child(myphone).child("Ngày sinh").getValue(String.class);
+                        final String email = snapshot.child(myphone).child("Email").getValue(String.class);
 
-                    txt_et_hvt.setHint(hoten);
-                    txt_et_email.setHint(email);
-                    txt_et_ngaysinh.setHint(ngaysinh);
+                        txt_et_hvt.setHint(hoten);
+                        txt_et_email.setHint(email);
+                        txt_et_ngaysinh.setHint(ngaysinh);
 
-                    txt_et_sdt.setText(myphone);
-                    txt_et_sdt.setFocusable(false);
-                    txt_et_sdt.setClickable(true);
+                        txt_et_sdt.setText(myphone);
+                        txt_et_sdt.setFocusable(false);
+                        txt_et_sdt.setClickable(true);
 
-                    if (gioitinh!=null) {
-                        if (gioitinh.equals("Nam")) rGroup_gioitinh.check(R.id.rd_signup_Nam);
-                        else rGroup_gioitinh.check(R.id.rd_signup_Nu);
+                        if (gioitinh!=null) {
+                            if (gioitinh.equals("Nam")) rGroup_gioitinh.check(R.id.rd_signup_Nam);
+                            else rGroup_gioitinh.check(R.id.rd_signup_Nu);
+                        }
+
                     }
-
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(thongtinnguoidung.this, "Lỗi", Toast.LENGTH_SHORT).show();
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(thongtinnguoidung.this, "Lỗi", Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+            gsc = GoogleSignIn.getClient(this, gso);
+            GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+            if (account!= null) {
+                String Name = account.getDisplayName();
+                txt_et_hvt.setText(Name);
             }
-        });
-
+        }
     }
 
     private void ganggiatri() {

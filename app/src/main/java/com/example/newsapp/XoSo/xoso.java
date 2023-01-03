@@ -126,6 +126,7 @@ public class xoso extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(xoso.this, trangchu.class);
                 startActivity(intent);
+                TruyenDuLieu.Truyen_NgayXoso="";
             }
         });
     }
