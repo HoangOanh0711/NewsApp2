@@ -38,8 +38,6 @@ public class quenmatkhau3 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 gangiatri();
-                Log.e("st_matkhau",st_matkhau);
-                Log.e("Phone",Phone);
                 if (ktra()) {
                     databaseReference.child("Users").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -64,7 +62,7 @@ public class quenmatkhau3 extends AppCompatActivity {
     private void gangiatri() {
         st_matkhau = ed_matkhau.getText().toString().trim();
         st_nhaplaimk = ed_nhaplaimk.getText().toString().trim();
-        Phone = getIntent().getStringExtra("sdt-qmk1");;
+        Phone = TruyenDuLieu.Truyen_sdt_quenmk;
     }
 
     private void khaibao() {

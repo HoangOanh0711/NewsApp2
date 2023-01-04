@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.newsapp.R;
+import com.example.newsapp.TruyenDuLieu;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
@@ -101,6 +102,7 @@ public class quenmatkhau1 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 str_sdt = "+" + countryCodePicker.getFullNumber();
+                TruyenDuLieu.Truyen_sdt_quenmk = str_sdt;
                 if (str_sdt.isEmpty()) {
                     Toast.makeText(quenmatkhau1.this, "Invalid Phone Number", Toast.LENGTH_SHORT).show();
                 } else {
@@ -118,7 +120,6 @@ public class quenmatkhau1 extends AppCompatActivity {
 
             @Override
             public void onVerificationFailed(FirebaseException e) {
-                //binding.progressBar.setVisibility(View.GONE);
                 btn_guiotp.setVisibility(View.VISIBLE);
                 Toast.makeText(quenmatkhau1.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
@@ -129,7 +130,6 @@ public class quenmatkhau1 extends AppCompatActivity {
                 btn_guiotp.setVisibility(View.VISIBLE);
                 Toast.makeText(quenmatkhau1.this, "OTP is successfully send.", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(quenmatkhau1.this, quenmatkhau2.class);
-                intent.putExtra("sdt-qmk1", "+" + countryCodePicker.getFullNumber());
                 intent.putExtra("OTP", verificationId);
                 startActivity(intent);
             }
